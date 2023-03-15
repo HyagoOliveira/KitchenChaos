@@ -19,10 +19,12 @@ namespace KitchenChaos.Save
 
         private const string saveFileName = "GameData";
 
-        private void OnEnable()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        private static void Instantiate()
         {
-            Debug.Log("SaveSettings.OnEnable");
-            if (Application.isPlaying) LoadOrCreate();
+            Debug.Log("Instantiate");
+            var settings = Resources.Load<SaveSettings>(nameof(SaveSettings));
+            settings.LoadOrCreate();
         }
 
         public async void Save()
