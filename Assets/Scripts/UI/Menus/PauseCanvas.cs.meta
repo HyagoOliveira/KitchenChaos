@@ -4,10 +4,12 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - canvas: {instanceID: 0}
   - pauseSettings: {fileID: 11400000, guid: 6e6d477eafac046bf841dc795d054dca, type: 2}
+  - sceneManager: {fileID: 11400000, guid: f287e2450ac7dac40a40df5870b10299, type: 2}
   - pauseOptions: {instanceID: 0}
-  - soundOptions: {instanceID: 0}
+  - soundPopup: {instanceID: 0}
+  - restartPopup: {instanceID: 0}
+  - exitPopup: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

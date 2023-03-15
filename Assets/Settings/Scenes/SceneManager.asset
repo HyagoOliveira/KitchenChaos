@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ca845426aa6d2514c86750d83caf160c, type: 3}
   m_Name: SceneManager
-  m_EditorClassIdentifier: ActionCode.SceneManagement:ActionCode.SceneManagement:SceneManager
+  m_EditorClassIdentifier: 
   defaultTransition: {fileID: 11400000, guid: df915203de9bd4f43bde3f773879a878, type: 2}
