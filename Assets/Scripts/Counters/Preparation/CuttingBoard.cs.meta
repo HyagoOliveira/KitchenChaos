@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8a610eaea0119704cba741c6ea8d0db8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - holder: {instanceID: 0}
+  - highlighters: {instanceID: 0}
+  - animation: {instanceID: 0}
+  - ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50,
+      type: 2}
+  - knife: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

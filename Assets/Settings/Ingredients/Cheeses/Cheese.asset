@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc850490f6a74194eb5c17b89ec0d213, type: 3}
+  m_Name: Cheese
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f,
+    type: 3}
+  <Prefab>k__BackingField: {fileID: 8156636031883423871, guid: e093ad0cb2ad56245b231ebd08f1786e,
+    type: 3}
+  <Name>k__BackingField: 3
+  <Status>k__BackingField: 4
+  <PreparationTime>k__BackingField: 3

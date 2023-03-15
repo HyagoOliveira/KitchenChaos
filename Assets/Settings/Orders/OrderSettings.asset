@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c74315756e3b1b4b990c55c9ae8b97e, type: 3}
+  m_Name: OrderSettings
+  m_EditorClassIdentifier: 
+  recipeSettings: {fileID: 11400000, guid: 21046373011d1504c8c68c48143d5af8, type: 2}
+  ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50, type: 2}
+  orderPrefab: {fileID: 3244214093099194501, guid: 6e0035719ff21d54d9de7ae0bf0dc5ad,
+    type: 3}
+  additionalTimePerIngredient: 10

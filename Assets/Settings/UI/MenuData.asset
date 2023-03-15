@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91bec82db0df934c9b8dd9e8c4eb8f6, type: 3}
+  m_Name: MenuData
+  m_EditorClassIdentifier: 
+  <Selection>k__BackingField: {fileID: 8300000, guid: e519f586b4ac0904e877dfab85ed729e,
+    type: 3}
+  <Submition>k__BackingField: {fileID: 8300000, guid: 331b82ab2c0e2b74d805124d11372c85,
+    type: 3}

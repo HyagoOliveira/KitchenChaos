@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66a786270f8160c4a897796854c0397a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - canvas: {instanceID: 0}
+  - pauseSettings: {fileID: 11400000, guid: 6e6d477eafac046bf841dc795d054dca, type: 2}
+  - pauseOptions: {instanceID: 0}
+  - soundOptions: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
