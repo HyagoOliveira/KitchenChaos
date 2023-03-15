@@ -36,6 +36,7 @@ namespace KitchenChaos.Save
             var wasSaved = await Settings.Save(Data, saveFileName);
 
             Debug.Log($"wasSaved: {wasSaved}");
+            OnSaveFinished?.Invoke();
         }
 
         private async void LoadOrCreate()
@@ -48,6 +49,7 @@ namespace KitchenChaos.Save
             Debug.Log($"isEmpty: {isEmpty}");
 
             audioSettings.Load(Data.Audio);
+            OnLoadFinished?.Invoke();
         }
     }
 }
