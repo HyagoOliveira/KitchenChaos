@@ -9,7 +9,7 @@ namespace KitchenChaos.Levels
         [SerializeField] private MatchSettings settings;
 
         private void Awake() => settings.Initialize();
-        private void Start() => Invoke(nameof(StartInitialCountDown), 0.2F);
+        private void Start() => Invoke(nameof(StartCountDown), 0.2F);
 
         private void OnEnable()
         {
@@ -23,7 +23,7 @@ namespace KitchenChaos.Levels
             settings.TimeLimit.OnFinished -= HandleTimeLimitFinished;
         }
 
-        private void StartInitialCountDown() => settings.StartCountDown();
+        private void StartCountDown() => settings.StartCountDown();
 
         private void HandleCountDownFinished() => settings.StartTimeLimit();
 

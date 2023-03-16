@@ -7,7 +7,7 @@ namespace KitchenChaos.UI
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Animation))]
     [RequireComponent(typeof(AudioSource))]
-    public sealed class InitialCountDown : MonoBehaviour
+    public sealed class CountDown : MonoBehaviour
     {
         [SerializeField] private MatchSettings levelSettings;
         [SerializeField] private Animation animation;

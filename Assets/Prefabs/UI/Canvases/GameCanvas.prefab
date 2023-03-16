@@ -769,7 +769,7 @@ PrefabInstance:
     - target: {fileID: 3705190816475863169, guid: 32ea91e5a71e0a443ae15a9566ddf8ab,
         type: 3}
       propertyPath: m_Name
-      value: InitialCountDown
+      value: CountDown
       objectReference: {fileID: 0}
     - target: {fileID: 9218683838207826173, guid: 32ea91e5a71e0a443ae15a9566ddf8ab,
         type: 3}
