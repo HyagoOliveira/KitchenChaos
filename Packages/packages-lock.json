@@ -83,10 +83,11 @@
       "url": "http://165.232.132.59:4873"
     },
     "com.actioncode.ui": {
-      "version": "file:D:/UnityProjects/_Packages/ActionCode/UI",
+      "version": "4.0.0",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://165.232.132.59:4873"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

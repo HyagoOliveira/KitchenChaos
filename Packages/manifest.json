@@ -5,7 +5,7 @@
     "com.actioncode.persistence": "2.1.1",
     "com.actioncode.scene-management": "2.0.1",
     "com.actioncode.shapes": "1.2.0",
-    "com.actioncode.ui": "file:D:/UnityProjects/_Packages/ActionCode/UI",
+    "com.actioncode.ui": "4.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.visualstudio": "2.0.17",
     "com.unity.inputsystem": "1.5.0",
