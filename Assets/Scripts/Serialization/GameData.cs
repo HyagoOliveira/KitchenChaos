@@ -1,19 +1,19 @@
 using System;
 using ActionCode.Audio;
 
-namespace KitchenChaos.Save
+namespace KitchenChaos.Serialization
 {
     [Serializable]
-    public sealed class SaveData
+    public sealed class GameData
     {
         public string Language { get; internal set; }
         public AudioData Audio { get; internal set; }
         public DateTime CreationTime { get; internal set; }
         public DateTime LastUpdateTime { get; internal set; }
 
-        public SaveData() : this(string.Empty, new AudioData(), DateTime.Now, default) { }
+        public GameData() : this(string.Empty, new AudioData(), DateTime.Now, default) { }
 
-        public SaveData(
+        public GameData(
             string language,
             AudioData audio,
             DateTime creationTime,

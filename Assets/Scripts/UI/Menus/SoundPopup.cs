@@ -1,7 +1,7 @@
 using UnityEngine;
 using ActionCode.UI;
 using AudioSettings = ActionCode.Audio.AudioSettings;
-using KitchenChaos.Save;
+using KitchenChaos.Serialization;
 
 namespace KitchenChaos.UI
 {
@@ -11,7 +11,7 @@ namespace KitchenChaos.UI
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private DelayedButton resetButton;
         [SerializeField] private AudioSettings audioSettings;
-        [SerializeField] private SaveSettings saveSettings;
+        [SerializeField] private GameDataSettings saveSettings;
 
         protected override void OnEnable()
         {

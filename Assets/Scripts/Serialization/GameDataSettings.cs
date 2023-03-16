@@ -1,12 +1,12 @@
+using System;
 using UnityEngine;
 using ActionCode.Persistence;
 using AudioSettings = ActionCode.Audio.AudioSettings;
-using System;
 
-namespace KitchenChaos.Save
+namespace KitchenChaos.Serialization
 {
-    [CreateAssetMenu(fileName = "SaveSettings", menuName = EditorPaths.SO + "Save Settings", order = 110)]
-    public sealed class SaveSettings : ScriptableObject
+    [CreateAssetMenu(fileName = "GameDataSettings", menuName = EditorPaths.SO + "Game Data Settings", order = 110)]
+    public sealed class GameDataSettings : ScriptableObject
     {
         [field: SerializeField] public PersistenceSettings Settings { get; private set; }
 
@@ -15,14 +15,14 @@ namespace KitchenChaos.Save
         public event Action OnSaveFinished;
         public event Action OnLoadFinished;
 
-        public SaveData Data { get; set; }
+        public GameData Data { get; set; }
 
-        private const string saveFileName = "GameData";
+        private const string saveFileName = nameof(GameData);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void Instantiate()
         {
-            var settings = Resources.Load<SaveSettings>(nameof(SaveSettings));
+            var settings = Resources.Load<GameDataSettings>(nameof(GameDataSettings));
             settings.LoadOrCreate();
         }
 
@@ -41,10 +41,10 @@ namespace KitchenChaos.Save
 
         private async void LoadOrCreate()
         {
-            Data = await Settings.Load<SaveData>(saveFileName);
+            Data = await Settings.Load<GameData>(saveFileName);
 
             var isEmpty = Data == null;
-            if (isEmpty) Data = new SaveData();
+            if (isEmpty) Data = new GameData();
 
             audioSettings.Load(Data.Audio);
             OnLoadFinished?.Invoke();
