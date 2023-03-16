@@ -22,7 +22,6 @@ namespace KitchenChaos.Save
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void Instantiate()
         {
-            Debug.Log("Instantiate");
             var settings = Resources.Load<SaveSettings>(nameof(SaveSettings));
             settings.LoadOrCreate();
         }
@@ -37,7 +36,6 @@ namespace KitchenChaos.Save
 
             var wasSaved = await Settings.Save(Data, saveFileName);
 
-            Debug.Log($"wasSaved: {wasSaved}");
             OnSaveFinished?.Invoke();
         }
 
@@ -47,8 +45,6 @@ namespace KitchenChaos.Save
 
             var isEmpty = Data == null;
             if (isEmpty) Data = new SaveData();
-
-            Debug.Log($"isEmpty: {isEmpty}");
 
             audioSettings.Load(Data.Audio);
             OnLoadFinished?.Invoke();
