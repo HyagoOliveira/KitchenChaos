@@ -6,6 +6,7 @@ namespace KitchenChaos.UI
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
+    [DefaultExecutionOrder(Managers.EXECUTION_ORDER)]
     public sealed class OrderManager : MonoBehaviour
     {
         [SerializeField] private OrderSettings settings;

@@ -4,6 +4,7 @@ using ActionCode.PauseSystem;
 namespace KitchenChaos.Players
 {
     [DisallowMultipleComponent]
+    [DefaultExecutionOrder(Managers.EXECUTION_ORDER)]
     public sealed class PlayerManager : MonoBehaviour
     {
         [SerializeField] private PlayerSettings settings;
