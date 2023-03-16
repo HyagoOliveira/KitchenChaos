@@ -8,7 +8,7 @@ namespace KitchenChaos.UI
     [DisallowMultipleComponent]
     public sealed class Timer : MonoBehaviour
     {
-        [SerializeField] private LevelSettings levelSettings;
+        [SerializeField] private MatchSettings levelSettings;
         [SerializeField] private GameObject panel;
         [SerializeField] private TMP_Text timer;
         [SerializeField] private string timerFormat = @"mm\:ss";
@@ -20,14 +20,14 @@ namespace KitchenChaos.UI
 
         private void OnEnable()
         {
-            levelSettings.InitialCountDown.OnStarted += HidePanel;
+            levelSettings.CountDown.OnStarted += HidePanel;
             levelSettings.TimeLimit.OnStarted += ShowPanel;
             levelSettings.TimeLimit.OnUpdated += HandleTimeLimitUpdated;
         }
 
         private void OnDisable()
         {
-            levelSettings.InitialCountDown.OnStarted -= HidePanel;
+            levelSettings.CountDown.OnStarted -= HidePanel;
             levelSettings.TimeLimit.OnStarted -= ShowPanel;
             levelSettings.TimeLimit.OnUpdated -= HandleTimeLimitUpdated;
         }

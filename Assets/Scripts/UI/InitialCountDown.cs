@@ -9,7 +9,7 @@ namespace KitchenChaos.UI
     [RequireComponent(typeof(AudioSource))]
     public sealed class InitialCountDown : MonoBehaviour
     {
-        [SerializeField] private LevelSettings levelSettings;
+        [SerializeField] private MatchSettings levelSettings;
         [SerializeField] private Animation animation;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private TMP_Text countDown;
@@ -25,28 +25,28 @@ namespace KitchenChaos.UI
 
         private void OnEnable()
         {
-            levelSettings.InitialCountDown.OnStarted += HandleInitialCoundDownStarted;
-            levelSettings.InitialCountDown.OnUpdated += HandleInitialCoundDownUpdated;
-            levelSettings.InitialCountDown.OnFinished += HandleInitialCoundDownFinished;
+            levelSettings.CountDown.OnStarted += HandlelCountDownStarted;
+            levelSettings.CountDown.OnUpdated += HandleCountDownUpdated;
+            levelSettings.CountDown.OnFinished += HandleCountDownFinished;
         }
 
         private void OnDisable()
         {
-            levelSettings.InitialCountDown.OnStarted -= HandleInitialCoundDownStarted;
-            levelSettings.InitialCountDown.OnUpdated -= HandleInitialCoundDownUpdated;
-            levelSettings.InitialCountDown.OnFinished -= HandleInitialCoundDownFinished;
+            levelSettings.CountDown.OnStarted -= HandlelCountDownStarted;
+            levelSettings.CountDown.OnUpdated -= HandleCountDownUpdated;
+            levelSettings.CountDown.OnFinished -= HandleCountDownFinished;
         }
 
-        private void HandleInitialCoundDownStarted() => countDown.gameObject.SetActive(true);
+        private void HandlelCountDownStarted() => countDown.gameObject.SetActive(true);
 
-        private void HandleInitialCoundDownUpdated(uint time)
+        private void HandleCountDownUpdated(uint time)
         {
             animation.Play();
             audioSource.Play();
             countDown.text = time.ToString(countDownFormat);
         }
 
-        private void HandleInitialCoundDownFinished()
+        private void HandleCountDownFinished()
         {
             audioSource.PlayOneShot(finishedSound);
             countDown.gameObject.SetActive(false);
