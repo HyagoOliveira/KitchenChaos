@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using KitchenChaos.Items;
 using KitchenChaos.Recipes;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace KitchenChaos.UI
@@ -14,14 +15,23 @@ namespace KitchenChaos.UI
         [SerializeField] private Order orderPrefab;
         [SerializeField, Min(1)] private int maxOrders = 4;
         [SerializeField, Min(0F)] private float additionalTimePerIngredient = 3F;
+        [SerializeField, Min(0F)] private float timeByNewOrder = 15F;
 
         public event Action<Order> OnOrderFailed;
         public event Action<Order> OnOrderCreated;
         public event Action<Order> OnOrderDelivered;
 
-        private List<Order> orders;
+        public int TotalOrders => orders.Count;
 
-        internal void Initialize() => orders = new(maxOrders);
+        private List<Order> orders;
+        private OrderManager manager;
+        private Coroutine ordering;
+
+        internal void Initialize(OrderManager manager)
+        {
+            orders = new(maxOrders);
+            this.manager = manager;
+        }
 
         public void Delivery(Plate plate)
         {
@@ -35,12 +45,15 @@ namespace KitchenChaos.UI
             }
         }
 
-        internal void CreateRandom(Transform parent) => Create(recipeSettings.GetRandom(), parent);
-        internal void CreateBurger(Transform parent) => Create(recipeSettings.GetBurguer(), parent);
+        internal void CreateRandom() => Create(recipeSettings.GetRandom());
 
-        internal void Create(RecipeData recipe, Transform parent)
+        internal void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
+
+        internal void CancelOrdering() => manager.StopCoroutine(ordering);
+
+        internal void Create(RecipeData recipe)
         {
-            var order = Instantiate(orderPrefab, parent);
+            var order = Instantiate(orderPrefab, manager.transform);
             var time = recipe.GetPreparationTime(ingredientSettings, additionalTimePerIngredient);
 
             order.SetRecipe(recipe);
@@ -86,5 +99,20 @@ namespace KitchenChaos.UI
             OnOrderFailed?.Invoke(order);
             UnBindListeners(order);
         }
+
+        private IEnumerator OrderingRoutine()
+        {
+            var waitTimeByNewOrder = new WaitForSeconds(timeByNewOrder);
+            var waitUntilCanCreateNewOrders = new WaitUntil(CanCreateNewOrders);
+
+            while (true)
+            {
+                CreateRandom();
+                yield return waitTimeByNewOrder;
+                yield return waitUntilCanCreateNewOrders;
+            }
+        }
+
+        private bool CanCreateNewOrders() => TotalOrders < maxOrders;
     }
 }

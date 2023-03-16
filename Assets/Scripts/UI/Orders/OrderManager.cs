@@ -16,13 +16,7 @@ namespace KitchenChaos.UI
         [SerializeField] private AudioSourceDictionary deliveredSource;
 
         private void Reset() => audioSource = GetComponent<AudioSource>();
-        private void Awake() => settings.Initialize();
-
-        [ContextMenu("Create")]
-        public void Create() => settings.CreateRandom(transform);
-
-        [ContextMenu("CreateBurger")]
-        public void CreateBurger() => settings.CreateBurger(transform);
+        private void Awake() => settings.Initialize(this);
 
         private void OnEnable()
         {
