@@ -11,12 +11,12 @@ namespace KitchenChaos.Levels
         public event Action<uint> OnUpdated;
 
         private readonly uint totalTime;
-        private readonly WaitForSecondsRealtime waitOneSecond;
+        private readonly WaitForSeconds waitOneSecond;
 
         public TimeDown(uint totalTime)
         {
             this.totalTime = totalTime;
-            waitOneSecond = new WaitForSecondsRealtime(1F);
+            waitOneSecond = new WaitForSeconds(1F);
         }
 
         internal IEnumerator CountDownRoutine()
