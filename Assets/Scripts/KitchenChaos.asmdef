@@ -3,6 +3,7 @@
     "rootNamespace": "KitchenChaos",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:f59d7605d4cbf89469c7b6e0071577a6",
         "GUID:5ab4c1c923afe5f4e9b62c7aa3cf6288",
         "GUID:b40514ddb87a6f1488fbddd18d66b949",
