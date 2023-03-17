@@ -34,9 +34,18 @@ namespace KitchenChaos.Counters
             }
 
             fromHolder.ReleaseItem();
-            orderSettings.Delivery(plate);
+            var wasDelivered = orderSettings.TryDelivery(plate, out int tip);
 
-            return true;
+            Destroy(plate.gameObject);
+
+            if (wasDelivered)
+            {
+                canvas.ShowTip(tip);
+                //TODO Add into Score
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -41,6 +41,12 @@ namespace KitchenChaos.Recipes
             platedIngredients.ContainsKey(ingredientData) &&
             platedIngredients[ingredientData].Equals(ingredientData);
 
+        internal bool ContainsOnly(Stack<Ingredient> ingredients)
+        {
+            var hasSameNumerOfIngredients = ingredients.Count == platedIngredients.Count;
+            return hasSameNumerOfIngredients && ContainsAll(ingredients);
+        }
+
         internal bool ContainsAll(Stack<Ingredient> ingredients)
         {
             foreach (var ingredient in ingredients)

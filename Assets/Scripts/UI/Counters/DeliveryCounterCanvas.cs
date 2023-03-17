@@ -19,7 +19,7 @@ namespace KitchenChaos.UI
             audioSource = GetComponent<AudioSource>();
         }
 
-        public void ShowTip(float value)
+        public void ShowTip(int value)
         {
             tip.text = string.Format(tipFormat, value);
             PlayOnlyShowTipAnimation();

@@ -28,6 +28,8 @@ namespace KitchenChaos.UI
             set => time.value = value;
         }
 
+        public int Tip => recipe.tip;
+
         private RecipeData recipe;
         private Coroutine countDownRoutine;
 
@@ -58,7 +60,7 @@ namespace KitchenChaos.UI
 
         public bool TryDelivery(Plate plate)
         {
-            var hasAllIngredients = recipe.ContainsAll(plate.Ingredients);
+            var hasAllIngredients = recipe.ContainsOnly(plate.Ingredients);
             if (hasAllIngredients) Delivery();
             return hasAllIngredients;
         }

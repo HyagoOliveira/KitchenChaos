@@ -33,16 +33,19 @@ namespace KitchenChaos.UI
             this.manager = manager;
         }
 
-        public void Delivery(Plate plate)
+        public bool TryDelivery(Plate plate, out int tip)
         {
             foreach (var order in orders)
             {
                 if (order.TryDelivery(plate))
                 {
-                    Destroy(plate.gameObject);
-                    break;
+                    tip = order.Tip;
+                    return true;
                 }
             }
+
+            tip = 0;
+            return false;
         }
 
         internal void CreateRandom() => Create(recipeSettings.GetRandom());
