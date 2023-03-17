@@ -13,13 +13,13 @@ namespace KitchenChaos.Levels
         public event Action OnStarted;
         public event Action OnFinished;
 
-        public TimeDown TimeLimit { get; private set; }
-        public TimeDown CountDown { get; private set; }
+        public TimeDown TimeLimit { get; private set; } = new TimeDown();
+        public TimeDown CountDown { get; private set; } = new TimeDown();
 
         internal void Initialize()
         {
-            TimeLimit = new TimeDown(timeLimit);
-            CountDown = new TimeDown(countDown);
+            TimeLimit.totalTime = timeLimit;
+            CountDown.totalTime = countDown;
 
             OnStarted?.Invoke();
         }
