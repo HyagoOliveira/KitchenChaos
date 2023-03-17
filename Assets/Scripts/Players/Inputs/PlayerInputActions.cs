@@ -34,7 +34,7 @@ namespace KitchenChaos.Players
                     ""type"": ""Value"",
                     ""id"": ""96580bf8-6601-45b0-a85c-11bf6342c774"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": ""StickDeadzone"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
