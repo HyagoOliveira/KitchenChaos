@@ -5,10 +5,11 @@ using System.Collections.Generic;
 namespace KitchenChaos.Recipes
 {
     [CreateAssetMenu(fileName = "NewRecipe", menuName = EditorPaths.RECIPES + "Recipe", order = 110)]
-    public sealed class RecipeData : ScriptableObject
+    public sealed class RecipeData : ScriptableObject, IChanceable
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public PlatedIngredient[] PlatedIngredients { get; internal set; }
+        [field: SerializeField, Range(0, 100)] public float Chance { get; private set; } = 50F;
 
         private Dictionary<IngredientData, PlatedIngredient> platedIngredients;
 

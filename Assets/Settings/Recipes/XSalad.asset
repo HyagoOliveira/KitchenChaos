@@ -26,3 +26,4 @@ MonoBehaviour:
   - ingredientData: {fileID: 11400000, guid: 58155e52981d17848bddf6b99e930994, type: 2}
     position: {x: 0.146, y: 0.32, z: 0.117}
     rotation: {x: -0, y: 0, z: 0}
+  <Chance>k__BackingField: 15
