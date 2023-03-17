@@ -13,8 +13,8 @@ namespace KitchenChaos.UI
         [SerializeField] private RecipeSettings recipeSettings;
         [SerializeField] private IngredientSettings ingredientSettings;
         [SerializeField] private Order orderPrefab;
-        [SerializeField, Min(1)] private int maxOrders = 4;
-        [SerializeField, Min(0F)] private float additionalTimePerIngredient = 3F;
+        [SerializeField, Min(1)] private int maxOrders = 3;
+        [SerializeField, Min(0F)] private float additionalTimePerIngredient = 10F;
         [SerializeField, Min(0F)] private float timeByNewOrder = 15F;
 
         public event Action<Order> OnOrderFailed;
@@ -79,25 +79,25 @@ namespace KitchenChaos.UI
         private void BindListeners(Order order)
         {
             order.OnFailed += HandleOrderFailed;
+            order.OnDestroyed += HandleOrderDestroyed;
             order.OnDelivered += HandleOrderDelivered;
         }
 
         private void UnBindListeners(Order order)
         {
             order.OnFailed -= HandleOrderFailed;
+            order.OnDestroyed -= HandleOrderDestroyed;
             order.OnDelivered -= HandleOrderDelivered;
         }
+
+        private void HandleOrderFailed(Order order) => OnOrderFailed?.Invoke(order);
+
+        private void HandleOrderDestroyed(Order order) => RemoveOrder(order);
 
         private void HandleOrderDelivered(Order order)
         {
             OnOrderDelivered?.Invoke(order);
             RemoveOrder(order);
-        }
-
-        private void HandleOrderFailed(Order order)
-        {
-            OnOrderFailed?.Invoke(order);
-            UnBindListeners(order);
         }
 
         private IEnumerator OrderingRoutine()
@@ -108,8 +108,8 @@ namespace KitchenChaos.UI
             while (true)
             {
                 CreateRandom();
-                yield return waitTimeByNewOrder;
                 yield return waitUntilCanCreateNewOrders;
+                yield return waitTimeByNewOrder;
             }
         }
 
