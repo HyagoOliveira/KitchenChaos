@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KitchenChaos.UI
+namespace KitchenChaos
 {
     [DisallowMultipleComponent]
     public sealed class RotateTowardsBack : MonoBehaviour
