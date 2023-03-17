@@ -17,13 +17,7 @@ namespace KitchenChaos.Recipes
             }
         }
 
-        public RecipeData GetRandom()
-        {
-            int index = Random.Range(0, recipes.Length);
-            return recipes[index];
-        }
-
-        public RecipeData GetBurguer() => recipes[0];
+        public RecipeData GetRandom() => RandomUtils.WeightedRandom<RecipeData>(recipes);
 
         internal bool CanPlate(IngredientData ingredientData)
         {
