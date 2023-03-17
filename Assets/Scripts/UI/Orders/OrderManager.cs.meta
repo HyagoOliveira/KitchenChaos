@@ -5,8 +5,12 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - settings: {fileID: 11400000, guid: 33ab5a44b9aa4dd4195d45d7a6e16fd0, type: 2}
+  - matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   - ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50,
       type: 2}
+  - audioSource: {instanceID: 0}
+  - failedSource: {instanceID: 0}
+  - deliveredSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

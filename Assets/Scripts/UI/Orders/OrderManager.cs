@@ -1,6 +1,7 @@
 using UnityEngine;
 using ActionCode.Audio;
 using KitchenChaos.Items;
+using KitchenChaos.Levels;
 
 namespace KitchenChaos.UI
 {
@@ -10,6 +11,7 @@ namespace KitchenChaos.UI
     public sealed class OrderManager : MonoBehaviour
     {
         [SerializeField] private OrderSettings settings;
+        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private IngredientSettings ingredientSettings;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioSourceDictionary failedSource;
@@ -23,6 +25,8 @@ namespace KitchenChaos.UI
             settings.OnOrderFailed += HandleOrderFailed;
             settings.OnOrderCreated += HandleOrderCreated;
             settings.OnOrderDelivered += HandleOrderDelivered;
+
+            matchSettings.CountDown.OnFinished += HandleTimeDownFinished;
         }
 
         private void OnDisable()
@@ -30,11 +34,15 @@ namespace KitchenChaos.UI
             settings.OnOrderFailed -= HandleOrderFailed;
             settings.OnOrderCreated -= HandleOrderCreated;
             settings.OnOrderDelivered -= HandleOrderDelivered;
+
+            matchSettings.CountDown.OnFinished -= HandleTimeDownFinished;
         }
 
         private void HandleOrderFailed(Order _) => PlayFailedSound();
         private void HandleOrderCreated(Order _) => PlayCreatedSound();
         private void HandleOrderDelivered(Order _) => PlayDeliveredSound();
+
+        private void HandleTimeDownFinished() => settings.StartOrdering();
 
         private void PlayCreatedSound() => audioSource.Play();
         private void PlayFailedSound() => failedSource.PlayRandom();
