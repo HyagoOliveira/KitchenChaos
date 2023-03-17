@@ -19,6 +19,7 @@ namespace KitchenChaos.UI
         [SerializeField] private HorizontalLayoutGroup iconsGroup;
 
         public event Action<Order> OnFailed;
+        public event Action<Order> OnDestroyed;
         public event Action<Order> OnDelivered;
 
         public float CurrentTime
@@ -111,6 +112,8 @@ namespace KitchenChaos.UI
             OnFailed?.Invoke(this);
 
             yield return PlayFailAnimationAndWait();
+
+            OnDestroyed?.Invoke(this);
             Destroy(gameObject);
         }
 
