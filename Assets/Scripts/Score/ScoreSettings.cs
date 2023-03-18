@@ -12,9 +12,9 @@ namespace KitchenChaos.Score
         public event Action<float> OnScoreIncreased;
         public event Action<float> OnScoreDecreased;
 
-        public uint Tips { get; private set; }
-        public uint FailedDeliveries { get; private set; }
-        public uint SuccessfulDeliveries { get; private set; }
+        public int Tips { get; private set; }
+        public int FailedDeliveries { get; private set; }
+        public int SuccessfulDeliveries { get; private set; }
 
         public float Score { get; private set; }
 
@@ -25,7 +25,7 @@ namespace KitchenChaos.Score
             SuccessfulDeliveries = 0;
         }
 
-        public void DeliveryOrder(uint tip)
+        public void DeliveryOrder(int tip)
         {
             Tips += tip;
             SuccessfulDeliveries++;
