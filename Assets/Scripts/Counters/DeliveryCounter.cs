@@ -1,7 +1,8 @@
 using UnityEngine;
-using KitchenChaos.Items;
-using KitchenChaos.VisualEffects;
 using KitchenChaos.UI;
+using KitchenChaos.Items;
+using KitchenChaos.Score;
+using KitchenChaos.VisualEffects;
 
 namespace KitchenChaos.Counters
 {
@@ -13,6 +14,7 @@ namespace KitchenChaos.Counters
     public sealed class DeliveryCounter : MonoBehaviour, IItemTransfer
     {
         [SerializeField] private OrderSettings orderSettings;
+        [SerializeField] private ScoreSettings scoreSettings;
         [SerializeField] private DeliveryCounterCanvas canvas;
         [SerializeField] private HighlighterContainer highlightableContainer;
 
@@ -41,10 +43,11 @@ namespace KitchenChaos.Counters
             if (wasDelivered)
             {
                 canvas.ShowTip(tip);
-                //TODO Add into Score
+                scoreSettings.DeliveryOrder(tip);
                 return true;
             }
 
+            scoreSettings.DeliveryFailedOrder();
             return false;
         }
     }
