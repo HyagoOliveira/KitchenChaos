@@ -127,15 +127,9 @@ namespace KitchenChaos.UI
             Destroy(gameObject);
         }
 
-        private IEnumerator PlayFailAnimationAndWait() => WaitAnimation(animation, "Order@Fail");
-        private IEnumerator PlayDeliveryAnimationAndWait() => WaitAnimation(animation, "Order@Delivered");
+        private IEnumerator PlayFailAnimationAndWait() => animation.PlayAndWait("Order@Fail");
+        private IEnumerator PlayDeliveryAnimationAndWait() => animation.PlayAndWait("Order@Delivered");
 
         private void HandleTimeUpdated(float time) => CurrentTime = time;
-
-        private static IEnumerator WaitAnimation(Animation animation, string animationName)
-        {
-            animation.Play(animationName);
-            while (animation.isPlaying) yield return null;
-        }
     }
 }
