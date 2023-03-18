@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MatchSettings
   m_EditorClassIdentifier: 
   countDown: 3
-  timeLimit: 120
+  timeLimit: 10
