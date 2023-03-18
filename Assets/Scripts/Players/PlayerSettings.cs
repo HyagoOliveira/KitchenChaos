@@ -14,6 +14,7 @@ namespace KitchenChaos.Players
 
         public Player Current { get; private set; }
 
+        private bool canSwitch;
         private Dictionary<PlayerType, Player> players;
 
         /// <summary>
@@ -26,9 +27,16 @@ namespace KitchenChaos.Players
         /// Switches into the given player if available.
         /// </summary>
         /// <param name="type">The Player to switch.</param>
-        public void Switch(PlayerType type) => EnablePlayer(players[type]);
+        public void Switch(PlayerType type)
+        {
+            if (canSwitch) EnablePlayer(players[type]);
+        }
 
-        internal void Initialize() => FindPlayersInstances();
+        internal void Initialize()
+        {
+            canSwitch = true;
+            FindPlayersInstances();
+        }
 
         internal void EnableFirstPlayer() => EnablePlayer(players[first]);
 
@@ -39,6 +47,8 @@ namespace KitchenChaos.Players
                 player.SetActive(false);
             }
         }
+
+        internal void DisablePlayerSwitch() => canSwitch = false;
 
         private void FindPlayersInstances()
         {

@@ -51,7 +51,11 @@ namespace KitchenChaos.Players
             inputSettings.UnBindActions();
         }
 
-        private void HandleMatchFinished() => settings.DisableAllPlayers();
+        private void HandleMatchFinished()
+        {
+            settings.DisableAllPlayers();
+            settings.DisablePlayerSwitch();
+        }
 
         private void HandlePlayerSwitch()
         {
