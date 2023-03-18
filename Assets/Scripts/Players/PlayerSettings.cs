@@ -32,6 +32,14 @@ namespace KitchenChaos.Players
 
         internal void EnableFirstPlayer() => EnablePlayer(players[first]);
 
+        internal void DisableAllPlayers()
+        {
+            foreach (var player in players.Values)
+            {
+                player.SetActive(false);
+            }
+        }
+
         private void FindPlayersInstances()
         {
             var index = 0;
@@ -54,14 +62,6 @@ namespace KitchenChaos.Players
             Current.SetActive(true);
 
             OnPlayerEnabled?.Invoke();
-        }
-
-        private void DisableAllPlayers()
-        {
-            foreach (var player in players.Values)
-            {
-                player.SetActive(false);
-            }
         }
 
         public PlayerType GetNextPlayerType()

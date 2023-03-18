@@ -1,4 +1,5 @@
 using UnityEngine;
+using KitchenChaos.Levels;
 using ActionCode.PauseSystem;
 
 namespace KitchenChaos.Players
@@ -8,6 +9,7 @@ namespace KitchenChaos.Players
     public sealed class PlayerManager : MonoBehaviour
     {
         [SerializeField] private PlayerSettings settings;
+        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private PauseSettings pauseSettings;
         [SerializeField] private PlayerInputSettings inputSettings;
 
@@ -27,21 +29,29 @@ namespace KitchenChaos.Players
         {
             inputSettings.BindActions();
 
+            matchSettings.OnFinished += HandleMatchFinished;
+
             inputSettings.OnPause += HandlePlayerPause;
             inputSettings.OnSwitch += HandlePlayerSwitch;
+
             pauseSettings.OnPaused += HandlePaused;
             pauseSettings.OnResumed += HandleResumed;
         }
 
         private void OnDisable()
         {
+            matchSettings.OnFinished -= HandleMatchFinished;
+
             inputSettings.OnPause -= HandlePlayerPause;
             inputSettings.OnSwitch -= HandlePlayerSwitch;
+
             pauseSettings.OnPaused -= HandlePaused;
             pauseSettings.OnResumed -= HandleResumed;
 
             inputSettings.UnBindActions();
         }
+
+        private void HandleMatchFinished() => settings.DisableAllPlayers();
 
         private void HandlePlayerSwitch()
         {

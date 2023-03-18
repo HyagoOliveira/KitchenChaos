@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - settings: {fileID: 11400000, guid: 79954e2b01c71a946827d200d015a678, type: 2}
+  - matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   - pauseSettings: {fileID: 11400000, guid: 6e6d477eafac046bf841dc795d054dca, type: 2}
   - inputSettings: {fileID: 11400000, guid: a3c066ec7fd0dde4e9beaa0d53ff1dea, type: 2}
   executionOrder: 0
