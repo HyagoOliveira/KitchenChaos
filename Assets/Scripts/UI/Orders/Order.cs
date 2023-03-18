@@ -55,8 +55,8 @@ namespace KitchenChaos.UI
             CurrentTime = initialTime;
         }
 
-        public void StartCountDown() =>
-            countDownRoutine = StartCoroutine(CountDownRotine());
+        public void StartCountDown() => countDownRoutine = StartCoroutine(CountDownRotine());
+        public void CancelCountDown() => StopCoroutine(countDownRoutine);
 
         public bool TryDelivery(Plate plate)
         {
@@ -67,7 +67,7 @@ namespace KitchenChaos.UI
 
         private void Delivery()
         {
-            StopCoroutine(countDownRoutine);
+            CancelCountDown();
             StartCoroutine(DeliveryRotine());
         }
 

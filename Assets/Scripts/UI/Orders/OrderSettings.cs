@@ -52,7 +52,11 @@ namespace KitchenChaos.UI
 
         internal void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
 
-        internal void CancelOrdering() => manager.StopCoroutine(ordering);
+        internal void StopOrdering()
+        {
+            manager.StopCoroutine(ordering);
+            CancelOrders();
+        }
 
         internal void Create(RecipeData recipe)
         {
@@ -91,6 +95,14 @@ namespace KitchenChaos.UI
             order.OnFailed -= HandleOrderFailed;
             order.OnDestroyed -= HandleOrderDestroyed;
             order.OnDelivered -= HandleOrderDelivered;
+        }
+
+        private void CancelOrders()
+        {
+            foreach (var order in orders)
+            {
+                order.CancelCountDown();
+            }
         }
 
         private void HandleOrderFailed(Order order) => OnOrderFailed?.Invoke(order);
