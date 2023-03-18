@@ -27,6 +27,7 @@ namespace KitchenChaos.Levels
                 current--;
             } while (current > 0);
 
+            OnUpdated?.Invoke(current);
             OnFinished?.Invoke();
         }
     }
