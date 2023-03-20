@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace KitchenChaos.Items
 {
     /// <summary>
@@ -8,6 +10,7 @@ namespace KitchenChaos.Items
         ICollectable GetCollectible();
         IHighlightable GetHighlightable();
 
+        void SetPosition(Vector3 position);
         void Destroy();
     }
 }

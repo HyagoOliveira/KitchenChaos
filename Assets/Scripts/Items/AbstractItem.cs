@@ -23,6 +23,7 @@ namespace KitchenChaos.Items
         public ICollectable GetCollectible() => collectibleBody;
         public IHighlightable GetHighlightable() => highlighterContainer;
 
+        public void SetPosition(Vector3 position) => transform.position = position;
         public void Destroy() => Destroy(gameObject);
     }
 }
