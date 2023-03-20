@@ -16,7 +16,9 @@ namespace KitchenChaos.UI
         [SerializeField, Min(1)] private int maxOrders = 3;
         [SerializeField, Min(0F)] private float additionalTimePerIngredient = 10F;
         [SerializeField, Min(0F)] private float timeByNewOrder = 15F;
+        [SerializeField, Min(0F)] private float timeToReturnPlate = 4F;
 
+        public event Action OnPlateReturned;
         public event Action<Order> OnOrderFailed;
         public event Action<Order> OnOrderCreated;
         public event Action<Order> OnOrderDelivered;
@@ -35,6 +37,8 @@ namespace KitchenChaos.UI
 
         public bool TryDelivery(Plate plate, out int tip)
         {
+            manager.StartCoroutine(ReturnPlateRoutine());
+
             foreach (var order in orders)
             {
                 if (order.TryDelivery(plate))
@@ -126,6 +130,12 @@ namespace KitchenChaos.UI
                 yield return waitUntilCanCreateNewOrders;
                 yield return waitTimeByNewOrder;
             }
+        }
+
+        private IEnumerator ReturnPlateRoutine()
+        {
+            yield return new WaitForSeconds(timeToReturnPlate);
+            OnPlateReturned?.Invoke();
         }
 
         private bool CanCreateNewOrders() => TotalOrders < maxOrders;
