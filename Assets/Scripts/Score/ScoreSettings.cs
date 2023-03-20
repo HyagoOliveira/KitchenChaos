@@ -21,6 +21,7 @@ namespace KitchenChaos.Score
         internal void Initialize()
         {
             Tips = 0;
+            Score = 0f;
             FailedDeliveries = 0;
             SuccessfulDeliveries = 0;
         }
@@ -44,13 +45,17 @@ namespace KitchenChaos.Score
             var lastScore = Score;
             Score = CalculateScore();
 
-            var deltaScore = Score - lastScore;
+            var deltaScore = lastScore - Score;
             OnScoreDecreased?.Invoke(deltaScore);
         }
 
-        private float CalculateScore() =>
-            Tips +
-            SuccessfulDeliveries * deliveredOrdersMultiplier -
-            FailedDeliveries * failedOrdersMultiplier;
+        private float CalculateScore()
+        {
+            var score =
+                Tips +
+                SuccessfulDeliveries * deliveredOrdersMultiplier -
+                FailedDeliveries * failedOrdersMultiplier;
+            return Mathf.Max(0f, score);
+        }
     }
 }
