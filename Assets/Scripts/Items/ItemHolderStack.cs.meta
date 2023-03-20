@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ecc59e84e6e84314d9391e02b61cc847
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - orderSettings: {fileID: 11400000, guid: 33ab5a44b9aa4dd4195d45d7a6e16fd0, type: 2}
+  - platePrefab: {fileID: 8822529634069864543, guid: 28fa69b5dedd412449f0860f71ff4ec4,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
