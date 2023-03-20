@@ -9,7 +9,7 @@ namespace KitchenChaos.Items
         public event Action<IItemCollectable> OnItemReleased;
         public event Action<IItemCollectable> OnItemPlaced;
 
-        public IItemCollectable CurrentItem { get; private set; }
+        public IItemCollectable CurrentItem { get; internal set; }
 
         private void Start() => CheckChildItem();
 
@@ -23,10 +23,12 @@ namespace KitchenChaos.Items
 
         public void ReleaseItem()
         {
-            OnItemReleased?.Invoke(CurrentItem);
+            var item = CurrentItem;
 
             CurrentItem?.GetCollectible().Drop();
             CurrentItem = null;
+
+            OnItemReleased?.Invoke(item);
         }
 
         public void ReplaceItem(IItemCollectable item)
