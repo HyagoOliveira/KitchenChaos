@@ -8,7 +8,7 @@ namespace KitchenChaos.Matches
     {
         [SerializeField] private MatchSettings settings;
 
-        private void Awake() => settings.Initialize();
+        private void Awake() => settings.Initialize(this);
         private void Start() => Invoke(nameof(StartCountDown), 0.2F);
 
         private void OnEnable()
@@ -22,6 +22,8 @@ namespace KitchenChaos.Matches
             settings.CountDown.OnFinished -= HandleCountDownFinished;
             settings.TimeLimit.OnFinished -= HandleTimeLimitFinished;
         }
+
+        private void OnDestroy() => settings.Dispose();
 
         private void StartCountDown() => settings.StartCountDown();
 
