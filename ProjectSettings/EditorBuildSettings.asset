@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Results.unity
+    guid: 8a46e695a008f5440bda64544d2dc15a
   m_configObjects:
     com.actioncode.persistence.settings: {fileID: 11400000, guid: 92f73302390a16e408ee94bd627da2d0,
       type: 2}
