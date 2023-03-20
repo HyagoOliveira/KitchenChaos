@@ -32,7 +32,7 @@ namespace KitchenChaos.Score
             SuccessfulDeliveries++;
 
             var lastScore = Score;
-            Score = CalculateScore();
+            Score = GetTotalScore();
 
             var deltaScore = Score - lastScore;
             OnScoreIncreased?.Invoke(deltaScore);
@@ -43,18 +43,22 @@ namespace KitchenChaos.Score
             FailedDeliveries++;
 
             var lastScore = Score;
-            Score = CalculateScore();
+            Score = GetTotalScore();
 
             var deltaScore = lastScore - Score;
             OnScoreDecreased?.Invoke(deltaScore);
         }
 
-        private float CalculateScore()
+        public float GetTotalFailedDeliveries() => FailedDeliveries * failedOrdersMultiplier;
+
+        public float GetTotalSuccessfulDeliveries() => SuccessfulDeliveries * deliveredOrdersMultiplier;
+
+        private float GetTotalScore()
         {
             var score =
                 Tips +
-                SuccessfulDeliveries * deliveredOrdersMultiplier -
-                FailedDeliveries * failedOrdersMultiplier;
+                GetTotalSuccessfulDeliveries() -
+                GetTotalFailedDeliveries();
             return Mathf.Max(0f, score);
         }
     }
