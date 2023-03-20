@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseSettings: {fileID: 11400000, guid: 6e6d477eafac046bf841dc795d054dca, type: 2}
-  sceneManager: {fileID: 11400000, guid: f287e2450ac7dac40a40df5870b10299, type: 2}
+  sceneSettings: {fileID: 11400000, guid: d875c26377d78f64299b270aefdde6f5, type: 2}
   mainMenu: Assets/Scenes/MainMenu.unity
   pauseOptions: {fileID: 659767960286080301}
   soundPopup: {fileID: 3472092448922313562}

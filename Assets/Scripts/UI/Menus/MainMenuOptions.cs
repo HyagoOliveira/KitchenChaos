@@ -1,15 +1,14 @@
 using System;
 using UnityEngine;
 using ActionCode.UI;
-using ActionCode.SceneManagement;
+using KitchenChaos.Scenes;
 
 namespace KitchenChaos.UI
 {
     [DisallowMultipleComponent]
     public sealed class MainMenuOptions : AbstractMenu
     {
-        [SerializeField] private SceneManager sceneManager;
-        [SerializeField, Scene] private string gameScene;
+        [SerializeField] private SceneSettings sceneSettings;
 
         [Header("Buttons")]
         [SerializeField] private DelayedButton playButton;
@@ -33,7 +32,7 @@ namespace KitchenChaos.UI
             creditsButton.onClick.RemoveListener(RequestOpenCredits);
         }
 
-        private void PlayGame() => _ = sceneManager.LoadScene(gameScene);
+        private void PlayGame() => sceneSettings.GoToGame();
         private void RequestOpenCredits() => OnOpenCreditsRequested?.Invoke();
         private void RequestOpenSoundOptions() => OnOpenSoundsOptionsRequested?.Invoke();
     }

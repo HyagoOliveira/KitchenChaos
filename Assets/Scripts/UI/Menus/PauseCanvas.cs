@@ -2,6 +2,7 @@ using UnityEngine;
 using ActionCode.UI;
 using ActionCode.PauseSystem;
 using ActionCode.SceneManagement;
+using KitchenChaos.Scenes;
 
 namespace KitchenChaos.UI
 {
@@ -9,7 +10,7 @@ namespace KitchenChaos.UI
     public sealed class PauseCanvas : CanvasViewer
     {
         [SerializeField] private PauseSettings pauseSettings;
-        [SerializeField] private SceneManager sceneManager;
+        [SerializeField] private SceneSettings sceneSettings;
         [SerializeField, Scene] private string mainMenu;
 
         [SerializeField] private PauseOptions pauseOptions;
@@ -85,7 +86,7 @@ namespace KitchenChaos.UI
         private void HandleExitConfirmed()
         {
             Time.timeScale = 1F;
-            _ = sceneManager.LoadScene(mainMenu);
+            sceneSettings.GoToMainMenu();
         }
     }
 }

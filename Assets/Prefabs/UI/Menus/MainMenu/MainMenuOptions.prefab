@@ -315,8 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe6d910c8d535f4e840ba8cddcc9947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneManager: {fileID: 11400000, guid: f287e2450ac7dac40a40df5870b10299, type: 2}
-  gameScene: Assets/Scenes/Game.unity
+  sceneSettings: {fileID: 11400000, guid: d875c26377d78f64299b270aefdde6f5, type: 2}
   playButton: {fileID: 669721881273989028}
   soundsButton: {fileID: 669721881616847538}
   creditsButton: {fileID: 669721881297542324}
@@ -445,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 3389806215207119779, guid: 41a80942816152b48b84b50134ae7577,
         type: 3}
       propertyPath: m_fontSize
-      value: 71.6
+      value: 59.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a80942816152b48b84b50134ae7577, type: 3}
@@ -598,7 +597,7 @@ PrefabInstance:
     - target: {fileID: 3389806215207119779, guid: 41a80942816152b48b84b50134ae7577,
         type: 3}
       propertyPath: m_fontSize
-      value: 71.6
+      value: 59.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a80942816152b48b84b50134ae7577, type: 3}
@@ -745,7 +744,7 @@ PrefabInstance:
     - target: {fileID: 3389806215207119779, guid: 41a80942816152b48b84b50134ae7577,
         type: 3}
       propertyPath: m_fontSize
-      value: 71.6
+      value: 59.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a80942816152b48b84b50134ae7577, type: 3}
