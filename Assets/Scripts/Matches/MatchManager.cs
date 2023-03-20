@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KitchenChaos.Levels
+namespace KitchenChaos.Matches
 {
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(Managers.EXECUTION_ORDER)]

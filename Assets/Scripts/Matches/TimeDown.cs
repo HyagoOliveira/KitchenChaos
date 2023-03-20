@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace KitchenChaos.Levels
+namespace KitchenChaos.Matches
 {
     public sealed class TimeDown
     {

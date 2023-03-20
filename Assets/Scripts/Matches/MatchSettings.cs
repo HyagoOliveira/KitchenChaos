@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using ActionCode.AwaitableCoroutines;
 
-namespace KitchenChaos.Levels
+namespace KitchenChaos.Matches
 {
     [CreateAssetMenu(fileName = "MatchSettings", menuName = EditorPaths.SO + "Match Settings", order = 110)]
     public sealed class MatchSettings : ScriptableObject
