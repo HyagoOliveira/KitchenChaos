@@ -81,7 +81,11 @@ namespace KitchenChaos.UI
             exitPopup.Show();
         }
 
-        private void HandleRestartConfirmed() => print("TODO: Restart");
+        private void HandleRestartConfirmed()
+        {
+            Time.timeScale = 1F;
+            sceneSettings.GoToGame();
+        }
 
         private void HandleExitConfirmed()
         {
