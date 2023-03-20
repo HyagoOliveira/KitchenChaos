@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - orderSettings: {fileID: 11400000, guid: 33ab5a44b9aa4dd4195d45d7a6e16fd0, type: 2}
+  - scoreSettings: {fileID: 11400000, guid: ddaa7143ff697f8428f033be94666b4f, type: 2}
+  - canvas: {instanceID: 0}
   - highlightableContainer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

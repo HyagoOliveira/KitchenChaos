@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderSettings: {fileID: 11400000, guid: 33ab5a44b9aa4dd4195d45d7a6e16fd0, type: 2}
+  scoreSettings: {fileID: 11400000, guid: ddaa7143ff697f8428f033be94666b4f, type: 2}
   canvas: {fileID: 6916179705893404910}
   highlightableContainer: {fileID: 7635117966243309708}
 --- !u!114 &7635117966243309708
