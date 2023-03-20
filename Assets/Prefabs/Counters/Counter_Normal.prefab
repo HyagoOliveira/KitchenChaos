@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3574526892540610521}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4866072779092793103
 MonoBehaviour:
@@ -49,7 +49,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2341014539329568577, guid: 928ca6f08a956db43ad56f4d9c9dee0b,
@@ -113,21 +112,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2341014539329568579, guid: 928ca6f08a956db43ad56f4d9c9dee0b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6797244975814241927}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2341014539329568577, guid: 928ca6f08a956db43ad56f4d9c9dee0b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4223484531281348656}
-    - targetCorrespondingSourceObject: {fileID: 2341014539329568577, guid: 928ca6f08a956db43ad56f4d9c9dee0b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8815487198573455006}
   m_SourcePrefab: {fileID: 100100000, guid: 928ca6f08a956db43ad56f4d9c9dee0b, type: 3}
 --- !u!114 &2423266978984583776 stripped
 MonoBehaviour:
@@ -181,4 +165,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 4866072779092793103}
   highlightableContainer: {fileID: 4223484531281348656}
-  ingredientPreparator: {fileID: 0}
