@@ -1,8 +1,8 @@
 using TMPro;
-using System;
 using UnityEngine;
 using ActionCode.UI;
 using KitchenChaos.Score;
+using KitchenChaos.Scenes;
 
 namespace KitchenChaos.UI
 {
@@ -10,6 +10,8 @@ namespace KitchenChaos.UI
     public sealed class Results : MonoBehaviour
     {
         [SerializeField] private ScoreSettings scoreSettings;
+        [SerializeField] private SceneSettings sceneSettings;
+
         [SerializeField] private DelayedButton continueButton;
 
         [SerializeField] private TMP_Text failedDeliveries;
@@ -39,9 +41,6 @@ namespace KitchenChaos.UI
         private void OnEnable() => continueButton.onClick.AddListener(HandleContinueButtonClick);
         private void OnDisable() => continueButton.onClick.RemoveListener(HandleContinueButtonClick);
 
-        private void HandleContinueButtonClick()
-        {
-            throw new NotImplementedException();
-        }
+        private void HandleContinueButtonClick() => sceneSettings.GoToMainMenu();
     }
 }

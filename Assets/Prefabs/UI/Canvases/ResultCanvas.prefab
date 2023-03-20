@@ -1451,12 +1451,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreSettings: {fileID: 11400000, guid: ddaa7143ff697f8428f033be94666b4f, type: 2}
-  format: D2
-  tips: {fileID: 5280277689422358331}
+  sceneSettings: {fileID: 11400000, guid: d875c26377d78f64299b270aefdde6f5, type: 2}
+  continueButton: {fileID: 7371357261186763488}
   failedDeliveries: {fileID: 5280277691043030436}
   totalFailedDeliveries: {fileID: 5280277690284773566}
   successfulDeliveries: {fileID: 5280277689550837470}
   totalSuccessfulDeliveries: {fileID: 5280277690914293406}
+  tips: {fileID: 5280277689422358331}
   totalScore: {fileID: 5280277689037502849}
 --- !u!1 &5280277690092479134
 GameObject:
@@ -2321,6 +2322,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a80942816152b48b84b50134ae7577, type: 3}
+--- !u!114 &7371357261186763488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3389806213399243924, guid: 41a80942816152b48b84b50134ae7577,
+    type: 3}
+  m_PrefabInstance: {fileID: 5280277690045851252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371357261186763495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c63697dcaed67428e8158d9b7ad197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7371357261186763492 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3389806213399243920, guid: 41a80942816152b48b84b50134ae7577,
