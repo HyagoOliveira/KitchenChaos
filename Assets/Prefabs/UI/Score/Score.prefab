@@ -280,8 +280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8888068025546692703}
   - component: {fileID: 5014695666362683293}
+  - component: {fileID: 4624850524860830390}
   - component: {fileID: 1392712505313215216}
-  - component: {fileID: 5907670364033407772}
   - component: {fileID: 4940754860628430923}
   - component: {fileID: 1733539010405916449}
   m_Layer: 5
@@ -321,6 +321,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134012911730455800}
   m_CullTransparentMesh: 1
+--- !u!223 &4624850524860830390
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134012911730455800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!114 &1392712505313215216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,18 +372,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &5907670364033407772
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7134012911730455800}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!111 &4940754860628430923
 Animation:
   m_ObjectHideFlags: 0
@@ -392,7 +401,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: ddaa7143ff697f8428f033be94666b4f, type: 2}
+  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   animation: {fileID: 4940754860628430923}
+  canvas: {fileID: 4624850524860830390}
   current: {fileID: 5011363186255645908}
   delta: {fileID: 84666418743883230}
   increasedColor: {r: 0, g: 1, b: 0, a: 1}
