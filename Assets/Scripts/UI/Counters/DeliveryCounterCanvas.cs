@@ -10,6 +10,7 @@ namespace KitchenChaos.UI
     {
         [SerializeField] private Animation animation;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip failClip;
         [SerializeField] private TMP_Text tip;
         [SerializeField] private string tipFormat = "+{0:D2} Tip!";
 
@@ -31,6 +32,12 @@ namespace KitchenChaos.UI
             PlayOnlyShowNeedPlateAnimation();
         }
 
+        public void ShowWrongPlate()
+        {
+            audioSource.PlayOneShot(failClip);
+            PlayOnlyShowWrongAnimation();
+        }
+
         private void PlayOnlyShowNeedPlateAnimation()
         {
             animation.Stop();
@@ -41,6 +48,12 @@ namespace KitchenChaos.UI
         {
             animation.Stop();
             animation.Play("DeliveryCounterCanvas@ShowTipText");
+        }
+
+        private void PlayOnlyShowWrongAnimation()
+        {
+            animation.Stop();
+            animation.Play("DeliveryCounterCanvas@ShowWrongPlateText");
         }
     }
 }

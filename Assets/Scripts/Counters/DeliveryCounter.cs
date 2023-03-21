@@ -47,7 +47,9 @@ namespace KitchenChaos.Counters
                 return true;
             }
 
+            canvas.ShowWrongPlate();
             scoreSettings.DeliveryFailedOrder();
+
             return false;
         }
     }
