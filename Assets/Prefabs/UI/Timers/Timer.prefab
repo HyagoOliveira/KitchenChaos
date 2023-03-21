@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90920f0f99647794aa64f2ba1ded4ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
+  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   canvas: {fileID: 7395694775120954095}
   timer: {fileID: 8002697774553385940}
   slider: {fileID: 6163789892745924922}

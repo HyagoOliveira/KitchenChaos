@@ -10,7 +10,7 @@ namespace KitchenChaos.UI
     [RequireComponent(typeof(Canvas))]
     public sealed class Timer : MonoBehaviour
     {
-        [SerializeField] private MatchSettings levelSettings;
+        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private Canvas canvas;
         [SerializeField] private TMP_Text timer;
         [SerializeField] private Slider slider;
@@ -25,16 +25,16 @@ namespace KitchenChaos.UI
 
         private void OnEnable()
         {
-            levelSettings.CountDown.OnStarted += Hide;
-            levelSettings.TimeLimit.OnStarted += Show;
-            levelSettings.TimeLimit.OnUpdated += HandleTimeLimitUpdated;
+            matchSettings.CountDown.OnStarted += Hide;
+            matchSettings.TimeLimit.OnStarted += Show;
+            matchSettings.TimeLimit.OnUpdated += HandleTimeLimitUpdated;
         }
 
         private void OnDisable()
         {
-            levelSettings.CountDown.OnStarted -= Hide;
-            levelSettings.TimeLimit.OnStarted -= Show;
-            levelSettings.TimeLimit.OnUpdated -= HandleTimeLimitUpdated;
+            matchSettings.CountDown.OnStarted -= Hide;
+            matchSettings.TimeLimit.OnStarted -= Show;
+            matchSettings.TimeLimit.OnUpdated -= HandleTimeLimitUpdated;
         }
 
         private void Hide() => canvas.enabled = false;
@@ -45,7 +45,7 @@ namespace KitchenChaos.UI
             var time = TimeSpan.FromSeconds(seconds);
             timer.text = time.ToString(timerFormat);
 
-            var normilizedTime = (float)seconds / levelSettings.TimeLimit.totalTime;
+            var normilizedTime = (float)seconds / matchSettings.TimeLimit.totalTime;
             slider.value = normilizedTime;
         }
     }
