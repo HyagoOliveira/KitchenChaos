@@ -6,8 +6,8 @@ using KitchenChaos.Matches;
 namespace KitchenChaos.UI
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Animation))]
     [RequireComponent(typeof(Canvas))]
+    [RequireComponent(typeof(Animation))]
     public sealed class Score : MonoBehaviour
     {
         [SerializeField] private ScoreSettings settings;
@@ -32,7 +32,8 @@ namespace KitchenChaos.UI
             settings.OnScoreIncreased += HandleScoreIncreased;
             settings.OnScoreDecreased += HandleScoreDecreased;
 
-            matchSettings.CountDown.OnFinished += HandleCountDownFinished;
+            matchSettings.CountDown.OnStarted += Hide;
+            matchSettings.CountDown.OnFinished += Show;
         }
 
         private void OnDisable()
@@ -40,7 +41,8 @@ namespace KitchenChaos.UI
             settings.OnScoreIncreased -= HandleScoreIncreased;
             settings.OnScoreDecreased -= HandleScoreDecreased;
 
-            matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
+            matchSettings.CountDown.OnStarted -= Hide;
+            matchSettings.CountDown.OnFinished -= Show;
         }
 
         private void HandleScoreIncreased(float deltaScore)
@@ -55,7 +57,8 @@ namespace KitchenChaos.UI
             ShowDelta("- " + deltaScore);
         }
 
-        private void HandleCountDownFinished() => canvas.enabled = true;
+        private void Hide() => canvas.enabled = false;
+        private void Show() => canvas.enabled = true;
 
         private void ShowDelta(string deltaScore)
         {
