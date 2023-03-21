@@ -10,12 +10,9 @@ namespace KitchenChaos.Counters
     {
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private ParticleSystem sizzlingParticles;
+        [SerializeField] private ParticleSystem burnedParticles;
 
-        private void Reset()
-        {
-            audioSource = GetComponent<AudioSource>();
-            sizzlingParticles = GetComponentInChildren<ParticleSystem>();
-        }
+        private void Reset() => audioSource = GetComponent<AudioSource>();
 
         public void StartFry()
         {
@@ -28,5 +25,8 @@ namespace KitchenChaos.Counters
             audioSource.Stop();
             sizzlingParticles.Stop();
         }
+
+        public void StartBurn() => burnedParticles.Play();
+        public void StopBurn() => burnedParticles.Stop();
     }
 }

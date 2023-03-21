@@ -82,6 +82,7 @@ namespace KitchenChaos.Counters
 
             BurnIngredient();
             CompleteBurning();
+            fryingPan.StartBurn();
         }
 
         private IEnumerator ToggleWarningRotine(float showTime, float hideTime, int times)
@@ -127,6 +128,7 @@ namespace KitchenChaos.Counters
         private void HandleOnItemReleased(IItemCollectable _)
         {
             if (IsBurning) StopBurning();
+            fryingPan.StopBurn();
         }
     }
 }
