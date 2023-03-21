@@ -10,9 +10,9 @@ namespace KitchenChaos.Players
         [SerializeField] private Rigidbody body;
         [SerializeField] private CapsuleCollider collider;
         [SerializeField] private PlayerAnimator animator;
-        [SerializeField, Min(0F)] private float moveSpeed = 6f;
-        [SerializeField, Min(0F)] private float dashSpeed = 12f;
-        [SerializeField, Min(0F)] private float dashTime = 0.8f;
+        [SerializeField, Min(0F)] internal float moveSpeed = 6f;
+        [SerializeField, Min(0F)] internal float dashSpeed = 12f;
+        [SerializeField, Min(0F)] internal float dashTime = 0.8f;
 
         public bool IsMoveInputting { get; private set; }
 
