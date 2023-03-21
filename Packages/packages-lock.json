@@ -83,7 +83,7 @@
       "url": "http://165.232.132.59:4873"
     },
     "com.actioncode.ui": {
-      "version": "4.0.0",
+      "version": "4.1.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
