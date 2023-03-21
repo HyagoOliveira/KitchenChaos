@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
+  sceneSettings: {fileID: 11400000, guid: d875c26377d78f64299b270aefdde6f5, type: 2}
   animation: {fileID: 7935482508651115591}
   audioSource: {fileID: 5561408695411488424}
 --- !u!1 &5457890990150832133
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4449255
+    rgba: 4282639335
   m_fontColor: {r: 0.9056604, g: 0.89177257, b: 0.26354718, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

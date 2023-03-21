@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
+  - sceneSettings: {fileID: 11400000, guid: d875c26377d78f64299b270aefdde6f5, type: 2}
   - animation: {instanceID: 0}
   - audioSource: {instanceID: 0}
   executionOrder: 0

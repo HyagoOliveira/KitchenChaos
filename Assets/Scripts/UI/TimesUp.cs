@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using KitchenChaos.Matches;
 using System.Collections;
+using KitchenChaos.Scenes;
 
 namespace KitchenChaos.UI
 {
@@ -11,10 +11,9 @@ namespace KitchenChaos.UI
     public sealed class TimesUp : MonoBehaviour
     {
         [SerializeField] private MatchSettings matchSettings;
+        [SerializeField] private SceneSettings sceneSettings;
         [SerializeField] private Animation animation;
         [SerializeField] private AudioSource audioSource;
-
-        public event Action OnAnimationFinished;
 
         private void Reset()
         {
@@ -31,7 +30,7 @@ namespace KitchenChaos.UI
         {
             audioSource.Play();
             yield return animation.PlayAndWait();
-            OnAnimationFinished?.Invoke();
+            sceneSettings.GoToResults();
         }
     }
 }
