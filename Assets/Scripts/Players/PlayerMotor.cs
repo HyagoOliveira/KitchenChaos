@@ -4,9 +4,11 @@ namespace KitchenChaos.Players
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(CapsuleCollider))]
     public sealed class PlayerMotor : MonoBehaviour
     {
         [SerializeField] private Rigidbody body;
+        [SerializeField] private CapsuleCollider collider;
         [SerializeField] private PlayerAnimator animator;
         [SerializeField, Min(0F)] private float moveSpeed = 6f;
         [SerializeField, Min(0F)] private float dashSpeed = 12f;
@@ -26,6 +28,7 @@ namespace KitchenChaos.Players
         private void Reset()
         {
             body = GetComponent<Rigidbody>();
+            collider = GetComponent<CapsuleCollider>();
             animator = GetComponentInChildren<PlayerAnimator>();
         }
 
@@ -35,7 +38,7 @@ namespace KitchenChaos.Players
             currentCamera = Camera.main.transform;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             UpdateMovement();
             UpdateRotation();
@@ -66,9 +69,10 @@ namespace KitchenChaos.Players
         {
             UpdateMovingDirection();
 
-            Speed = currentSpeed * moveDirection;
-            Velocity = Speed * Time.deltaTime;
+            var isMovingIntoCollision = IsMoveInputting && IsForwardCollision();
 
+            Speed = isMovingIntoCollision ? Vector3.zero : currentSpeed * moveDirection;
+            Velocity = Speed * Time.deltaTime;
 
             var newPosition = body.position + Velocity;
 
@@ -97,6 +101,12 @@ namespace KitchenChaos.Players
         {
             isDashing = false;
             currentSpeed = moveSpeed;
+        }
+
+        private bool IsForwardCollision()
+        {
+            var origin = body.position + Vector3.up;
+            return UnityEngine.Physics.Raycast(origin, transform.forward, collider.radius);
         }
 
         private Vector3 GetMoveInputDirectionRelativeToCamera()
