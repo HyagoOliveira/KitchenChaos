@@ -1,7 +1,6 @@
 using UnityEngine;
 using ActionCode.UI;
 using ActionCode.PauseSystem;
-using ActionCode.SceneManagement;
 using KitchenChaos.Scenes;
 
 namespace KitchenChaos.UI
@@ -11,7 +10,6 @@ namespace KitchenChaos.UI
     {
         [SerializeField] private PauseSettings pauseSettings;
         [SerializeField] private SceneSettings sceneSettings;
-        [SerializeField, Scene] private string mainMenu;
 
         [SerializeField] private PauseOptions pauseOptions;
 
