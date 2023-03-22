@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerSettings>k__BackingField: {fileID: 11400000, guid: 79954e2b01c71a946827d200d015a678,
     type: 2}
+  <PlayerInputSettings>k__BackingField: {fileID: 11400000, guid: a3c066ec7fd0dde4e9beaa0d53ff1dea,
+    type: 2}
   arrow: {fileID: 5029279006663698284}
   description: {fileID: 8518685786180000519}
   timeToReadCompleteStep: 1

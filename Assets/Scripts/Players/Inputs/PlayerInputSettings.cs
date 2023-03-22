@@ -26,6 +26,8 @@ namespace KitchenChaos.Players
         public void Enable() => actions.Enable();
         public void Disable() => actions.Disable();
 
+        public string GetMoveButtonDisplayName() => GetButtonDisplayName(actions.Move);
+
         internal void ResetAxis()
         {
             actions.Move.Disable();
@@ -68,6 +70,14 @@ namespace KitchenChaos.Players
         {
             var input = context.ReadValue<Vector2>();
             OnMove?.Invoke(input);
+        }
+
+        private string GetButtonDisplayName(InputAction action)
+        {
+            var hasGamepad = Gamepad.current != null;
+            return hasGamepad ?
+                action.GetBindingDisplayString(group: "Gamepad") :
+                action.GetBindingDisplayString(0);
         }
     }
 }

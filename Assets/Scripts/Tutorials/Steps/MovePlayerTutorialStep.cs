@@ -9,7 +9,7 @@ namespace KitchenChaos.Tutorials
         [SerializeField, Min(0f)] private float movingTime = 5f;
 
         internal override string GetDescription() =>
-            "Use the Gamepad Left Stick, AWSD or Arrows keys to move the Player.";
+            $"Use {PlayerInput.GetMoveButtonDisplayName()} to move the Player.";
 
         internal override void Begin() => StartCoroutine(CheckMovingTimeRoutine());
 

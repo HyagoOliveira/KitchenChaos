@@ -6,6 +6,7 @@ namespace KitchenChaos.Tutorials
     public abstract class AbstractTutorialStep : MonoBehaviour
     {
         protected Player CurrentPlayer => manager.PlayerSettings.Current;
+        protected PlayerInputSettings PlayerInput => manager.PlayerInputSettings;
 
         protected TutorialManager manager;
 

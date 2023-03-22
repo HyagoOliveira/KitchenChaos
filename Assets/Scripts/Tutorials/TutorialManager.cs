@@ -9,6 +9,7 @@ namespace KitchenChaos.Tutorials
     public sealed class TutorialManager : MonoBehaviour
     {
         [field: SerializeField] public PlayerSettings PlayerSettings { get; private set; }
+        [field: SerializeField] public PlayerInputSettings PlayerInputSettings { get; private set; }
 
         [SerializeField] private GameObject arrow;
         [SerializeField] private TutorialDescription description;
