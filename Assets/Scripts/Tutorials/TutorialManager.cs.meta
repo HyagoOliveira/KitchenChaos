@@ -3,7 +3,13 @@ guid: bb73dbe69955ec64a8c6537d289c9a45
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - <PlayerSettings>k__BackingField: {fileID: 11400000, guid: 79954e2b01c71a946827d200d015a678,
+      type: 2}
+  - <PlayerInputSettings>k__BackingField: {fileID: 11400000, guid: a3c066ec7fd0dde4e9beaa0d53ff1dea,
+      type: 2}
+  - arrow: {instanceID: 0}
+  - description: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

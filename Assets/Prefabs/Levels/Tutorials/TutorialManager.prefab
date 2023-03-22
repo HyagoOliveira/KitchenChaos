@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3067213625441847686}
   - component: {fileID: 3067213625441847680}
   - component: {fileID: 3067213625441847681}
+  - component: {fileID: 8365381798305380042}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   timeBetweenSteps: 2
   steps:
   - {fileID: 3067213625441847681}
+  - {fileID: 8365381798305380042}
 --- !u!114 &3067213625441847681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +72,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingTime: 2
+--- !u!114 &8365381798305380042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067213625441847687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4812e958853d658498c443848b66f8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3067213626838195254
 PrefabInstance:
   m_ObjectHideFlags: 0
