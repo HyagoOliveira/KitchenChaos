@@ -1,5 +1,6 @@
 using UnityEngine;
 using KitchenChaos.Physics;
+using ActionCode.Audio;
 
 namespace KitchenChaos.Items
 {
@@ -8,6 +9,10 @@ namespace KitchenChaos.Items
     {
         [SerializeField] private ItemHolder holder;
         [SerializeField] private BoxDetector detector;
+
+        [Header("Audio")]
+        [SerializeField] private AudioSourceDictionary dropSource;
+        [SerializeField] private AudioSourceDictionary pickupSource;
 
         private void Reset()
         {
@@ -24,9 +29,17 @@ namespace KitchenChaos.Items
                 var wasItemTransfered = TryTransferItem();
                 var canReleaseItemOnTheFloor = !wasItemTransfered && !detector.HasHit();
 
-                if (canReleaseItemOnTheFloor) holder.ReleaseItem();
+                if (canReleaseItemOnTheFloor)
+                {
+                    holder.ReleaseItem();
+                    dropSource.PlayRandom();
+                }
             }
-            else if (TryGetCollectableItem(out IItemCollectable item)) holder.PlaceItem(item);
+            else if (TryGetCollectableItem(out IItemCollectable item))
+            {
+                holder.PlaceItem(item);
+                pickupSource.PlayRandom();
+            }
         }
 
         public void TryInteractWithEnvironment()
