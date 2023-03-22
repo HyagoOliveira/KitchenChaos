@@ -15,4 +15,5 @@ MonoBehaviour:
   manager: {fileID: 11400000, guid: f287e2450ac7dac40a40df5870b10299, type: 2}
   mainMenu: Assets/Scenes/MainMenu.unity
   game: Assets/Scenes/Game.unity
+  tutorial: Assets/Scenes/Tutorial.unity
   results: Assets/Scenes/Results.unity

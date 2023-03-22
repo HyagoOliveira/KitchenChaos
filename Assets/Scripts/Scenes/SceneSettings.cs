@@ -11,10 +11,12 @@ namespace KitchenChaos.Scenes
         [Header("Scenes")]
         [SerializeField, Scene] private string mainMenu = "MainMenu";
         [SerializeField, Scene] private string game = "Game";
+        [SerializeField, Scene] private string tutorial = "Tutorial";
         [SerializeField, Scene] private string results = "Results";
 
         public void GoToMainMenu() => _ = manager.LoadScene(mainMenu);
         public void GoToGame() => _ = manager.LoadScene(game);
+        public void GoToTutorial() => _ = manager.LoadScene(tutorial);
         public void GoToResults() => _ = manager.LoadScene(results);
     }
 }
