@@ -9,9 +9,11 @@ namespace KitchenChaos.Tutorials
         [SerializeField, Min(0f)] private float movingTime = 5f;
 
         internal override string GetDescription() =>
-            $"Use {PlayerInput.GetMoveButtonDisplayName()} to move the Player.";
+            $"Use {GetButtonName()} to move the Player.";
 
         internal override void Begin() => StartCoroutine(CheckMovingTimeRoutine());
+
+        private string GetButtonName() => SurrounButtonNameWithTag(PlayerInput.GetMoveButtonDisplayName());
 
         private IEnumerator CheckMovingTimeRoutine()
         {

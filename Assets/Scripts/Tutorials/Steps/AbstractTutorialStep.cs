@@ -17,9 +17,10 @@ namespace KitchenChaos.Tutorials
         }
 
         internal abstract void Begin();
+        internal abstract string GetDescription();
 
         protected void Complete() => manager.CompleteStep();
 
-        internal abstract string GetDescription();
+        protected string SurrounButtonNameWithTag(string button) => $"<color=white>{button}</color>";
     }
 }
