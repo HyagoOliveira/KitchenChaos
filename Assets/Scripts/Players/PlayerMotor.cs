@@ -45,6 +45,8 @@ namespace KitchenChaos.Players
 
         public void Stop() => Move(Vector2.zero);
 
+        public bool IsMoving() => Mathf.Abs(Speed.sqrMagnitude) > 0F;
+
         private void UpdateMovement()
         {
             UpdateMovingDirection();
