@@ -27,7 +27,7 @@ namespace KitchenChaos.UI
             settings.OnOrderDelivered += HandleOrderDelivered;
 
             matchSettings.OnFinished += HandleMatchFinished;
-            matchSettings.CountDown.OnFinished += HandleTimeDownFinished;
+            matchSettings.CountDown.OnFinished += HandleCountDownFinished;
         }
 
         private void OnDisable()
@@ -37,7 +37,16 @@ namespace KitchenChaos.UI
             settings.OnOrderDelivered -= HandleOrderDelivered;
 
             matchSettings.OnFinished -= HandleMatchFinished;
-            matchSettings.CountDown.OnFinished -= HandleTimeDownFinished;
+            matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
+        }
+
+        public void StartOrderingTutorial(OrderSettings settings)
+        {
+            this.settings = settings;
+
+            gameObject.SetActive(true);
+
+            this.settings.StartOrdering();
         }
 
         private void HandleOrderFailed(Order _) => PlayFailedSound();
@@ -45,7 +54,7 @@ namespace KitchenChaos.UI
         private void HandleOrderDelivered(Order _) => PlayDeliveredSound();
 
         private void HandleMatchFinished() => settings.StopOrdering();
-        private void HandleTimeDownFinished() => settings.StartOrdering();
+        private void HandleCountDownFinished() => settings.StartOrdering();
 
         private void PlayCreatedSound() => audioSource.Play();
         private void PlayFailedSound() => failedSource.PlayRandom();
