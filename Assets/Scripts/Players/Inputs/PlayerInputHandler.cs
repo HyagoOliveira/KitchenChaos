@@ -22,7 +22,6 @@ namespace KitchenChaos.Players
         private void Bind()
         {
             settings.OnMove += player.Motor.Move;
-            //settings.OnDash += player.Motor.Dash;
             settings.OnCollectItem += player.Interactor.TryInteractWithItem;
             settings.OnInteractWithEnvironment += player.Interactor.TryInteractWithEnvironment;
         }
@@ -30,7 +29,6 @@ namespace KitchenChaos.Players
         private void UnBind()
         {
             settings.OnMove -= player.Motor.Move;
-            //settings.OnDash -= player.Motor.Dash;
             settings.OnCollectItem -= player.Interactor.TryInteractWithItem;
             settings.OnInteractWithEnvironment -= player.Interactor.TryInteractWithEnvironment;
         }

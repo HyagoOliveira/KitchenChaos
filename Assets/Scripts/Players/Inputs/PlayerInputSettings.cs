@@ -9,7 +9,6 @@ namespace KitchenChaos.Players
     public sealed class PlayerInputSettings : ScriptableObject
     {
         public event Action OnChop;
-        public event Action OnDash;
         public event Action OnSwitch;
         public event Action OnPause;
         public event Action<Vector2> OnMove;
@@ -40,7 +39,6 @@ namespace KitchenChaos.Players
             actions.Move.canceled += HandleMovePerformed;
 
             actions.Chop.performed += HandleChopPerformed;
-            actions.Dash.performed += HandleDashPerformed;
             actions.Switch.performed += HandleSwitchPerformed;
             actions.Pause.started += HandlePausePerformed;
             actions.CollectItem.performed += HandleCollectItemPerformed;
@@ -54,7 +52,6 @@ namespace KitchenChaos.Players
             actions.Move.canceled -= HandleMovePerformed;
 
             actions.Chop.performed -= HandleChopPerformed;
-            actions.Dash.performed -= HandleDashPerformed;
             actions.Switch.performed -= HandleSwitchPerformed;
             actions.Pause.started -= HandlePausePerformed;
             actions.CollectItem.performed -= HandleCollectItemPerformed;
@@ -62,7 +59,6 @@ namespace KitchenChaos.Players
         }
 
         private void HandleChopPerformed(InputAction.CallbackContext _) => OnChop?.Invoke();
-        private void HandleDashPerformed(InputAction.CallbackContext _) => OnDash?.Invoke();
         private void HandleSwitchPerformed(InputAction.CallbackContext _) => OnSwitch?.Invoke();
         private void HandlePausePerformed(InputAction.CallbackContext _) => OnPause?.Invoke();
         private void HandleCollectItemPerformed(InputAction.CallbackContext _) => OnCollectItem?.Invoke();

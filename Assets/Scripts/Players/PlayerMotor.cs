@@ -11,8 +11,6 @@ namespace KitchenChaos.Players
         [SerializeField] private CapsuleCollider collider;
         [SerializeField] private PlayerAnimator animator;
         [SerializeField, Min(0F)] internal float moveSpeed = 6f;
-        [SerializeField, Min(0F)] internal float dashSpeed = 12f;
-        [SerializeField, Min(0F)] internal float dashTime = 0.8f;
 
         public bool IsMoveInputting { get; private set; }
 
@@ -20,7 +18,6 @@ namespace KitchenChaos.Players
         public Vector3 Speed { get; private set; }
         public Vector3 Velocity { get; private set; }
 
-        private bool isDashing;
         private float currentSpeed;
         private Vector3 moveDirection;
         private Transform currentCamera;
@@ -32,11 +29,7 @@ namespace KitchenChaos.Players
             animator = GetComponentInChildren<PlayerAnimator>();
         }
 
-        private void Start()
-        {
-            StopDash();
-            currentCamera = Camera.main.transform;
-        }
+        private void Start() => currentCamera = Camera.main.transform;
 
         private void FixedUpdate()
         {
@@ -51,19 +44,7 @@ namespace KitchenChaos.Players
             IsMoveInputting = Mathf.Abs(MoveInput.sqrMagnitude) > 0F;
         }
 
-        public void Dash()
-        {
-            if (isDashing) return;
-
-            currentSpeed = dashSpeed;
-            Invoke(nameof(StopDash), dashTime);
-        }
-
-        public void Stop()
-        {
-            StopDash();
-            Move(Vector2.zero);
-        }
+        public void Stop() => Move(Vector2.zero);
 
         private void UpdateMovement()
         {
@@ -95,12 +76,6 @@ namespace KitchenChaos.Players
         private void UpdateAnimations()
         {
             animator.SetIsWalking(IsMoveInputting);
-        }
-
-        private void StopDash()
-        {
-            isDashing = false;
-            currentSpeed = moveSpeed;
         }
 
         private bool IsForwardCollision()
