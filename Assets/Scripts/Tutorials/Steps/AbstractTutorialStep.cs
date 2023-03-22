@@ -12,10 +12,6 @@ namespace KitchenChaos.Tutorials
 
         internal void Initialize(TutorialManager manager) => this.manager = manager;
 
-        private void Start()
-        {
-        }
-
         internal abstract void Begin();
         internal abstract string GetDescription();
 
