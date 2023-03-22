@@ -58,6 +58,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 549cb4f2b86d1b84d8cd41c1cfde26c8, type: 3}
   - {fileID: 21300000, guid: 88a5c233257060445a0ac9b05368cf82, type: 3}
   - {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
+  - {fileID: 21300000, guid: 1c8097d4415f4144abbb64ae54e03bba, type: 3}
   - {fileID: 21300000, guid: 114b0da55051c094b90c77403aff838e, type: 3}
   - {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
   - {fileID: 21300000, guid: 6c562ac6d3e47ff4794df31886c6d864, type: 3}
@@ -81,6 +82,7 @@ SpriteAtlas:
   - CheeseSlice
   - Circle
   - Bread
+  - TutorialArrow
   - Warning
   - Plate
   - Tick_Border
