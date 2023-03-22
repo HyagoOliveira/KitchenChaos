@@ -12,6 +12,7 @@ namespace KitchenChaos.Players
         [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private PauseSettings pauseSettings;
         [SerializeField] private PlayerInputSettings inputSettings;
+        [SerializeField] private bool canPause = true;
 
         private void Awake()
         {
@@ -31,11 +32,12 @@ namespace KitchenChaos.Players
 
             matchSettings.OnFinished += HandleMatchFinished;
 
-            inputSettings.OnPause += HandlePlayerPause;
             inputSettings.OnSwitch += HandlePlayerSwitch;
 
             pauseSettings.OnPaused += HandlePaused;
             pauseSettings.OnResumed += HandleResumed;
+
+            if (canPause) inputSettings.OnPause += HandlePlayerPause;
         }
 
         private void OnDisable()
