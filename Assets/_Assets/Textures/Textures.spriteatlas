@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Textures
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8fa73a0588b50ed4a9b05ec42ad0bcc5, type: 3}
+    - {fileID: 102900000, guid: b1fcda928e81b2c47b993f8869c89282, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a4a30a507a1311a438ecf1507369b28d, type: 3}
+  - {fileID: 21300000, guid: 0d6e1281049dccc4189bf308b2ccf331, type: 3}
+  - {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
+  - {fileID: 21300000, guid: f18900e22c39de34184357b4a90ff275, type: 3}
+  - {fileID: 21300000, guid: 549cb4f2b86d1b84d8cd41c1cfde26c8, type: 3}
+  - {fileID: 21300000, guid: 88a5c233257060445a0ac9b05368cf82, type: 3}
+  - {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
+  - {fileID: 21300000, guid: 114b0da55051c094b90c77403aff838e, type: 3}
+  - {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
+  - {fileID: 21300000, guid: 6c562ac6d3e47ff4794df31886c6d864, type: 3}
+  - {fileID: 21300000, guid: 256b17f65ca4560449866be321c6b6b2, type: 3}
+  - {fileID: 21300000, guid: bee24f07c57157e45a946eed3bfe8b84, type: 3}
+  - {fileID: 21300000, guid: a644e8885b470a642b1f392d12aece47, type: 3}
+  - {fileID: 21300000, guid: 6820e50a72696664cb1a9b5484ecee33, type: 3}
+  - {fileID: 21300000, guid: e1c23b5aded59d84da30738d3267a6c9, type: 3}
+  - {fileID: 21300000, guid: c9f08c3c1ae2a364aaeaa3712540b1d4, type: 3}
+  - {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896, type: 3}
+  - {fileID: 21300000, guid: e8b1607e0df77b643a9e90b8036cca0d, type: 3}
+  - {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
+  - {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f, type: 3}
+  - {fileID: 21300000, guid: eb6fe99ffc38fdc44b4f41a79d61e6c5, type: 3}
+  - {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ButtonBackground
+  - Cross
+  - MeatPattyUncooked
+  - GradientVertical
+  - CheeseSlice
+  - Circle
+  - Bread
+  - Warning
+  - Plate
+  - Tick_Border
+  - CircleDashed
+  - CabbageSlices
+  - KitchenChaosLogo
+  - White_1x1
+  - Cabbage
+  - TomatoSlice
+  - Tomato
+  - Arrow
+  - MeatPattyCooked
+  - CheeseBlock
+  - Arrows
+  - MeatPattyBurned
+  m_RenderDataMap: {}
+  m_Tag: Textures
+  m_IsVariant: 0
