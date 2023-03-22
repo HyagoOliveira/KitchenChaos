@@ -53,6 +53,7 @@ MonoBehaviour:
     type: 2}
   <PlayerInputSettings>k__BackingField: {fileID: 11400000, guid: a3c066ec7fd0dde4e9beaa0d53ff1dea,
     type: 2}
+  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   arrow: {fileID: 5029279006663698284}
   description: {fileID: 8518685786180000519}
   timeToReadCompleteStep: 1
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderSettings: {fileID: 11400000, guid: 6b182537e6a82ba4b8ea5cbb1dec82df, type: 2}
+  timeToRead: 3
 --- !u!1001 &3067213626838195254
 PrefabInstance:
   m_ObjectHideFlags: 0

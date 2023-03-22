@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using KitchenChaos.UI;
 using KitchenChaos.Players;
+using KitchenChaos.Matches;
 
 namespace KitchenChaos.Tutorials
 {
@@ -11,6 +12,7 @@ namespace KitchenChaos.Tutorials
         [field: SerializeField] public PlayerSettings PlayerSettings { get; private set; }
         [field: SerializeField] public PlayerInputSettings PlayerInputSettings { get; private set; }
 
+        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private GameObject arrow;
         [SerializeField] private TutorialDescription description;
         [SerializeField, Min(0f)] private float timeToReadCompleteStep = 1f;
@@ -31,6 +33,8 @@ namespace KitchenChaos.Tutorials
 
         private void Awake()
         {
+            matchSettings.IsAllowToStartTimeLimit = false;
+
             foreach (var step in steps)
             {
                 step.Initialize(this);
@@ -66,6 +70,8 @@ namespace KitchenChaos.Tutorials
 
         private void CompleteTutorial()
         {
+            matchSettings.IsAllowToStartTimeLimit = true;
+
             print("Tutorial is completed");
             Destroy(gameObject);
         }
