@@ -18,7 +18,6 @@ namespace KitchenChaos.Players
         public Vector3 Speed { get; private set; }
         public Vector3 Velocity { get; private set; }
 
-        private float currentSpeed;
         private Vector3 moveDirection;
         private Transform currentCamera;
 
@@ -52,7 +51,7 @@ namespace KitchenChaos.Players
 
             var isMovingIntoCollision = IsMoveInputting && IsForwardCollision();
 
-            Speed = isMovingIntoCollision ? Vector3.zero : currentSpeed * moveDirection;
+            Speed = isMovingIntoCollision ? Vector3.zero : moveSpeed * moveDirection;
             Velocity = Speed * Time.deltaTime;
 
             var newPosition = body.position + Velocity;
