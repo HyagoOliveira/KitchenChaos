@@ -52,11 +52,11 @@ namespace KitchenChaos.UI
             return false;
         }
 
-        internal void CreateRandom() => Create(recipeSettings.GetRandom());
+        public void CreateRandom() => Create(recipeSettings.GetRandom());
 
-        internal void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
+        public void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
 
-        internal void StopOrdering()
+        public void StopOrdering()
         {
             manager.StopCoroutine(ordering);
             CancelOrders();

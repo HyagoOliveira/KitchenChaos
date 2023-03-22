@@ -16,6 +16,7 @@ namespace KitchenChaos.UI
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioSourceDictionary failedSource;
         [SerializeField] private AudioSourceDictionary deliveredSource;
+        [SerializeField] private bool startOrderingWhenCountDownEnds = true;
 
         private void Reset() => audioSource = GetComponent<AudioSource>();
         private void Awake() => settings.Initialize(this);
@@ -27,7 +28,8 @@ namespace KitchenChaos.UI
             settings.OnOrderDelivered += HandleOrderDelivered;
 
             matchSettings.OnFinished += HandleMatchFinished;
-            matchSettings.CountDown.OnFinished += HandleTimeDownFinished;
+            if (startOrderingWhenCountDownEnds)
+                matchSettings.CountDown.OnFinished += HandleTimeDownFinished;
         }
 
         private void OnDisable()
