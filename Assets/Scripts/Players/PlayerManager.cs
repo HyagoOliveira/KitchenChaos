@@ -30,19 +30,19 @@ namespace KitchenChaos.Players
         {
             inputSettings.BindActions();
 
-            matchSettings.OnFinished += HandleMatchFinished;
-
             inputSettings.OnSwitch += HandlePlayerSwitch;
 
             pauseSettings.OnPaused += HandlePaused;
             pauseSettings.OnResumed += HandleResumed;
+
+            matchSettings.TimeLimit.OnFinished += HandleMatchFinished;
 
             if (canPause) inputSettings.OnPause += HandlePlayerPause;
         }
 
         private void OnDisable()
         {
-            matchSettings.OnFinished -= HandleMatchFinished;
+            matchSettings.TimeLimit.OnFinished -= HandleMatchFinished;
 
             inputSettings.OnPause -= HandlePlayerPause;
             inputSettings.OnSwitch -= HandlePlayerSwitch;

@@ -21,8 +21,8 @@ namespace KitchenChaos.UI
             audioSource = GetComponent<AudioSource>();
         }
 
-        private void OnEnable() => matchSettings.OnFinished += HandleMatchFinished;
-        private void OnDisable() => matchSettings.OnFinished -= HandleMatchFinished;
+        private void OnEnable() => matchSettings.TimeLimit.OnFinished += HandleMatchFinished;
+        private void OnDisable() => matchSettings.TimeLimit.OnFinished -= HandleMatchFinished;
 
         private void HandleMatchFinished() => StartCoroutine(PlayAnimationAndInvokeActionRoutine());
 

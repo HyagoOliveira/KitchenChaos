@@ -26,7 +26,7 @@ namespace KitchenChaos.UI
             settings.OnOrderCreated += HandleOrderCreated;
             settings.OnOrderDelivered += HandleOrderDelivered;
 
-            matchSettings.OnFinished += HandleMatchFinished;
+            matchSettings.TimeLimit.OnFinished += HandleMatchFinished;
             matchSettings.CountDown.OnFinished += HandleCountDownFinished;
         }
 
@@ -36,7 +36,7 @@ namespace KitchenChaos.UI
             settings.OnOrderCreated -= HandleOrderCreated;
             settings.OnOrderDelivered -= HandleOrderDelivered;
 
-            matchSettings.OnFinished -= HandleMatchFinished;
+            matchSettings.TimeLimit.OnFinished -= HandleMatchFinished;
             matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
         }
 

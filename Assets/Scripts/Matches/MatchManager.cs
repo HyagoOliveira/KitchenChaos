@@ -10,25 +10,12 @@ namespace KitchenChaos.Matches
 
         private void Awake() => settings.Initialize(this);
         private void Start() => Invoke(nameof(StartCountDown), 0.2F);
-
-        private void OnEnable()
-        {
-            settings.CountDown.OnFinished += HandleCountDownFinished;
-            settings.TimeLimit.OnFinished += HandleTimeLimitFinished;
-        }
-
-        private void OnDisable()
-        {
-            settings.CountDown.OnFinished -= HandleCountDownFinished;
-            settings.TimeLimit.OnFinished -= HandleTimeLimitFinished;
-        }
-
+        private void OnEnable() => settings.CountDown.OnFinished += HandleCountDownFinished;
+        private void OnDisable() => settings.CountDown.OnFinished -= HandleCountDownFinished;
         private void OnDestroy() => settings.Dispose();
 
         private void StartCountDown() => settings.StartCountDown();
 
         private void HandleCountDownFinished() => settings.StartTimeLimit();
-
-        private void HandleTimeLimitFinished() => settings.FinishTimeLimit();
     }
 }
