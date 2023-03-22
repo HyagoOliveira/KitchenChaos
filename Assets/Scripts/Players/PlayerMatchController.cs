@@ -21,14 +21,14 @@ namespace KitchenChaos.Players
         {
             matchSettings.CountDown.OnStarted += HandleCountDownStarted;
             matchSettings.TimeLimit.OnStarted += HandleTimeLimitStarted;
-            matchSettings.OnFinalSecondsStarted += HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted += HandleFinalSecondsStarted;
         }
 
         private void OnDisable()
         {
             matchSettings.CountDown.OnStarted -= HandleCountDownStarted;
             matchSettings.TimeLimit.OnStarted -= HandleTimeLimitStarted;
-            matchSettings.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
         }
 
         private void HandleCountDownStarted()

@@ -37,7 +37,7 @@ namespace KitchenChaos.UI
             matchSettings.CountDown.OnStarted += Hide;
             matchSettings.TimeLimit.OnStarted += Show;
             matchSettings.TimeLimit.OnUpdated += HandleTimeLimitUpdated;
-            matchSettings.OnFinalSecondsStarted += HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted += HandleFinalSecondsStarted;
         }
 
         private void OnDisable()
@@ -45,7 +45,7 @@ namespace KitchenChaos.UI
             matchSettings.CountDown.OnStarted -= Hide;
             matchSettings.TimeLimit.OnStarted -= Show;
             matchSettings.TimeLimit.OnUpdated -= HandleTimeLimitUpdated;
-            matchSettings.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
         }
 
         private void Hide() => canvas.enabled = false;
@@ -56,7 +56,7 @@ namespace KitchenChaos.UI
             var time = TimeSpan.FromSeconds(seconds);
             timer.text = time.ToString(timerFormat);
 
-            var normilizedTime = (float)seconds / matchSettings.TimeLimit.totalTime;
+            var normilizedTime = (float)seconds / matchSettings.TimeLimit.Time;
             slider.value = normilizedTime;
 
             if (isFinalSeconds) PlayFinalSecondsEffects();

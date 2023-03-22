@@ -1,22 +1,25 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 namespace KitchenChaos.Matches
 {
-    public sealed class TimeDown
+    [Serializable]
+    public class TimeDown
     {
+        [field: SerializeField, Min(0)] public uint Time { get; private set; }
+
         public event Action OnStarted;
         public event Action OnFinished;
         public event Action<uint> OnUpdated;
 
-        internal uint totalTime;
-
         private readonly WaitForSeconds waitOneSecond = new WaitForSeconds(1F);
+
+        public TimeDown(uint time) => this.Time = time;
 
         internal IEnumerator CountDownRoutine()
         {
-            var current = totalTime;
+            var current = Time;
 
             OnStarted?.Invoke();
 

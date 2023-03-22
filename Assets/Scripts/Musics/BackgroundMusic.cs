@@ -38,13 +38,13 @@ namespace KitchenChaos.Musics
         private void OnEnable()
         {
             matchSettings.TimeLimit.OnFinished += HandleTimeLimitFinished;
-            matchSettings.OnFinalSecondsStarted += HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted += HandleFinalSecondsStarted;
         }
 
         private void OnDisable()
         {
             matchSettings.TimeLimit.OnFinished -= HandleTimeLimitFinished;
-            matchSettings.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
         }
 
         private void HandleTimeLimitFinished() => NormalizeMusic();
