@@ -13,6 +13,8 @@ namespace KitchenChaos.Counters
 
         public bool IsBurning { get; private set; }
 
+        public bool IsAbleToBurn { get; set; }
+
         private Coroutine burningRoutine;
 
         private const string burningAnimationName = "Stove@Burning";
@@ -69,6 +71,8 @@ namespace KitchenChaos.Counters
 
         private IEnumerator BurningRoutine()
         {
+            if (!IsAbleToBurn) yield break;
+
             IsBurning = true;
             PlayWaitBuningAnimation();
 

@@ -20,6 +20,12 @@ namespace KitchenChaos.Counters
         public event Action OnPreparationCompleted;
         public event Action<float> OnPreparationUpdated;
 
+        public event Action<IItemCollectable> OnItemPlaced
+        {
+            add => holder.OnItemPlaced += value;
+            remove => holder.OnItemPlaced -= value;
+        }
+
         public bool IsPreparing { get; private set; }
 
         public bool IsPaused
