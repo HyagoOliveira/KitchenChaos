@@ -24,8 +24,6 @@ namespace KitchenChaos.Counters
             set => enabled = value;
         }
 
-        public bool CanDelivery { get; set; } = true;
-
         private void Reset()
         {
             canvas = GetComponentInChildren<DeliveryCounterCanvas>();
@@ -34,8 +32,6 @@ namespace KitchenChaos.Counters
 
         public bool TryTransferItem(IItemHolder fromHolder)
         {
-            if (!CanDelivery) return false;
-
             var item = fromHolder.CurrentItem;
             var plate = item as Plate;
 
