@@ -22,6 +22,12 @@ namespace KitchenChaos.Tutorials
         protected void CompleteDescriptionAndInvoke(Action action) =>
             StartCoroutine(CompleteDescriptionAndInvokeRoutine(action));
 
+        protected string GetCollectButtonDisplayName() =>
+            SurrounButtonNameWithTag(PlayerInput.GetCollectItemButtonDisplayName());
+
+        protected string GetInteractWithEnvironmentButtonDisplayName() =>
+                SurrounButtonNameWithTag(PlayerInput.GetInteractWithEnvironmentButtonDisplayName());
+
         protected string SurrounButtonNameWithTag(string button) => $"<color=white>{button}</color>";
 
         private IEnumerator CompleteDescriptionAndInvokeRoutine(Action action)
