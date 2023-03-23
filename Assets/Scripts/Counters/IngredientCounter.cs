@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using KitchenChaos.Items;
 
@@ -10,6 +11,8 @@ namespace KitchenChaos.Counters
         [SerializeField] private Animation animation;
         [SerializeField] private SpriteRenderer icon;
         [SerializeField] private IngredientData data;
+
+        public event Action<IItemCollectable> OnItemCollected;
 
         protected override void Reset()
         {
@@ -27,6 +30,8 @@ namespace KitchenChaos.Counters
 
             PlayOpenAnimation();
             item = data.Spawn();
+
+            OnItemCollected?.Invoke(item);
 
             return true;
         }
