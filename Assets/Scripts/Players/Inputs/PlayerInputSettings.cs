@@ -30,6 +30,11 @@ namespace KitchenChaos.Players
 
         public string GetSwitchButtonDisplayName() => GetButtonDisplayName(actions.Switch);
 
+        public string GetCollectItemButtonDisplayName() => GetButtonDisplayName(actions.CollectItem);
+
+        public string GetInteractWithEnvironmentButtonDisplayName() =>
+            GetButtonDisplayName(actions.InteractWithEnvironment);
+
         internal void ResetAxis()
         {
             actions.Move.Disable();
