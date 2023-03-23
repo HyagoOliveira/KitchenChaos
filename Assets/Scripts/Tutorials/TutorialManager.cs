@@ -15,10 +15,10 @@ namespace KitchenChaos.Tutorials
         [field: SerializeField] public PlayerInputSettings PlayerInputSettings { get; private set; }
 
         [SerializeField] private MatchSettings matchSettings;
-        [SerializeField] private GameObject arrow;
         [SerializeField] private GameObject cheeseBurgerStepTitle;
         [SerializeField] private TutorialDescription description;
         [SerializeField, Min(0f)] private float timeBetweenSteps = 2f;
+        [SerializeField] private GameObject[] arrows;
         [SerializeField] private AbstractTutorialStep[] steps;
 
         public int TotalSteps => steps.Length;
@@ -38,8 +38,13 @@ namespace KitchenChaos.Tutorials
         {
             steps = GetComponents<AbstractTutorialStep>();
             description = GetComponentInChildren<TutorialDescription>();
-            arrow = transform.Find("TutorialArrow").gameObject;
             cheeseBurgerStepTitle = transform.Find("TutorialManagerCanvas/CheeseBurgerStepTitle").gameObject;
+
+            arrows = new GameObject[2]
+            {
+                transform.Find("TutorialArrow_00").gameObject,
+                transform.Find("TutorialArrow_01").gameObject,
+            };
         }
 
         private void Awake()
@@ -58,31 +63,37 @@ namespace KitchenChaos.Tutorials
         //TODO apagar
         private void Start() => GoToNextStep();
 
-        internal void PlaceArrowOverCounter(Counter counter)
+        internal void PlaceArrowOverCounter(Counter counter, int index = 0)
         {
             const float height = 1.5F;
             var position = counter.transform.position + Vector3.up * height;
 
-            PlaceArrow(position);
+            PlaceArrow(position, index);
         }
 
-        internal void PlaceArrowOverPreparator(AbstractIngredientPreparator preparator)
+        internal void PlaceArrowOverPreparator(AbstractIngredientPreparator preparator, int index = 0)
         {
             const float height = 0.5F;
             var position = preparator.transform.position + Vector3.up * height;
 
-            PlaceArrow(position);
+            PlaceArrow(position, index);
         }
 
-        internal void PlaceArrowOverPlate() => PlaceArrow(Plate.transform.position, 0.5F);
-
-        internal void PlaceArrow(Vector3 position, float verticalDistance = 0.2f)
+        internal void PlaceArrowOverPlate(int index = 0)
         {
-            arrow.transform.position = position + Vector3.up * verticalDistance;
-            arrow.SetActive(true);
+            const float height = 0.5F;
+            var position = Plate.transform.position + Vector3.up * height;
+
+            PlaceArrow(position, index);
         }
 
-        internal void HideArrow() => arrow.SetActive(false);
+        internal void PlaceArrow(Vector3 position, int index)
+        {
+            arrows[index].transform.position = position;
+            arrows[index].SetActive(true);
+        }
+
+        internal void HideArrow(int index = 0) => arrows[index].SetActive(false);
 
         internal void CompleteStep() => StartCoroutine(CompleteStepRoutine());
 
