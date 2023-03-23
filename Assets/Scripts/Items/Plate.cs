@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using KitchenChaos.UI;
@@ -11,6 +12,8 @@ namespace KitchenChaos.Items
     {
         [SerializeField] private RecipeSettings recipeSettings;
         [SerializeField] private IngredientIcons icons;
+
+        public event Action<Ingredient> OnIngredientmPlaced;
 
         public Stack<Ingredient> Ingredients { get; private set; } = new(4);
 
@@ -51,6 +54,8 @@ namespace KitchenChaos.Items
             recipeSettings.Plate(Ingredients);
 
             icons.Add(ingredient.Icon);
+
+            OnIngredientmPlaced?.Invoke(ingredient);
         }
     }
 }
