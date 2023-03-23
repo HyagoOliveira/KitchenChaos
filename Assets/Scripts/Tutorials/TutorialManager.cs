@@ -4,6 +4,7 @@ using KitchenChaos.UI;
 using KitchenChaos.Players;
 using KitchenChaos.Matches;
 using KitchenChaos.Counters;
+using KitchenChaos.Items;
 
 namespace KitchenChaos.Tutorials
 {
@@ -23,6 +24,13 @@ namespace KitchenChaos.Tutorials
         public int TotalSteps => steps.Length;
         public AbstractTutorialStep CurrentStep => steps[currentIndex];
 
+        public Stove Stove { get; private set; }
+        public Plate Plate { get; private set; }
+        public IngredientCounter MeatCounter { get; private set; }
+        public IngredientCounter BreadCounter { get; private set; }
+        public IngredientCounter CheeseCounter { get; private set; }
+        public DeliveryCounter DeliveryCounter { get; private set; }
+
         private int currentIndex = -1;
 
         private void Reset()
@@ -41,10 +49,18 @@ namespace KitchenChaos.Tutorials
             {
                 step.Initialize(this);
             }
+
+            FindItems();
         }
 
-        //TODO apagar
-        private void Start() => GoToNextStep();
+        private void Start()
+        {
+            Stove.IsAbleToBurn = false;
+            DeliveryCounter.CanDelivery = false;
+
+            //TODO apagar
+            GoToNextStep();
+        }
 
         internal void PlaceArrowOverCounter(Counter counter)
         {
@@ -80,6 +96,17 @@ namespace KitchenChaos.Tutorials
         {
             description.Complete();
             yield return description.FadeOutRoutine();
+        }
+
+        private void FindItems()
+        {
+            Stove = FindObjectOfType<Stove>();
+            Plate = FindObjectOfType<Plate>();
+            DeliveryCounter = FindObjectOfType<DeliveryCounter>();
+
+            MeatCounter = TutorialIngredientCounters.FindCounter(IngredientName.Meat);
+            BreadCounter = TutorialIngredientCounters.FindCounter(IngredientName.Bread);
+            CheeseCounter = TutorialIngredientCounters.FindCounter(IngredientName.Cheese);
         }
 
         private void GoToNextStep() => StartCoroutine(GoToNextStepRoutine());
