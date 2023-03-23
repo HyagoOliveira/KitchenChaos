@@ -27,10 +27,10 @@ namespace KitchenChaos.Tutorials
             manager.MeatCounter.OnItemCollected -= HandleMeatCollected;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(GuiteToPlaceMeatOverStove);
+            CompleteDescriptionAndInvoke(GuideToPlaceMeatOverStove);
         }
 
-        private void GuiteToPlaceMeatOverStove()
+        private void GuideToPlaceMeatOverStove()
         {
             manager.PlaceArrowOverPreparator(manager.Stove);
             manager.SetDescription($"Place the Meat over the Stove using {GetCollectButtonDisplayName()}.");
@@ -38,18 +38,21 @@ namespace KitchenChaos.Tutorials
             manager.Stove.OnItemPlaced += HandleMeatPlacedOverStove;
         }
 
-        private void HandleMeatPlacedOverStove(IItemCollectable _)
+        private void HandleMeatPlacedOverStove(IItemCollectable item)
         {
+            var isRawMeat = item.IsIngredient(IngredientName.Meat, IngredientStatus.Raw);
+            if (!isRawMeat) return;
+
             manager.Stove.OnItemPlaced -= HandleMeatPlacedOverStove;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(GuiteToTurnOnStove);
+            CompleteDescriptionAndInvoke(GuideToUseStove);
         }
 
-        private void GuiteToTurnOnStove()
+        private void GuideToUseStove()
         {
             manager.PlaceArrowOverPreparator(manager.Stove);
-            manager.SetDescription($"Turn on the Stove using {GetInteractWithEnvironmentButtonDisplayName()}.");
+            manager.SetDescription($"Start cooking using {GetInteractWithEnvironmentButtonDisplayName()}.");
 
             manager.Stove.OnPreparationStarted += HandleStovePreparationStarted;
         }
@@ -59,15 +62,6 @@ namespace KitchenChaos.Tutorials
             manager.Stove.OnPreparationStarted -= HandleStovePreparationStarted;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(ShowWaitCooking);
-            manager.Stove.OnPreparationCompleted += HandleStovePreparationCompleted;
-        }
-
-        private void ShowWaitCooking() => manager.SetDescription("Wait until the meat is cooked.");
-
-        private void HandleStovePreparationCompleted()
-        {
-            manager.Stove.OnPreparationCompleted -= HandleStovePreparationCompleted;
             Complete();
         }
     }
