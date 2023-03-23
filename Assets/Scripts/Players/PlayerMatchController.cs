@@ -20,14 +20,14 @@ namespace KitchenChaos.Players
         private void OnEnable()
         {
             matchSettings.CountDown.OnStarted += HandleCountDownStarted;
-            matchSettings.TimeLimit.OnStarted += HandleTimeLimitStarted;
+            matchSettings.CountDown.OnFinished += HandleCountDownFinished;
             matchSettings.TimeLimit.OnFinalSecondsStarted += HandleFinalSecondsStarted;
         }
 
         private void OnDisable()
         {
             matchSettings.CountDown.OnStarted -= HandleCountDownStarted;
-            matchSettings.TimeLimit.OnStarted -= HandleTimeLimitStarted;
+            matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
             matchSettings.TimeLimit.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
         }
 
@@ -38,7 +38,7 @@ namespace KitchenChaos.Players
             fastMovingParticles.SetActive(false);
         }
 
-        private void HandleTimeLimitStarted() => player.Motor.moveSpeed = normalSpeed;
+        private void HandleCountDownFinished() => player.Motor.moveSpeed = normalSpeed;
 
         private void HandleFinalSecondsStarted()
         {
