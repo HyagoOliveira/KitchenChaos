@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using KitchenChaos.Items;
 using KitchenChaos.VisualEffects;
@@ -13,6 +14,12 @@ namespace KitchenChaos.Counters
     {
         [SerializeField] protected ItemHolder holder;
         [SerializeField] protected HighlighterContainer highlightableContainer;
+
+        public event Action<IItemCollectable> OnItemCollectedFromTop
+        {
+            add => holder.OnItemReleased += value;
+            remove => holder.OnItemReleased -= value;
+        }
 
         public IItemCollectable CurrentItem => holder.CurrentItem;
 
