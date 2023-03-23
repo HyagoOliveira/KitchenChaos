@@ -52,16 +52,11 @@ namespace KitchenChaos.Tutorials
             }
 
             FindItems();
+            DisableItems();
         }
 
-        private void Start()
-        {
-            Stove.IsAbleToBurn = false;
-            DeliveryCounter.CanDelivery = false;
-
-            //TODO apagar
-            GoToNextStep();
-        }
+        //TODO apagar
+        private void Start() => GoToNextStep();
 
         internal void PlaceArrowOverCounter(Counter counter)
         {
@@ -78,6 +73,8 @@ namespace KitchenChaos.Tutorials
 
             PlaceArrow(position);
         }
+
+        internal void PlaceArrowOverPlate() => PlaceArrow(Plate.transform.position, 0.5F);
 
         internal void PlaceArrow(Vector3 position, float verticalDistance = 0.2f)
         {
@@ -109,6 +106,12 @@ namespace KitchenChaos.Tutorials
             MeatCounter = TutorialIngredientCounters.FindCounter(IngredientName.Meat);
             BreadCounter = TutorialIngredientCounters.FindCounter(IngredientName.Bread);
             CheeseCounter = TutorialIngredientCounters.FindCounter(IngredientName.Cheese);
+        }
+
+        private void DisableItems()
+        {
+            Plate.IsEnabled = false;
+            DeliveryCounter.IsEnabled = false;
         }
 
         private void GoToNextStep() => StartCoroutine(GoToNextStepRoutine());

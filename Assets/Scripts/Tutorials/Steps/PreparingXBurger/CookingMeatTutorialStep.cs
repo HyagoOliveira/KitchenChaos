@@ -10,7 +10,9 @@ namespace KitchenChaos.Tutorials
 
         internal override void Begin()
         {
+            manager.Stove.IsAbleToBurn = false;
             manager.EnableCheeseBurgerTitle(true);
+
             Invoke(nameof(GuideToMeatCounter), 2F);
         }
 
