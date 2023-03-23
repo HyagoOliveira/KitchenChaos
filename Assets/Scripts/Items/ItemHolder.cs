@@ -17,7 +17,7 @@ namespace KitchenChaos.Items
 
         public IItemCollectable CurrentItem { get; internal set; }
 
-        private void Start() => CheckChildItem();
+        private void Awake() => CheckChildItem();
 
         public void PlaceItem(IItemCollectable item)
         {
