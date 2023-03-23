@@ -13,7 +13,7 @@ namespace KitchenChaos.Counters
 
         public bool IsBurning { get; private set; }
 
-        public bool IsAbleToBurn { get; set; }
+        public bool IsAbleToBurn { get; set; } = true;
 
         private Coroutine burningRoutine;
 
