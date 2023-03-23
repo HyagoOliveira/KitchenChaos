@@ -1,7 +1,7 @@
+using System;
 using UnityEngine;
 using KitchenChaos.Players;
 using System.Collections;
-using System;
 
 namespace KitchenChaos.Tutorials
 {

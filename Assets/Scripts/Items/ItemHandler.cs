@@ -20,6 +20,8 @@ namespace KitchenChaos.Items
             detector = GetComponentInChildren<BoxDetector>();
         }
 
+        public bool IsHoldingPlate() => holder.IsPlate(out Plate _);
+
         public void TryInteractWithItem()
         {
             if (holder.HasItem())
