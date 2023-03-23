@@ -26,9 +26,10 @@ namespace KitchenChaos.Physics
 
         public bool HasHit() => hasHit;
 
-        public bool TryGetHittingComponent<T>(out T component)
+        public bool TryGetHittingComponent<T>(out T component) where T : IEnable
         {
-            if (HasHit()) return currentHit.transform.TryGetComponent(out component);
+            if (HasHit() && currentHit.transform.TryGetComponent(out component))
+                return component.IsEnabled;
 
             component = default;
             return false;
