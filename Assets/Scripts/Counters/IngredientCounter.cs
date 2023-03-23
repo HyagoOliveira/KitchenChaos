@@ -31,6 +31,8 @@ namespace KitchenChaos.Counters
             return true;
         }
 
+        public IngredientName GetIngredientName() => data.Name;
+
         private void PlayOpenAnimation() => animation.Play();
 
         private void UpdateIcon()
