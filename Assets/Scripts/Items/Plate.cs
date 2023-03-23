@@ -13,7 +13,7 @@ namespace KitchenChaos.Items
         [SerializeField] private RecipeSettings recipeSettings;
         [SerializeField] private IngredientIcons icons;
 
-        public event Action<Ingredient> OnIngredientPlaced;
+        public event Action<Ingredient> OnIngredientPlated;
 
         public Stack<Ingredient> Ingredients { get; private set; } = new(4);
 
@@ -55,7 +55,7 @@ namespace KitchenChaos.Items
 
             icons.Add(ingredient.Icon);
 
-            OnIngredientPlaced?.Invoke(ingredient);
+            OnIngredientPlated?.Invoke(ingredient);
         }
     }
 }
