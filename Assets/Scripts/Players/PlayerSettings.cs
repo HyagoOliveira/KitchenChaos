@@ -48,6 +48,8 @@ namespace KitchenChaos.Players
             }
         }
 
+        internal void EnablePlayerSwitch() => canSwitch = true;
+
         internal void DisablePlayerSwitch() => canSwitch = false;
 
         private void FindPlayersInstances()
