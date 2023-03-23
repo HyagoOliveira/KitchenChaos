@@ -3,6 +3,7 @@ using System.Collections;
 using KitchenChaos.UI;
 using KitchenChaos.Players;
 using KitchenChaos.Matches;
+using KitchenChaos.Counters;
 
 namespace KitchenChaos.Tutorials
 {
@@ -14,8 +15,8 @@ namespace KitchenChaos.Tutorials
 
         [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private GameObject arrow;
+        [SerializeField] private GameObject cheeseBurgerStepTitle;
         [SerializeField] private TutorialDescription description;
-        [SerializeField, Min(0f)] private float timeToReadCompleteStep = 1f;
         [SerializeField, Min(0f)] private float timeBetweenSteps = 2f;
         [SerializeField] private AbstractTutorialStep[] steps;
 
@@ -29,6 +30,7 @@ namespace KitchenChaos.Tutorials
             steps = GetComponents<AbstractTutorialStep>();
             description = GetComponentInChildren<TutorialDescription>();
             arrow = transform.Find("TutorialArrow").gameObject;
+            cheeseBurgerStepTitle = transform.Find("CheeseBurgerStepTitle").gameObject;
         }
 
         private void Awake()
@@ -44,15 +46,41 @@ namespace KitchenChaos.Tutorials
         //TODO apagar
         private void Start() => GoToNextStep();
 
-        internal void ShowArrow(Vector3 position)
+        internal void PlaceArrowOverCounter(Counter counter)
         {
-            arrow.transform.position = position;
+            const float height = 1.5F;
+            var position = counter.transform.position + Vector3.up * height;
+
+            PlaceArrow(position);
+        }
+
+        internal void PlaceArrowOverPreparator(AbstractIngredientPreparator preparator)
+        {
+            const float height = 0.5F;
+            var position = preparator.transform.position + Vector3.up * height;
+
+            PlaceArrow(position);
+        }
+
+        internal void PlaceArrow(Vector3 position, float verticalDistance = 0.2f)
+        {
+            arrow.transform.position = position + Vector3.up * verticalDistance;
             arrow.SetActive(true);
         }
 
         internal void HideArrow() => arrow.SetActive(false);
 
         internal void CompleteStep() => StartCoroutine(CompleteStepRoutine());
+
+        internal void EnableCheeseBurgerTitle(bool enabled) => cheeseBurgerStepTitle.SetActive(enabled);
+
+        internal void SetDescription(string text) => description.SetUncompletedText(text);
+
+        internal IEnumerator CompleteDescriptionRoutine()
+        {
+            description.Complete();
+            yield return description.FadeOutRoutine();
+        }
 
         private void GoToNextStep() => StartCoroutine(GoToNextStepRoutine());
 
@@ -64,7 +92,7 @@ namespace KitchenChaos.Tutorials
                 return;
             }
 
-            description.SetUncompletedText(CurrentStep.GetDescription());
+            SetDescription(CurrentStep.GetDescription());
             CurrentStep.Begin();
         }
 
@@ -78,10 +106,7 @@ namespace KitchenChaos.Tutorials
 
         private IEnumerator CompleteStepRoutine()
         {
-            description.Complete();
-
-            yield return new WaitForSeconds(timeToReadCompleteStep);
-            yield return description.FadeOutRoutine();
+            yield return CompleteDescriptionRoutine();
             yield return GoToNextStepRoutine();
         }
 

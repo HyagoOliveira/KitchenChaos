@@ -1,5 +1,7 @@
-using KitchenChaos.Players;
 using UnityEngine;
+using KitchenChaos.Players;
+using System.Collections;
+using System;
 
 namespace KitchenChaos.Tutorials
 {
@@ -17,6 +19,15 @@ namespace KitchenChaos.Tutorials
 
         protected void Complete() => manager.CompleteStep();
 
+        protected void CompleteDescriptionAndInvoke(Action action) =>
+            StartCoroutine(CompleteDescriptionAndInvokeRoutine(action));
+
         protected string SurrounButtonNameWithTag(string button) => $"<color=white>{button}</color>";
+
+        private IEnumerator CompleteDescriptionAndInvokeRoutine(Action action)
+        {
+            yield return manager.CompleteDescriptionRoutine();
+            action?.Invoke();
+        }
     }
 }
