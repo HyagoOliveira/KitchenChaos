@@ -14,6 +14,12 @@ namespace KitchenChaos.Items
         [SerializeField] private CollectableBody collectibleBody;
         [SerializeField] private HighlighterContainer highlighterContainer;
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         protected virtual void Reset()
         {
             collectibleBody = GetComponent<CollectableBody>();

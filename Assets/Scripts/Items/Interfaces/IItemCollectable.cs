@@ -5,7 +5,7 @@ namespace KitchenChaos.Items
     /// <summary>
     /// Interface used on objects able to be a Collectable Item.
     /// </summary>
-    public interface IItemCollectable
+    public interface IItemCollectable : IEnable
     {
         ICollectable GetCollectible();
         IHighlightable GetHighlightable();

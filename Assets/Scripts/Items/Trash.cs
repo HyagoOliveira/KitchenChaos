@@ -16,6 +16,12 @@ namespace KitchenChaos.Counters
         [SerializeField] private Animation animation;
         [SerializeField] private AudioSourceDictionary sourceDictionary;
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         private void Reset()
         {
             animation = GetComponent<Animation>();

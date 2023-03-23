@@ -26,6 +26,12 @@ namespace KitchenChaos.Counters
             remove => holder.OnItemPlaced -= value;
         }
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         public bool IsPreparing { get; private set; }
 
         public bool IsPaused

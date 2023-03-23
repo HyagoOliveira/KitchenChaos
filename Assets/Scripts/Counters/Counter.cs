@@ -16,6 +16,12 @@ namespace KitchenChaos.Counters
 
         public IItemCollectable CurrentItem => holder.CurrentItem;
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         protected virtual void Reset()
         {
             holder = GetComponentInChildren<ItemHolder>();

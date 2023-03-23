@@ -9,6 +9,12 @@ namespace KitchenChaos.Items
         public event Action<IItemCollectable> OnItemReleased;
         public event Action<IItemCollectable> OnItemPlaced;
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         public IItemCollectable CurrentItem { get; internal set; }
 
         private void Start() => CheckChildItem();
@@ -39,7 +45,7 @@ namespace KitchenChaos.Items
 
         public bool TryCollectItem(out IItemCollectable item)
         {
-            if (IsEmpty())
+            if (IsEmpty() || !CurrentItem.IsEnabled)
             {
                 item = null;
                 return false;

@@ -18,6 +18,12 @@ namespace KitchenChaos.Counters
         [SerializeField] private DeliveryCounterCanvas canvas;
         [SerializeField] private HighlighterContainer highlightableContainer;
 
+        public bool IsEnabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
         public bool CanDelivery { get; set; } = true;
 
         private void Reset()
