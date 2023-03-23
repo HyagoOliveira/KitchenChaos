@@ -44,6 +44,8 @@ namespace KitchenChaos.Counters
 
         public virtual bool TryCollectItem(out IItemCollectable item) => holder.TryCollectItem(out item);
 
+        public bool HasPlate() => holder.IsPlate(out Plate _);
+
         public void ReleaseItem() => holder.ReleaseItem();
 
         private void HandleItemReleased(IItemCollectable item) =>
