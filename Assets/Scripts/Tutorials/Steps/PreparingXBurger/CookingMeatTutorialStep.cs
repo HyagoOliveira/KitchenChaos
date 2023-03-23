@@ -21,12 +21,12 @@ namespace KitchenChaos.Tutorials
             manager.PlaceArrowOverCounter(manager.MeatCounter);
             manager.SetDescription($"Collect a Meat using {GetCollectButtonDisplayName()}.");
 
-            manager.MeatCounter.OnItemCollected += HandleMeatCollected;
+            manager.MeatCounter.OnItemCollectedFromInside += HandleMeatCollected;
         }
 
         private void HandleMeatCollected(IItemCollectable _)
         {
-            manager.MeatCounter.OnItemCollected -= HandleMeatCollected;
+            manager.MeatCounter.OnItemCollectedFromInside -= HandleMeatCollected;
 
             manager.HideArrow();
             CompleteDescriptionAndInvoke(GuideToPlaceMeatOverStove);

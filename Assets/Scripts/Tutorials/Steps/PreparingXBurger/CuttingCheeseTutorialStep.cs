@@ -19,12 +19,12 @@ namespace KitchenChaos.Tutorials
             manager.PlaceArrowOverCounter(manager.CheeseCounter);
             manager.SetDescription($"Collect a Cheese using {GetCollectButtonDisplayName()}.");
 
-            manager.CheeseCounter.OnItemCollected += HandleCheeseCollected;
+            manager.CheeseCounter.OnItemCollectedFromInside += HandleCheeseCollected;
         }
 
         private void HandleCheeseCollected(IItemCollectable _)
         {
-            manager.CheeseCounter.OnItemCollected -= HandleCheeseCollected;
+            manager.CheeseCounter.OnItemCollectedFromInside -= HandleCheeseCollected;
 
             manager.HideArrow();
             CompleteDescriptionAndInvoke(GuideToPlaceCheeseOverCuttingTable);

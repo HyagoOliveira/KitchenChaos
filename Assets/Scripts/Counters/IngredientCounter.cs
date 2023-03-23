@@ -12,7 +12,7 @@ namespace KitchenChaos.Counters
         [SerializeField] private SpriteRenderer icon;
         [SerializeField] private IngredientData data;
 
-        public event Action<IItemCollectable> OnItemCollected;
+        public event Action<IItemCollectable> OnItemCollectedFromInside;
 
         protected override void Reset()
         {
@@ -31,7 +31,7 @@ namespace KitchenChaos.Counters
             PlayOpenAnimation();
             item = data.Spawn();
 
-            OnItemCollected?.Invoke(item);
+            OnItemCollectedFromInside?.Invoke(item);
 
             return true;
         }
