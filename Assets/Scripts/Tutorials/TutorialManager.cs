@@ -26,6 +26,7 @@ namespace KitchenChaos.Tutorials
 
         public Stove Stove { get; private set; }
         public Plate Plate { get; private set; }
+        public CuttingBoard CuttingBoard { get; private set; }
         public IngredientCounter MeatCounter { get; private set; }
         public IngredientCounter BreadCounter { get; private set; }
         public IngredientCounter CheeseCounter { get; private set; }
@@ -38,7 +39,7 @@ namespace KitchenChaos.Tutorials
             steps = GetComponents<AbstractTutorialStep>();
             description = GetComponentInChildren<TutorialDescription>();
             arrow = transform.Find("TutorialArrow").gameObject;
-            cheeseBurgerStepTitle = transform.Find("CheeseBurgerStepTitle").gameObject;
+            cheeseBurgerStepTitle = transform.Find("TutorialManagerCanvas/CheeseBurgerStepTitle").gameObject;
         }
 
         private void Awake()
@@ -102,6 +103,7 @@ namespace KitchenChaos.Tutorials
         {
             Stove = FindObjectOfType<Stove>();
             Plate = FindObjectOfType<Plate>();
+            CuttingBoard = FindObjectOfType<CuttingBoard>();
             DeliveryCounter = FindObjectOfType<DeliveryCounter>();
 
             MeatCounter = TutorialIngredientCounters.FindCounter(IngredientName.Meat);
