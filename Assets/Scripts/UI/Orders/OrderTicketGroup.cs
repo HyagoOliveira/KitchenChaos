@@ -8,7 +8,7 @@ namespace KitchenChaos.UI
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
-    public sealed class OrderDisplayer : MonoBehaviour
+    public sealed class OrderTicketGroup : MonoBehaviour
     {
         [SerializeField] private IngredientSettings ingredientSettings;
         [SerializeField] private OrderTicket ticketPrefab;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7114229701319980643}
   - component: {fileID: 8156044188587941663}
   m_Layer: 5
-  m_Name: OrderDisplayer
+  m_Name: OrderTicketGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
