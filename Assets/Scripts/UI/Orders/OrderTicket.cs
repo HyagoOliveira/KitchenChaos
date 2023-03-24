@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using KitchenChaos.Items;
-using KitchenChaos.Recipes;
 using UnityEngine;
 using UnityEngine.UI;
+using KitchenChaos.Orders;
+using KitchenChaos.Recipes;
 
 namespace KitchenChaos.UI
 {
@@ -12,63 +10,49 @@ namespace KitchenChaos.UI
     [RequireComponent(typeof(RectTransform))]
     public sealed class OrderTicket : MonoBehaviour
     {
-        [SerializeField] private Slider time;
+        [SerializeField] private Slider waitingTimer;
         [SerializeField] private Animation animation;
         [SerializeField] private IngredientIcon iconPrefab;
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private HorizontalLayoutGroup iconsGroup;
 
-        public event Action<OrderTicket> OnFailed;
-        public event Action<OrderTicket> OnDestroyed;
-        public event Action<OrderTicket> OnDelivered;
-
-        public float CurrentTime
+        public float WaitingTime
         {
-            get => time.value;
-            set => time.value = value;
+            get => waitingTimer.value;
+            set => waitingTimer.value = value;
         }
-
-        public int Tip => recipe.tip;
-
-        private RecipeData recipe;
-        private Coroutine countDownRoutine;
 
         private void Reset()
         {
             animation = GetComponent<Animation>();
-            time = GetComponentInChildren<Slider>();
+            waitingTimer = GetComponentInChildren<Slider>();
             rectTransform = GetComponent<RectTransform>();
             iconsGroup = GetComponentInChildren<HorizontalLayoutGroup>();
         }
 
-        public void SetRecipe(RecipeData recipe)
+        internal void Initialize(Order order)
         {
-            this.recipe = recipe;
-            SetIcons(recipe.PlatedIngredients);
-            SetWidth(recipe.PlatedIngredients.Length);
+            SetIcons(order.PlatedIngredients);
+            SetWidth(order.PlatedIngredients.Length);
+            SetInitialWaitingTime(order.WaitingTime);
+
+            order.OnFailed += HandleFailed;
+            order.OnDelivered += HandleDelivered;
+            order.OnWaitingTimeUpdated += HandleWaitingTimeUpdated;
         }
 
-        public void SetInitialTime(float initialTime)
+        internal void Dispose(Order order)
         {
-            time.minValue = 0f;
-            time.maxValue = initialTime;
-            CurrentTime = initialTime;
+            order.OnFailed -= HandleFailed;
+            order.OnDelivered -= HandleDelivered;
+            order.OnWaitingTimeUpdated -= HandleWaitingTimeUpdated;
         }
 
-        public void StartCountDown() => countDownRoutine = StartCoroutine(CountDownRotine());
-        public void CancelCountDown() => StopCoroutine(countDownRoutine);
-
-        public bool TryDelivery(Plate plate)
+        private void SetInitialWaitingTime(float initialWaitingTime)
         {
-            var hasAllIngredients = recipe.ContainsOnly(plate.Ingredients);
-            if (hasAllIngredients) Delivery();
-            return hasAllIngredients;
-        }
-
-        private void Delivery()
-        {
-            CancelCountDown();
-            StartCoroutine(DeliveryRotine());
+            waitingTimer.minValue = 0f;
+            waitingTimer.maxValue = initialWaitingTime;
+            WaitingTime = initialWaitingTime;
         }
 
         private void SetWidth(int ingredientsCount)
@@ -97,39 +81,11 @@ namespace KitchenChaos.UI
             instance.Icon = icon;
         }
 
-        public IEnumerator CountDownRotine()
-        {
-            while (CurrentTime > 0F)
-            {
-                yield return null;
-                CurrentTime -= Time.deltaTime;
-            }
+        private void HandleFailed() => PlayFailAnimation();
+        private void HandleDelivered() => PlayDeliveredAnimation();
+        private void HandleWaitingTimeUpdated(float time) => WaitingTime = time;
 
-            CurrentTime = 0F;
-            yield return FailedRotine();
-        }
-
-        public IEnumerator FailedRotine()
-        {
-            OnFailed?.Invoke(this);
-
-            yield return PlayFailAnimationAndWait();
-
-            OnDestroyed?.Invoke(this);
-            Destroy(gameObject);
-        }
-
-        public IEnumerator DeliveryRotine()
-        {
-            OnDelivered?.Invoke(this);
-
-            yield return PlayDeliveryAnimationAndWait();
-            Destroy(gameObject);
-        }
-
-        private IEnumerator PlayFailAnimationAndWait() => animation.PlayAndWait("Order@Fail");
-        private IEnumerator PlayDeliveryAnimationAndWait() => animation.PlayAndWait("Order@Delivered");
-
-        private void HandleTimeUpdated(float time) => CurrentTime = time;
+        public void PlayFailAnimation() => animation.Play("OrderTicket@Failed");
+        public void PlayDeliveredAnimation() => animation.Play("OrderTicket@Delivered");
     }
 }

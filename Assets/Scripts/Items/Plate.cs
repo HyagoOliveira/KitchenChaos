@@ -51,7 +51,7 @@ namespace KitchenChaos.Items
             ingredient.GetCollectible().PickUp(transform);
 
             Ingredients.Push(ingredient);
-            recipeSettings.Plate(Ingredients);
+            recipeSettings.Plate(Ingredients.ToArray());
 
             icons.Add(ingredient.Icon);
 

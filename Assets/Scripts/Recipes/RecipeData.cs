@@ -23,7 +23,7 @@ namespace KitchenChaos.Recipes
             }
         }
 
-        public float GetPreparationTime(IngredientSettings settings, float additionalTimePerIngredient)
+        public float GetWaitingTime(IngredientSettings settings, float additionalTimePerIngredient)
         {
             var time = PlatedIngredients.Length * additionalTimePerIngredient;
             foreach (var ingredient in PlatedIngredients)
@@ -41,13 +41,13 @@ namespace KitchenChaos.Recipes
             platedIngredients.ContainsKey(ingredientData) &&
             platedIngredients[ingredientData].Equals(ingredientData);
 
-        internal bool ContainsOnly(Stack<Ingredient> ingredients)
+        internal bool ContainsOnly(Ingredient[] ingredients)
         {
-            var hasSameNumerOfIngredients = ingredients.Count == platedIngredients.Count;
+            var hasSameNumerOfIngredients = ingredients.Length == platedIngredients.Count;
             return hasSameNumerOfIngredients && ContainsAll(ingredients);
         }
 
-        internal bool ContainsAll(Stack<Ingredient> ingredients)
+        internal bool ContainsAll(Ingredient[] ingredients)
         {
             foreach (var ingredient in ingredients)
             {

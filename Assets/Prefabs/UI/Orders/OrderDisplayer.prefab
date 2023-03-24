@@ -158,7 +158,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -210,9 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c2895634db3f54d87d58e5f9596cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 33ab5a44b9aa4dd4195d45d7a6e16fd0, type: 2}
-  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50, type: 2}
+  ticketPrefab: {fileID: 3244214093099194501, guid: 6e0035719ff21d54d9de7ae0bf0dc5ad,
+    type: 3}
   audioSource: {fileID: 4423334159332618684}
   failedSource: {fileID: 2088020445464431344}
   deliveredSource: {fileID: 7114229701319980643}

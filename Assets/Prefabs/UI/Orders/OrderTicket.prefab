@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1574503808175489235}
   - component: {fileID: 3244214093099194501}
   m_Layer: 5
-  m_Name: Order
+  m_Name: OrderTicket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   - {fileID: 1429275638375729319}
   - {fileID: 1429275637928301695}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -106,10 +106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1429275637892293280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5765039e4196043b72f0a9e91534ba, type: 3}
+  m_Script: {fileID: 11500000, guid: d0983fc9006198944bd8fb5bf161cfb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: {fileID: 1429275637928301694}
+  waitingTimer: {fileID: 1429275637928301694}
   animation: {fileID: 1574503808175489235}
   iconPrefab: {fileID: 5931596284899503024, guid: 334583d422a8d9f44a9607975b55c7a3,
     type: 3}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 4230671316497501602}
   - component: {fileID: 1429275637928301694}
   m_Layer: 5
-  m_Name: Time
+  m_Name: WaitingTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ RectTransform:
   m_Children:
   - {fileID: 1429275638745114505}
   m_Father: {fileID: 1429275637892293311}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -274,7 +274,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1429275637892293311}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -338,7 +338,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1429275637928301695}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

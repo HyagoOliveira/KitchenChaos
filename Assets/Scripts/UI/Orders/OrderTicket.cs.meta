@@ -3,7 +3,13 @@ guid: d0983fc9006198944bd8fb5bf161cfb2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - waitingTimer: {instanceID: 0}
+  - animation: {instanceID: 0}
+  - iconPrefab: {fileID: 5931596284899503024, guid: 334583d422a8d9f44a9607975b55c7a3,
+      type: 3}
+  - rectTransform: {instanceID: 0}
+  - iconsGroup: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

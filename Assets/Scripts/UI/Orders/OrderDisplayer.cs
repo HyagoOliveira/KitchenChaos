@@ -1,63 +1,62 @@
 using UnityEngine;
 using ActionCode.Audio;
 using KitchenChaos.Items;
-using KitchenChaos.Matches;
+using KitchenChaos.Orders;
+using System.Collections.Generic;
 
 namespace KitchenChaos.UI
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
-    [DefaultExecutionOrder(Managers.EXECUTION_ORDER)]
     public sealed class OrderDisplayer : MonoBehaviour
     {
-        [SerializeField] private OrderSettings settings;
-        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private IngredientSettings ingredientSettings;
+        [SerializeField] private OrderTicket ticketPrefab;
+
+        [Header("Audio")]
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioSourceDictionary failedSource;
         [SerializeField] private AudioSourceDictionary deliveredSource;
 
+        private readonly Dictionary<Order, OrderTicket> tickets = new(10);
+
         private void Reset() => audioSource = GetComponent<AudioSource>();
-        private void Awake() => settings.Initialize(this);
 
         private void OnEnable()
         {
-            settings.OnOrderFailed += HandleOrderFailed;
-            settings.OnOrderCreated += HandleOrderCreated;
-            settings.OnOrderDelivered += HandleOrderDelivered;
-
-            matchSettings.TimeLimit.OnFinished += HandleMatchFinished;
-            matchSettings.CountDown.OnFinished += HandleCountDownFinished;
+            OrderManager.Instance.Settings.OnOrderCreated += HandleOrderCreated;
+            OrderManager.Instance.Settings.OnOrderRemoved += HandleOrderRemoved;
+            OrderManager.Instance.Settings.OnOrderDelivered += HandleOrderDelivered;
         }
 
         private void OnDisable()
         {
-            settings.OnOrderFailed -= HandleOrderFailed;
-            settings.OnOrderCreated -= HandleOrderCreated;
-            settings.OnOrderDelivered -= HandleOrderDelivered;
-
-            matchSettings.TimeLimit.OnFinished -= HandleMatchFinished;
-            matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
+            OrderManager.Instance.Settings.OnOrderCreated -= HandleOrderCreated;
+            OrderManager.Instance.Settings.OnOrderRemoved -= HandleOrderRemoved;
+            OrderManager.Instance.Settings.OnOrderDelivered -= HandleOrderDelivered;
         }
 
-        public void StartOrderingTutorial(OrderSettings settings)
+        private void HandleOrderCreated(Order order)
         {
-            this.settings = settings;
+            var ticket = Instantiate(ticketPrefab, transform);
 
-            gameObject.SetActive(true);
+            ticket.Initialize(order);
 
-            this.settings.StartOrdering();
+            PlayCreatedSound();
+            tickets.Add(order, ticket);
         }
 
-        private void HandleOrderFailed(Order _) => PlayFailedSound();
-        private void HandleOrderCreated(Order _) => PlayCreatedSound();
-        private void HandleOrderDelivered(Order _) => PlayDeliveredSound();
+        private void HandleOrderRemoved(Order order)
+        {
+            tickets[order].Dispose(order);
+            Destroy(tickets[order].gameObject);
+            tickets.Remove(order);
+        }
 
-        private void HandleMatchFinished() => settings.StopOrdering();
-        private void HandleCountDownFinished() => settings.StartOrdering();
+        private void HandleOrderDelivered(Order order) => PlayDeliveredSound();
 
         private void PlayCreatedSound() => audioSource.Play();
-        private void PlayFailedSound() => failedSource.PlayRandom();
+        private void PlayRemovedSound() => failedSource.PlayRandom();
         private void PlayDeliveredSound() => deliveredSource.PlayRandom();
     }
 }

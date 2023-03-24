@@ -1,6 +1,5 @@
 using UnityEngine;
 using KitchenChaos.Items;
-using System.Collections.Generic;
 
 namespace KitchenChaos.Recipes
 {
@@ -28,7 +27,7 @@ namespace KitchenChaos.Recipes
             return false;
         }
 
-        internal void Plate(Stack<Ingredient> ingredients)
+        internal void Plate(Ingredient[] ingredients)
         {
             var hasRecipe = TryGetClosestRecipe(ingredients, out RecipeData recipe);
             if (!hasRecipe)
@@ -43,13 +42,13 @@ namespace KitchenChaos.Recipes
             }
         }
 
-        private bool TryGetClosestRecipe(Stack<Ingredient> ingredients, out RecipeData recipe)
+        private bool TryGetClosestRecipe(Ingredient[] ingredients, out RecipeData recipe)
         {
             recipe = GetClosestRecipe(ingredients);
             return recipe != null;
         }
 
-        private RecipeData GetClosestRecipe(Stack<Ingredient> ingredients)
+        private RecipeData GetClosestRecipe(Ingredient[] ingredients)
         {
             foreach (var recipe in recipes)
             {
