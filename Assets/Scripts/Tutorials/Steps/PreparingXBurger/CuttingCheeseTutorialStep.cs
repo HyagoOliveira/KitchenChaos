@@ -75,5 +75,11 @@ namespace KitchenChaos.Tutorials
             manager.HideArrow();
             Complete();
         }
+
+        protected override void Complete()
+        {
+            manager.CuttingBoard.Counter.IsEnabled = false;
+            base.Complete();
+        }
     }
 }

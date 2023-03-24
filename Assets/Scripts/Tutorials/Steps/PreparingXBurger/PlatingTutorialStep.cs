@@ -65,8 +65,6 @@ namespace KitchenChaos.Tutorials
             manager.Plate.OnIngredientPlated -= HandleCheesePlacedOverPlate;
 
             manager.HideArrow();
-            manager.PlayerSettings.EnablePlayerSwitch();
-
             CompleteDescriptionAndInvoke(CheckWhetherPlayerIsHoldingPlate);
         }
 
@@ -131,6 +129,7 @@ namespace KitchenChaos.Tutorials
         private void GuideToDeliveryCounter()
         {
             manager.DeliveryCounter.IsEnabled = true;
+            manager.PlayerSettings.EnablePlayerSwitch();
 
             manager.PlaceArrowOverDeliveryCounter();
             manager.SetDescription("Delivery your order!");
