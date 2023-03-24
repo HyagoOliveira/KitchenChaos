@@ -5,43 +5,48 @@ using KitchenChaos.Recipes;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace KitchenChaos.UI
+namespace KitchenChaos.Orders
 {
     [CreateAssetMenu(fileName = "OrderSettings", menuName = EditorPaths.SO + "Order Settings", order = 110)]
     public sealed class OrderSettings : ScriptableObject
     {
         [SerializeField] private RecipeSettings recipeSettings;
         [SerializeField] private IngredientSettings ingredientSettings;
-        [SerializeField] private Order orderPrefab;
+
         [SerializeField, Min(1)] private int maxOrders = 3;
         [SerializeField, Min(0F)] private float additionalTimePerIngredient = 10F;
         [SerializeField, Min(0F)] private float timeByNewOrder = 15F;
+        [SerializeField, Min(0F)] private float timeToRemoveAfterFail = 1F;
+        [SerializeField, Min(0F)] private float timeToRemoveAfterDelivery = 1F;
         [SerializeField, Min(0F)] private float timeToReturnPlate = 4F;
 
         public event Action OnPlateReturned;
         public event Action<Order> OnOrderFailed;
         public event Action<Order> OnOrderCreated;
+        public event Action<Order> OnOrderRemoved;
         public event Action<Order> OnOrderDelivered;
 
         public int TotalOrders => orders.Count;
 
         private List<Order> orders;
-        private OrderDisplayer manager;
         private Coroutine ordering;
+        private OrderManager manager;
 
-        internal void Initialize(OrderDisplayer manager)
+        internal void Initialize(OrderManager manager)
         {
+            if (orders != null) CancelAll();
+
             orders = new(maxOrders);
             this.manager = manager;
         }
 
-        public bool TryDelivery(Plate plate, out int tip)
+        public bool TryDelivery(Ingredient[] ingredients, out int tip)
         {
             manager.StartCoroutine(ReturnPlateRoutine());
 
             foreach (var order in orders)
             {
-                if (order.TryDelivery(plate))
+                if (order.TryDelivery(ingredients))
                 {
                     tip = order.Tip;
                     return true;
@@ -52,72 +57,68 @@ namespace KitchenChaos.UI
             return false;
         }
 
-        public void CreateRandom() => Create(recipeSettings.GetRandom());
-
         public void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
 
         public void StopOrdering()
         {
-            manager.StopCoroutine(ordering);
-            CancelOrders();
+            if (ordering != null) manager.StopCoroutine(ordering);
+            CancelAll();
         }
 
-        internal void Create(RecipeData recipe)
+        internal void CreateRandom() => Create(recipeSettings.GetRandom());
+
+        private void Create(RecipeData recipe)
         {
-            var order = Instantiate(orderPrefab, manager.transform);
-            var time = recipe.GetPreparationTime(ingredientSettings, additionalTimePerIngredient);
+            var waitingTime = recipe.GetWaitingTime(
+                ingredientSettings,
+                additionalTimePerIngredient
+            );
+            var order = new Order(recipe, waitingTime);
 
-            order.SetRecipe(recipe);
-            order.SetInitialTime(time);
-            order.StartCountDown();
+            Create(order);
+        }
 
-            AddOrder(order);
+        private void Create(Order order)
+        {
+            order.OnFailed += () => Fail(order);
+            order.OnDelivered += () => Delivery(order);
+
+            order.StartCountDownWaitingTime();
+
+            orders.Add(order);
             OnOrderCreated?.Invoke(order);
         }
 
-        private void AddOrder(Order order)
+        private void Remove(Order order)
         {
-            orders.Add(order);
-            BindListeners(order);
-        }
+            order.OnFailed -= () => Fail(order);
+            order.OnDelivered -= () => Delivery(order);
 
-        private void RemoveOrder(Order order)
-        {
             orders.Remove(order);
-            UnBindListeners(order);
+            OnOrderRemoved?.Invoke(order);
         }
 
-        private void BindListeners(Order order)
+        private void Fail(Order order)
         {
-            order.OnFailed += HandleOrderFailed;
-            order.OnDestroyed += HandleOrderDestroyed;
-            order.OnDelivered += HandleOrderDelivered;
+            OnOrderFailed?.Invoke(order);
+            manager.StartCoroutine(RemoveRoutine(order, timeToRemoveAfterFail));
         }
 
-        private void UnBindListeners(Order order)
+        private void Delivery(Order order)
         {
-            order.OnFailed -= HandleOrderFailed;
-            order.OnDestroyed -= HandleOrderDestroyed;
-            order.OnDelivered -= HandleOrderDelivered;
+            OnOrderDelivered?.Invoke(order);
+            manager.StartCoroutine(RemoveRoutine(order, timeToRemoveAfterDelivery));
         }
 
-        private void CancelOrders()
+        private void CancelAll()
         {
             foreach (var order in orders)
             {
-                order.CancelCountDown();
+                order.CancelCountDownWaitingTime();
             }
         }
 
-        private void HandleOrderFailed(Order order) => OnOrderFailed?.Invoke(order);
-
-        private void HandleOrderDestroyed(Order order) => RemoveOrder(order);
-
-        private void HandleOrderDelivered(Order order)
-        {
-            OnOrderDelivered?.Invoke(order);
-            RemoveOrder(order);
-        }
+        private bool CanCreateNewOrders() => TotalOrders < maxOrders;
 
         private IEnumerator OrderingRoutine()
         {
@@ -132,12 +133,16 @@ namespace KitchenChaos.UI
             }
         }
 
+        private IEnumerator RemoveRoutine(Order order, float time)
+        {
+            yield return new WaitForSeconds(time);
+            Remove(order);
+        }
+
         private IEnumerator ReturnPlateRoutine()
         {
             yield return new WaitForSeconds(timeToReturnPlate);
             OnPlateReturned?.Invoke();
         }
-
-        private bool CanCreateNewOrders() => TotalOrders < maxOrders;
     }
 }
