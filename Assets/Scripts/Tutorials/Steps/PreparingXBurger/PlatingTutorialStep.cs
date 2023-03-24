@@ -16,12 +16,11 @@ namespace KitchenChaos.Tutorials
         private bool isMeatPlated;
         private bool isCheesePlated;
 
-        private void Start() => FindPlateCounter();
-
         internal override string GetDescription() => "Plating Ingredients";
 
         internal override void Begin()
         {
+            FindPlateCounter();
             manager.EnableCheeseBurgerTitle(true);
             Invoke(nameof(GuideToBreadCounter), 2F);
         }

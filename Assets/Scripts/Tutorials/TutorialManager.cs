@@ -50,18 +50,16 @@ namespace KitchenChaos.Tutorials
 
         private void Awake()
         {
-            matchSettings.IsAllowToStartTimeLimit = false;
-
-            foreach (var step in steps)
-            {
-                step.Initialize(this);
-            }
-
             FindItems();
             DisableItems();
             // Disabling all counter so Player can only
             // interact with the current tutorial Counter.
             EnableCounters(false);
+
+            foreach (var step in steps)
+            {
+                step.Initialize(this);
+            }
         }
 
         private void OnEnable() => matchSettings.CountDown.OnFinished += HandleCountDownFinished;
@@ -145,6 +143,7 @@ namespace KitchenChaos.Tutorials
         {
             Plate.IsEnabled = false;
             DeliveryCounter.IsEnabled = false;
+            matchSettings.IsAllowToStartTimeLimit = false;
         }
 
         private void GoToNextStep() => StartCoroutine(GoToNextStepRoutine());
