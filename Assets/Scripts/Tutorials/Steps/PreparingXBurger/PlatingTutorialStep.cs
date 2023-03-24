@@ -27,6 +27,7 @@ namespace KitchenChaos.Tutorials
 
         private void GuideToBreadCounter()
         {
+            manager.BreadCounter.IsEnabled = true;
             manager.PlaceArrowOverCounter(manager.BreadCounter);
             manager.SetDescription($"Collect a Bread using {GetCollectButtonDisplayName()}.");
 
@@ -39,11 +40,12 @@ namespace KitchenChaos.Tutorials
 
             // Disabling Player Switch so the other Player cannot take the Plate.
             manager.PlayerSettings.DisablePlayerSwitch();
-
-            plateCounter.IsEnabled = true;
+            manager.BreadCounter.IsEnabled = false;
 
             manager.HideArrow();
             manager.Plate.IsEnabled = true;
+            plateCounter.IsEnabled = true;
+
             CompleteDescriptionAndInvoke(GuideToPlaceBreadOverPlate);
         }
 
@@ -93,6 +95,9 @@ namespace KitchenChaos.Tutorials
 
         private void GuideToPlateRemainIngredients()
         {
+            manager.Stove.Counter.IsEnabled = true;
+            manager.CuttingBoard.Counter.IsEnabled = true;
+
             manager.PlaceArrowOverPreparator(manager.Stove, stoveArrowIndex);
             manager.PlaceArrowOverPreparator(manager.CuttingBoard, cuttingBoardArrowIndex);
 
@@ -105,12 +110,14 @@ namespace KitchenChaos.Tutorials
             if (ingredient.IsIngredient(IngredientName.Meat, IngredientStatus.Ready))
             {
                 manager.HideArrow(stoveArrowIndex);
+                manager.Stove.Counter.IsEnabled = false;
                 isMeatPlated = true;
             }
 
             if (ingredient.IsIngredient(IngredientName.Cheese, IngredientStatus.Ready))
             {
                 manager.HideArrow(cuttingBoardArrowIndex);
+                manager.CuttingBoard.Counter.IsEnabled = false;
                 isCheesePlated = true;
             }
 
