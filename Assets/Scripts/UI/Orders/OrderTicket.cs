@@ -10,7 +10,7 @@ namespace KitchenChaos.UI
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Animation))]
     [RequireComponent(typeof(RectTransform))]
-    public sealed class Order : MonoBehaviour
+    public sealed class OrderTicket : MonoBehaviour
     {
         [SerializeField] private Slider time;
         [SerializeField] private Animation animation;
@@ -18,9 +18,9 @@ namespace KitchenChaos.UI
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private HorizontalLayoutGroup iconsGroup;
 
-        public event Action<Order> OnFailed;
-        public event Action<Order> OnDestroyed;
-        public event Action<Order> OnDelivered;
+        public event Action<OrderTicket> OnFailed;
+        public event Action<OrderTicket> OnDestroyed;
+        public event Action<OrderTicket> OnDelivered;
 
         public float CurrentTime
         {

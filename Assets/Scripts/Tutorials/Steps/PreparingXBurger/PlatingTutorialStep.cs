@@ -139,7 +139,7 @@ namespace KitchenChaos.Tutorials
             orderSettings.OnOrderDelivered += HandleOrderDelivered;
         }
 
-        private void HandleOrderDelivered(Order _)
+        private void HandleOrderDelivered(OrderTicket _)
         {
             orderSettings.OnOrderDelivered -= HandleOrderDelivered;
 
