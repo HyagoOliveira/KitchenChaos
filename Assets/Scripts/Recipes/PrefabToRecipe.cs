@@ -4,8 +4,8 @@ using KitchenChaos.Items;
 namespace KitchenChaos.Recipes
 {
     /// <summary>
-    /// Editor component to setting <see cref="RecipeData.PlatedIngredients"/>
-    /// based on the Ingredients children.
+    /// Editor component utility to transfer all enabled <see cref="Ingredient"/> 
+    /// GameObjects children into <see cref="settings"/>.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class PrefabToRecipe : MonoBehaviour
@@ -13,8 +13,8 @@ namespace KitchenChaos.Recipes
         public RecipeData recipe;
         public IngredientSettings settings;
 
-        [ContextMenu("Set Recipe Ingredients")]
-        public void SetRecipeIngredients()
+        [ContextMenu("Transfer Ingredients to Recipe")]
+        public void TransferIngredientsToRecipe()
         {
             var ingredients = GetComponentsInChildren<Ingredient>();
             var platedIngredients = new PlatedIngredient[ingredients.Length];
@@ -36,6 +36,7 @@ namespace KitchenChaos.Recipes
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(recipe);
 #endif
+            print("Ingredients were transfered to Recipe.");
         }
     }
 }
