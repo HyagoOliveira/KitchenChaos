@@ -17,7 +17,7 @@ namespace KitchenChaos.Tutorials
         [SerializeField] private MatchSettings matchSettings;
         [SerializeField] private GameObject cheeseBurgerStepTitle;
         [SerializeField] private TutorialDescription description;
-        [SerializeField, Min(0f)] private float timeBetweenSteps = 2f;
+        [SerializeField, Min(0f)] private float timeBetweenSteps = 0.4f;
         [SerializeField] private GameObject[] arrows;
         [SerializeField] private AbstractTutorialStep[] steps;
 
@@ -60,8 +60,8 @@ namespace KitchenChaos.Tutorials
             DisableItems();
         }
 
-        //TODO apagar
-        private void Start() => GoToNextStep();
+        private void OnEnable() => matchSettings.CountDown.OnFinished += HandleCountDownFinished;
+        private void OnDisable() => matchSettings.CountDown.OnFinished -= HandleCountDownFinished;
 
         internal void PlaceArrowOverCounter(Counter counter, int index = 0)
         {
@@ -154,6 +154,8 @@ namespace KitchenChaos.Tutorials
             print("Tutorial is completed");
             Destroy(gameObject);
         }
+
+        private void HandleCountDownFinished() => GoToNextStep();
 
         private IEnumerator CompleteStepRoutine()
         {

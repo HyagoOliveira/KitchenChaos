@@ -60,7 +60,7 @@ MonoBehaviour:
   matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   cheeseBurgerStepTitle: {fileID: 283954101577443292}
   description: {fileID: 8518685786180000519}
-  timeBetweenSteps: 2
+  timeBetweenSteps: 0.4
   arrows:
   - {fileID: 5029279006663698284}
   - {fileID: 2030397724004662194}
@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c77854300f1e9647b94f7edaf84698a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderSettings: {fileID: 11400000, guid: 6b182537e6a82ba4b8ea5cbb1dec82df, type: 2}
   timeToRead: 3
 --- !u!114 &5040015098308515784
 MonoBehaviour:
@@ -146,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4179625888eef234dafeed4405403642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderSettings: {fileID: 11400000, guid: 6b182537e6a82ba4b8ea5cbb1dec82df, type: 2}
 --- !u!1001 &3067213626838195254
 PrefabInstance:
   m_ObjectHideFlags: 0
