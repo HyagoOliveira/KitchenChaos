@@ -15,7 +15,7 @@ namespace KitchenChaos.Serialization
         public event Action OnSaveFinished;
         public event Action OnLoadFinished;
 
-        public GameData Data { get; set; }
+        public static GameData Data { get; private set; }
 
         private const string saveFileName = nameof(GameData);
 
