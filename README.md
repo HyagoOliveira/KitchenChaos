@@ -4,7 +4,9 @@
 
 This game is a study case for the game Overcooked! 2.
 
-All art assets like Textures, models, audio clips etc where created by the indie game maker **Code Monkey** for this [Free Complete Unity Course)](https://youtu.be/AmGSEH7QcDg).
+All art assets like Textures, models, audio clips etc where created by the indie game maker **Code Monkey** for this [Free Complete Unity Course)](https://youtu.be/AmGSEH7QcDg). 
+
+However, the game structure and the source-code were created by me and is very different from the course.
 
 
 ## How To Play
