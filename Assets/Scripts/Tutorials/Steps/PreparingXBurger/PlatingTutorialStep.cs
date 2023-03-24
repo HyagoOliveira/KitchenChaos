@@ -1,15 +1,13 @@
 using UnityEngine;
-using KitchenChaos.UI;
 using KitchenChaos.Items;
 using KitchenChaos.Counters;
+using KitchenChaos.Orders;
 
 namespace KitchenChaos.Tutorials
 {
     [DisallowMultipleComponent]
     public sealed class PlatingTutorialStep : AbstractTutorialStep
     {
-        [SerializeField] private OrderSettings orderSettings;
-
         private Counter[] counters;
         private Counter plateCounter;
 
@@ -136,12 +134,12 @@ namespace KitchenChaos.Tutorials
             manager.PlaceArrowOverDeliveryCounter();
             manager.SetDescription("Delivery your order!");
 
-            orderSettings.OnOrderDelivered += HandleOrderDelivered;
+            OrderManager.Instance.Settings.OnOrderDelivered += HandleOrderDelivered;
         }
 
-        private void HandleOrderDelivered(OrderTicket _)
+        private void HandleOrderDelivered(Order _)
         {
-            orderSettings.OnOrderDelivered -= HandleOrderDelivered;
+            OrderManager.Instance.Settings.OnOrderDelivered -= HandleOrderDelivered;
 
             manager.HideArrow();
             Complete();

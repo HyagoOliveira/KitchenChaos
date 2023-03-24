@@ -1,5 +1,5 @@
 using UnityEngine;
-using KitchenChaos.UI;
+using KitchenChaos.Orders;
 using System.Collections.Generic;
 
 namespace KitchenChaos.Items
@@ -8,7 +8,6 @@ namespace KitchenChaos.Items
     [RequireComponent(typeof(ItemHolder))]
     public sealed class ItemHolderStack : MonoBehaviour
     {
-        [SerializeField] private OrderSettings orderSettings;
         [SerializeField] private Plate platePrefab;
         [SerializeField] private ItemHolder holder;
 
@@ -23,7 +22,7 @@ namespace KitchenChaos.Items
             holder.OnItemPlaced += HandleItemPlaced;
             holder.OnItemReleased += HandleItemReleased;
 
-            orderSettings.OnPlateReturned += HandlePlateReturned;
+            OrderManager.Instance.Settings.OnPlateReturned += HandlePlateReturned;
         }
 
         private void OnDisable()
@@ -31,7 +30,7 @@ namespace KitchenChaos.Items
             holder.OnItemPlaced -= HandleItemPlaced;
             holder.OnItemReleased -= HandleItemReleased;
 
-            orderSettings.OnPlateReturned -= HandlePlateReturned;
+            OrderManager.Instance.Settings.OnPlateReturned -= HandlePlateReturned;
         }
 
         private void HandleItemPlaced(IItemCollectable item)

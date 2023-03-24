@@ -3,6 +3,7 @@ using KitchenChaos.UI;
 using KitchenChaos.Items;
 using KitchenChaos.Score;
 using KitchenChaos.VisualEffects;
+using KitchenChaos.Orders;
 
 namespace KitchenChaos.Counters
 {
@@ -13,7 +14,6 @@ namespace KitchenChaos.Counters
     [RequireComponent(typeof(HighlighterContainer))]
     public sealed class DeliveryCounter : MonoBehaviour, IItemTransfer
     {
-        [SerializeField] private OrderSettings orderSettings;
         [SerializeField] private ScoreSettings scoreSettings;
         [SerializeField] private DeliveryCounterCanvas canvas;
         [SerializeField] private HighlighterContainer highlightableContainer;
@@ -42,7 +42,8 @@ namespace KitchenChaos.Counters
             }
 
             fromHolder.ReleaseItem();
-            var wasDelivered = orderSettings.TryDelivery(plate, out int tip);
+            var ingredients = plate.Ingredients.ToArray();
+            var wasDelivered = OrderManager.Instance.Settings.TryDelivery(ingredients, out int tip);
 
             Destroy(plate.gameObject);
 

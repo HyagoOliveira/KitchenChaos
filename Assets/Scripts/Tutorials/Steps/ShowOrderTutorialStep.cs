@@ -1,12 +1,12 @@
 using UnityEngine;
 using KitchenChaos.UI;
+using KitchenChaos.Orders;
 
 namespace KitchenChaos.Tutorials
 {
     [DisallowMultipleComponent]
     public sealed class ShowOrderTutorialStep : AbstractTutorialStep
     {
-        [SerializeField] private OrderSettings orderSettings;
         [SerializeField, Min(0f)] private float timeToRead = 3F;
 
         private OrderDisplayer orderManager;
@@ -17,7 +17,7 @@ namespace KitchenChaos.Tutorials
 
         internal override void Begin()
         {
-            orderManager.StartOrderingTutorial(orderSettings);
+            OrderManager.Instance.Settings.StartOrdering();
             Invoke(nameof(Complete), timeToRead);
         }
     }
