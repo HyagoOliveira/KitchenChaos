@@ -24,7 +24,8 @@ namespace KitchenChaos.VisualEffects
 
         private void EnableHighlight(bool enabled)
         {
-            if (renderer = null) return;
+            if (renderer == null) return;
+
             var value = enabled ? 1F : 0F;
             renderer.material.SetFloat(highlightId, value);
         }
