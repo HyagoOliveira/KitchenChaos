@@ -1,0 +1,23 @@
+# Kitchen Chaos
+
+## Summary
+
+This game is a study case for the game Overcooked! 2.
+
+All art assets like Textures, models, audio clips etc where created by the indie game maker **Code Monkey** for this [Free Complete Unity Course)](https://youtu.be/AmGSEH7QcDg).
+
+
+## How To Play
+
+You must prepare, cook and serve up some tasty orders before time ends. Your score will increase according in how quickly you deliver orders.
+
+Only single play is supported but you can switch between chefs to improve the kitchen dynamics.
+
+[Play using your browser right now](https://nostgames.itch.io/kitchen-chaos)!
+
+## Controls
+
+- **Tab** - Switch between Chefs.
+- **AWSD** or **Arrow Keys** - Movement.
+- **Q** - Interact with Items (Cutting Table, Stove Table) 
+- **E** - Interact with Plate and Ingredients (Tomato, Cheese, Bread etc)
