@@ -77,7 +77,7 @@ namespace KitchenChaos.Tutorials
 
         internal void PlaceArrowOverDeliveryCounter(int index = 0)
         {
-            const float height = 1.5F;
+            const float height = 2F;
             var position = DeliveryCounter.transform.position + Vector3.up * height;
 
             PlaceArrow(position, index);
