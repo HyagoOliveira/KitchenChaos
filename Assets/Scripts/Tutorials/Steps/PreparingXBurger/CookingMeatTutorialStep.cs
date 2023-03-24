@@ -52,36 +52,28 @@ namespace KitchenChaos.Tutorials
             manager.Stove.OnItemPlaced -= HandleMeatPlacedOverStove;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(CheckWhetherGuideToUseStove);
-        }
 
-        private void CheckWhetherGuideToUseStove()
-        {
-            var isCookingMeat = manager.Stove.IsPreparing;
-            if (isCookingMeat) Complete();
-            else GuideToUseStove();
+            manager.Stove.OnPreparationStarted += HandleStovePreparationStarted;
+            CompleteDescriptionAndInvoke(GuideToUseStove);
         }
 
         private void GuideToUseStove()
         {
+            var isCookingMeat = manager.Stove.IsPreparing;
+            if (isCookingMeat) return;
+
             manager.PlaceArrowOverPreparator(manager.Stove);
             manager.SetDescription($"Start cooking using {GetInteractWithEnvironmentButtonDisplayName()}.");
-
-            manager.Stove.OnPreparationStarted += HandleStovePreparationStarted;
         }
 
         private void HandleStovePreparationStarted()
         {
             manager.Stove.OnPreparationStarted -= HandleStovePreparationStarted;
 
-            manager.HideArrow();
-            Complete();
-        }
-
-        protected override void Complete()
-        {
             manager.Stove.Counter.IsEnabled = false;
-            base.Complete();
+            manager.HideArrow();
+
+            Complete();
         }
     }
 }

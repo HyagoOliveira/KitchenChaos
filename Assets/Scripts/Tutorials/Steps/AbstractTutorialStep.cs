@@ -17,7 +17,7 @@ namespace KitchenChaos.Tutorials
         internal abstract void Begin();
         internal abstract string GetDescription();
 
-        protected virtual void Complete() => manager.CompleteStep();
+        protected void Complete() => manager.CompleteStep();
 
         protected void CompleteDescriptionAndInvoke(Action action) =>
             StartCoroutine(CompleteDescriptionAndInvokeRoutine(action));

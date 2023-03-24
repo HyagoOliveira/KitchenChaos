@@ -50,22 +50,18 @@ namespace KitchenChaos.Tutorials
             manager.CuttingBoard.OnItemPlaced -= HandleCheesePlacedOverCuttingBoard;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(CheckWhetherGuideToUseCuttingBoard);
-        }
 
-        private void CheckWhetherGuideToUseCuttingBoard()
-        {
-            var isSlicingCheese = manager.CuttingBoard.IsPreparing;
-            if (isSlicingCheese) Complete();
-            else GuideToUseCuttingBoard();
+            CompleteDescriptionAndInvoke(GuideToUseCuttingBoard);
+            manager.CuttingBoard.OnPreparationStarted += HandleCuttingBoardPreparationStarted;
         }
 
         private void GuideToUseCuttingBoard()
         {
+            var isSlicingCheese = manager.CuttingBoard.IsPreparing;
+            if (isSlicingCheese) return;
+
             manager.PlaceArrowOverPreparator(manager.CuttingBoard);
             manager.SetDescription($"Start cutting using {GetInteractWithEnvironmentButtonDisplayName()}.");
-
-            manager.CuttingBoard.OnPreparationStarted += HandleCuttingBoardPreparationStarted;
         }
 
         private void HandleCuttingBoardPreparationStarted()
@@ -73,13 +69,9 @@ namespace KitchenChaos.Tutorials
             manager.CuttingBoard.OnPreparationStarted -= HandleCuttingBoardPreparationStarted;
 
             manager.HideArrow();
-            Complete();
-        }
-
-        protected override void Complete()
-        {
             manager.CuttingBoard.Counter.IsEnabled = false;
-            base.Complete();
+
+            Complete();
         }
     }
 }
