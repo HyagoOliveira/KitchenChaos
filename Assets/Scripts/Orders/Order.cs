@@ -15,6 +15,7 @@ namespace KitchenChaos.Orders
         public event Action<float> OnWaitingTimeUpdated;
 
         public int Tip => recipe.tip;
+        public string Name => recipe.Name;
 
         public PlatedIngredient[] PlatedIngredients => recipe.PlatedIngredients;
 

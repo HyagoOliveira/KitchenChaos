@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using KitchenChaos.Orders;
@@ -10,6 +11,7 @@ namespace KitchenChaos.UI
     [RequireComponent(typeof(RectTransform))]
     public sealed class OrderTicket : MonoBehaviour
     {
+        [SerializeField] private TMP_Text orderName;
         [SerializeField] private Slider waitingTimer;
         [SerializeField] private Animation animation;
         [SerializeField] private IngredientIcon iconPrefab;
@@ -25,6 +27,7 @@ namespace KitchenChaos.UI
         private void Reset()
         {
             animation = GetComponent<Animation>();
+            orderName = GetComponentInChildren<TMP_Text>();
             waitingTimer = GetComponentInChildren<Slider>();
             rectTransform = GetComponent<RectTransform>();
             iconsGroup = GetComponentInChildren<HorizontalLayoutGroup>();
@@ -32,6 +35,8 @@ namespace KitchenChaos.UI
 
         internal void Initialize(Order order)
         {
+            orderName.text = order.Name;
+
             SetIcons(order.PlatedIngredients);
             SetWidth(order.PlatedIngredients.Length);
             SetInitialWaitingTime(order.WaitingTime);
