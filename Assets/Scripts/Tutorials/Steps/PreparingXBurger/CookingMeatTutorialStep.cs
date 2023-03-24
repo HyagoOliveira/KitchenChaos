@@ -18,6 +18,7 @@ namespace KitchenChaos.Tutorials
 
         private void GuideToMeatCounter()
         {
+            manager.MeatCounter.IsEnabled = true;
             manager.PlaceArrowOverCounter(manager.MeatCounter);
             manager.SetDescription($"Collect a Meat using {GetCollectButtonDisplayName()}.");
 
@@ -29,11 +30,14 @@ namespace KitchenChaos.Tutorials
             manager.MeatCounter.OnItemCollectedFromInside -= HandleMeatCollected;
 
             manager.HideArrow();
+            manager.MeatCounter.IsEnabled = false;
+
             CompleteDescriptionAndInvoke(GuideToPlaceMeatOverStove);
         }
 
         private void GuideToPlaceMeatOverStove()
         {
+            manager.Stove.Counter.IsEnabled = true;
             manager.PlaceArrowOverPreparator(manager.Stove);
             manager.SetDescription($"Place the Meat over the Stove using {GetCollectButtonDisplayName()}.");
 
@@ -48,7 +52,14 @@ namespace KitchenChaos.Tutorials
             manager.Stove.OnItemPlaced -= HandleMeatPlacedOverStove;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(GuideToUseStove);
+            CompleteDescriptionAndInvoke(CheckWhetherGuideToUseStove);
+        }
+
+        private void CheckWhetherGuideToUseStove()
+        {
+            var isMeatCooking = manager.Stove.IsPreparing;
+            if (isMeatCooking) Complete();
+            else GuideToUseStove();
         }
 
         private void GuideToUseStove()
