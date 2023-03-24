@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace KitchenChaos.Matches
 {
+    [Serializable]
     public sealed class TimeLimit : TimeDown
     {
         [SerializeField, Min(0)] private uint finalSeconds;
