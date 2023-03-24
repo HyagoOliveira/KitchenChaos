@@ -8,7 +8,6 @@ namespace KitchenChaos.Tutorials
     [DisallowMultipleComponent]
     public sealed class PlatingTutorialStep : AbstractTutorialStep
     {
-        private Counter[] counters;
         private Counter plateCounter;
 
         private const int stoveArrowIndex = 0;
@@ -17,7 +16,7 @@ namespace KitchenChaos.Tutorials
         private bool isMeatPlated;
         private bool isCheesePlated;
 
-        private void Start() => FindCounters();
+        private void Start() => FindPlateCounter();
 
         internal override string GetDescription() => "Plating Ingredients";
 
@@ -42,8 +41,6 @@ namespace KitchenChaos.Tutorials
             // Disabling Player Switch so the other Player cannot take the Plate.
             manager.PlayerSettings.DisablePlayerSwitch();
 
-            // Disabling all counter so Player can only interact with the Plate Counter.
-            EnableCounters(false);
             plateCounter.IsEnabled = true;
 
             manager.HideArrow();
@@ -68,8 +65,6 @@ namespace KitchenChaos.Tutorials
 
             manager.HideArrow();
             manager.PlayerSettings.EnablePlayerSwitch();
-
-            EnableCounters(true);
 
             CompleteDescriptionAndInvoke(CheckWhetherPlayerIsHoldingPlate);
         }
@@ -145,25 +140,15 @@ namespace KitchenChaos.Tutorials
             Complete();
         }
 
-        private void FindCounters()
+        private void FindPlateCounter()
         {
-            counters = FindObjectsByType<Counter>(FindObjectsSortMode.None);
-
-            foreach (var counter in counters)
+            foreach (var counter in manager.Counters)
             {
                 if (counter.HasPlate())
                 {
                     plateCounter = counter;
                     break;
                 }
-            }
-        }
-
-        private void EnableCounters(bool enabled)
-        {
-            foreach (var counter in counters)
-            {
-                counter.IsEnabled = enabled;
             }
         }
     }

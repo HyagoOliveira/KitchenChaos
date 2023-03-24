@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using KitchenChaos.UI;
+using KitchenChaos.Items;
 using KitchenChaos.Players;
 using KitchenChaos.Matches;
 using KitchenChaos.Counters;
-using KitchenChaos.Items;
 
 namespace KitchenChaos.Tutorials
 {
@@ -26,6 +26,7 @@ namespace KitchenChaos.Tutorials
 
         public Stove Stove { get; private set; }
         public Plate Plate { get; private set; }
+        public Counter[] Counters { get; private set; }
         public CuttingBoard CuttingBoard { get; private set; }
         public IngredientCounter MeatCounter { get; private set; }
         public IngredientCounter BreadCounter { get; private set; }
@@ -58,6 +59,9 @@ namespace KitchenChaos.Tutorials
 
             FindItems();
             DisableItems();
+            // Disabling all counter so Player can only
+            // interact with the current tutorial Counter.
+            EnableCounters(false);
         }
 
         private void OnEnable() => matchSettings.CountDown.OnFinished += HandleCountDownFinished;
@@ -109,6 +113,14 @@ namespace KitchenChaos.Tutorials
 
         internal void SetDescription(string text) => description.SetUncompletedText(text);
 
+        internal void EnableCounters(bool enabled)
+        {
+            foreach (var counter in Counters)
+            {
+                counter.IsEnabled = enabled;
+            }
+        }
+
         internal IEnumerator CompleteDescriptionRoutine()
         {
             description.Complete();
@@ -121,6 +133,8 @@ namespace KitchenChaos.Tutorials
             Plate = FindObjectOfType<Plate>();
             CuttingBoard = FindObjectOfType<CuttingBoard>();
             DeliveryCounter = FindObjectOfType<DeliveryCounter>();
+
+            Counters = FindObjectsByType<Counter>(FindObjectsSortMode.None);
 
             MeatCounter = TutorialIngredientCounters.FindCounter(IngredientName.Meat);
             BreadCounter = TutorialIngredientCounters.FindCounter(IngredientName.Bread);
@@ -152,6 +166,7 @@ namespace KitchenChaos.Tutorials
             matchSettings.IsAllowToStartTimeLimit = true;
 
             print("Tutorial is completed");
+            EnableCounters(true);
             Destroy(gameObject);
         }
 
