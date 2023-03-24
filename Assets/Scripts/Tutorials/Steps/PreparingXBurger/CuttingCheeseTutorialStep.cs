@@ -16,6 +16,7 @@ namespace KitchenChaos.Tutorials
 
         private void GuideToCheeseCounter()
         {
+            manager.CheeseCounter.IsEnabled = true;
             manager.PlaceArrowOverCounter(manager.CheeseCounter);
             manager.SetDescription($"Collect a Cheese using {GetCollectButtonDisplayName()}.");
 
@@ -27,11 +28,14 @@ namespace KitchenChaos.Tutorials
             manager.CheeseCounter.OnItemCollectedFromInside -= HandleCheeseCollected;
 
             manager.HideArrow();
+            manager.CheeseCounter.IsEnabled = false;
+
             CompleteDescriptionAndInvoke(GuideToPlaceCheeseOverCuttingTable);
         }
 
         private void GuideToPlaceCheeseOverCuttingTable()
         {
+            manager.CuttingBoard.Counter.IsEnabled = true;
             manager.PlaceArrowOverPreparator(manager.CuttingBoard);
             manager.SetDescription($"Place the Cheese over the Cutting Board using {GetCollectButtonDisplayName()}.");
 
@@ -46,7 +50,14 @@ namespace KitchenChaos.Tutorials
             manager.CuttingBoard.OnItemPlaced -= HandleCheesePlacedOverCuttingBoard;
 
             manager.HideArrow();
-            CompleteDescriptionAndInvoke(GuideToUseCuttingBoard);
+            CompleteDescriptionAndInvoke(CheckWhetherGuideToUseCuttingBoard);
+        }
+
+        private void CheckWhetherGuideToUseCuttingBoard()
+        {
+            var isSlicingCheese = manager.CuttingBoard.IsPreparing;
+            if (isSlicingCheese) Complete();
+            else GuideToUseCuttingBoard();
         }
 
         private void GuideToUseCuttingBoard()

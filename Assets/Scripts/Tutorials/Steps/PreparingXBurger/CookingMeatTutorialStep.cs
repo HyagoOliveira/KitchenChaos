@@ -57,8 +57,8 @@ namespace KitchenChaos.Tutorials
 
         private void CheckWhetherGuideToUseStove()
         {
-            var isMeatCooking = manager.Stove.IsPreparing;
-            if (isMeatCooking) Complete();
+            var isCookingMeat = manager.Stove.IsPreparing;
+            if (isCookingMeat) Complete();
             else GuideToUseStove();
         }
 
