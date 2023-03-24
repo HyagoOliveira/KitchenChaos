@@ -48,7 +48,7 @@ namespace KitchenChaos.Orders
             {
                 if (order.TryDelivery(ingredients))
                 {
-                    tip = order.Tip;
+                    tip = order.GetTip();
                     return true;
                 }
             }

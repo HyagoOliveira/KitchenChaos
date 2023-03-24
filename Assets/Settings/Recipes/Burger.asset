@@ -21,4 +21,4 @@ MonoBehaviour:
     position: {x: 0.048, y: 0.296, z: 0}
     rotation: {x: -0, y: 0, z: 0}
   <Chance>k__BackingField: 35
-  tip: 2
+  TipMultiplier: 0.1

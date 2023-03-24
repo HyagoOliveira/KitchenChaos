@@ -10,7 +10,7 @@ namespace KitchenChaos.Recipes
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public PlatedIngredient[] PlatedIngredients { get; internal set; }
         [field: SerializeField, Range(0, 100)] public float Chance { get; private set; } = 50F;
-        [field: SerializeField, Min(0)] public int tip = 1;
+        [field: SerializeField, Range(0f, 1f)] public float TipMultiplier = 0.25f;
 
         private Dictionary<IngredientData, PlatedIngredient> platedIngredients;
 

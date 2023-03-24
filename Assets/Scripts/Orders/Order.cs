@@ -14,7 +14,6 @@ namespace KitchenChaos.Orders
         public event Action OnDelivered;
         public event Action<float> OnWaitingTimeUpdated;
 
-        public int Tip => recipe.tip;
         public string Name => recipe.Name;
 
         public PlatedIngredient[] PlatedIngredients => recipe.PlatedIngredients;
@@ -59,6 +58,12 @@ namespace KitchenChaos.Orders
         }
 
         internal void CancelCountDownWaitingTime() => countDownWaitingTime.Cancel();
+
+        internal int GetTip()
+        {
+            var tip = WaitingTime * recipe.TipMultiplier;
+            return Mathf.CeilToInt(tip);
+        }
 
         private void Delivery()
         {
