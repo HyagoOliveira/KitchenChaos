@@ -28,7 +28,7 @@ namespace KitchenChaos.Tutorials
         protected string GetInteractWithEnvironmentButtonDisplayName() =>
                 SurrounButtonNameWithTag(PlayerInput.GetInteractWithEnvironmentButtonDisplayName());
 
-        protected string SurrounButtonNameWithTag(string button) => $"<color=white>{button}</color>";
+        protected string SurrounButtonNameWithTag(string button) => $"<color=yellow>{button}</color>";
 
         private IEnumerator CompleteDescriptionAndInvokeRoutine(Action action)
         {

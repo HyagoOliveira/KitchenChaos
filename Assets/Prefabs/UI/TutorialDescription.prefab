@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278243327
-  m_fontColor: {r: 1, g: 0.8118372, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -340,5 +340,5 @@ MonoBehaviour:
   group: {fileID: 476762359861771524}
   audioSource: {fileID: 7325702447247526034}
   fadeSpeed: 1.2
-  uncompletedColor: {r: 1, g: 0.8118372, b: 0, a: 1}
-  completedColor: {r: 0, g: 1, b: 0, a: 1}
+  uncompletedColor: {r: 0.9433962, g: 0.93083155, b: 0.87664646, a: 1}
+  completedColor: {r: 0.362, g: 1, b: 0.362, a: 1}
