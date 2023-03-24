@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5361e87e6fa3c4a42a5f566c40017551, type: 3}
   m_Name: MatchSettings
   m_EditorClassIdentifier: 
-  countDown: 3
-  timeLimit: 120
-  finalSeconds: 20
+  <CountDown>k__BackingField:
+    <Time>k__BackingField: 3
+  <TimeLimit>k__BackingField:
+    <Time>k__BackingField: 120
+    finalSeconds: 20
