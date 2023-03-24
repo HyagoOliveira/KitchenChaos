@@ -44,6 +44,8 @@ namespace KitchenChaos.Counters
             }
         }
 
+        public Counter Counter { get; private set; }
+
         private bool isPaused;
         private float preparationTimeScale;
 
@@ -54,7 +56,11 @@ namespace KitchenChaos.Counters
             animation = GetComponentInChildren<Animation>();
         }
 
-        protected virtual void Awake() => PlayIdleAnimation();
+        protected virtual void Awake()
+        {
+            Counter = GetComponentInParent<Counter>();
+            PlayIdleAnimation();
+        }
 
         public virtual void Interact()
         {
