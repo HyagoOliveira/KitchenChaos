@@ -26,10 +26,10 @@ namespace KitchenChaos.UI
         public int TotalOrders => orders.Count;
 
         private List<Order> orders;
-        private OrderManager manager;
+        private OrderDisplayer manager;
         private Coroutine ordering;
 
-        internal void Initialize(OrderManager manager)
+        internal void Initialize(OrderDisplayer manager)
         {
             orders = new(maxOrders);
             this.manager = manager;

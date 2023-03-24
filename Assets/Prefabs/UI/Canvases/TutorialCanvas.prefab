@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 8123314257577383084, guid: 9c0046b455edb8f4fa218b1e8dc35ed8,
         type: 3}
       propertyPath: m_Name
-      value: OrderManager
+      value: OrderDisplayer
       objectReference: {fileID: 0}
     - target: {fileID: 8123314257577383084, guid: 9c0046b455edb8f4fa218b1e8dc35ed8,
         type: 3}

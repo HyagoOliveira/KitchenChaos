@@ -9,9 +9,9 @@ namespace KitchenChaos.Tutorials
         [SerializeField] private OrderSettings orderSettings;
         [SerializeField, Min(0f)] private float timeToRead = 3F;
 
-        private OrderManager orderManager;
+        private OrderDisplayer orderManager;
 
-        private void Awake() => orderManager = FindObjectOfType<OrderManager>(includeInactive: true);
+        private void Awake() => orderManager = FindObjectOfType<OrderDisplayer>(includeInactive: true);
 
         internal override string GetDescription() => $"Orders are received on the top left corner.";
 
