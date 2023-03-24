@@ -57,17 +57,16 @@ namespace KitchenChaos.Orders
             return false;
         }
 
-        public void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
 
-        public void StopOrdering()
+        internal void StartOrdering() => ordering = manager.StartCoroutine(OrderingRoutine());
+
+        internal void StopOrdering()
         {
             if (ordering != null) manager.StopCoroutine(ordering);
             CancelAll();
         }
 
-        internal void CreateRandom() => Create(recipeSettings.GetRandom());
-
-        private void Create(RecipeData recipe)
+        internal Order Create(RecipeData recipe)
         {
             var waitingTime = recipe.GetWaitingTime(
                 ingredientSettings,
@@ -76,6 +75,8 @@ namespace KitchenChaos.Orders
             var order = new Order(recipe, waitingTime);
 
             Create(order);
+
+            return order;
         }
 
         private void Create(Order order)
@@ -88,6 +89,8 @@ namespace KitchenChaos.Orders
             orders.Add(order);
             OnOrderCreated?.Invoke(order);
         }
+
+        private void CreateRandom() => Create(recipeSettings.GetRandom());
 
         private void Remove(Order order)
         {

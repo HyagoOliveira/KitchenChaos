@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c77854300f1e9647b94f7edaf84698a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipe: {fileID: 11400000, guid: 671826d52689bc84fb2f83ef66f3c724, type: 2}
   timeToRead: 3
 --- !u!114 &5040015098308515784
 MonoBehaviour:
