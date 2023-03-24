@@ -13,6 +13,8 @@ namespace KitchenChaos.Items
         [SerializeField] private RecipeSettings recipeSettings;
         [SerializeField] private IngredientIcons icons;
 
+        private bool hasBread;
+
         public event Action<Ingredient> OnIngredientPlated;
 
         public Stack<Ingredient> Ingredients { get; private set; } = new(4);
@@ -23,6 +25,9 @@ namespace KitchenChaos.Items
         {
             var isPreparing = fromHolder is PreparationCounter counter && counter.IsPreparing;
             if (isPreparing) return false;
+
+            var isDoubleBread = hasBread && fromHolder.CurrentItem.IsIngredient(IngredientName.Bread);
+            if (isDoubleBread) return false;
 
             var ingredient = fromHolder.CurrentItem as Ingredient;
             var canPlate = ingredient != null && recipeSettings.CanPlate(ingredient.Data);
@@ -48,6 +53,8 @@ namespace KitchenChaos.Items
 
         private void PlateIngredient(Ingredient ingredient)
         {
+            if (!hasBread) hasBread = ingredient.Name == IngredientName.Bread;
+
             ingredient.GetCollectible().PickUp(transform);
 
             Ingredients.Push(ingredient);
