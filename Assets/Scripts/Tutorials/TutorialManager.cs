@@ -5,6 +5,7 @@ using KitchenChaos.Items;
 using KitchenChaos.Players;
 using KitchenChaos.Matches;
 using KitchenChaos.Counters;
+using KitchenChaos.Scenes;
 
 namespace KitchenChaos.Tutorials
 {
@@ -15,6 +16,7 @@ namespace KitchenChaos.Tutorials
         [field: SerializeField] public PlayerInputSettings PlayerInputSettings { get; private set; }
 
         [SerializeField] private MatchSettings matchSettings;
+        [SerializeField] private SceneSettings sceneSettings;
         [SerializeField] private GameObject cheeseBurgerStepTitle;
         [SerializeField] private TutorialDescription description;
         [SerializeField, Min(0f)] private float timeBetweenSteps = 0.4f;
@@ -164,9 +166,9 @@ namespace KitchenChaos.Tutorials
         {
             matchSettings.IsAllowToStartTimeLimit = true;
 
-            print("Tutorial is completed");
             EnableCounters(true);
             Destroy(gameObject);
+            sceneSettings.GoToResults();
         }
 
         private void HandleCountDownFinished() => GoToNextStep();
