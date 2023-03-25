@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 using KitchenChaos.Items;
 using KitchenChaos.Counters;
@@ -8,9 +7,11 @@ namespace KitchenChaos.Tutorials
 {
     public static class TutorialIngredientCounters
     {
-        private static readonly Lazy<Dictionary<IngredientName, IngredientCounter>> counters = new(FindCounters);
+        private static Dictionary<IngredientName, IngredientCounter> counters;
 
-        internal static IngredientCounter FindCounter(IngredientName name) => counters.Value[name];
+        internal static void Load() => counters = FindCounters();
+
+        internal static IngredientCounter FindCounter(IngredientName name) => counters[name];
 
         private static Dictionary<IngredientName, IngredientCounter> FindCounters()
         {

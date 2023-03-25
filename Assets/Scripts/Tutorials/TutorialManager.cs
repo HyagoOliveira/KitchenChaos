@@ -136,6 +136,8 @@ namespace KitchenChaos.Tutorials
 
             Counters = FindObjectsByType<Counter>(FindObjectsSortMode.None);
 
+            TutorialIngredientCounters.Load();
+
             MeatCounter = TutorialIngredientCounters.FindCounter(IngredientName.Meat);
             BreadCounter = TutorialIngredientCounters.FindCounter(IngredientName.Bread);
             CheeseCounter = TutorialIngredientCounters.FindCounter(IngredientName.Cheese);
