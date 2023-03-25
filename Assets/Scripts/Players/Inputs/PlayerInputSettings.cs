@@ -26,13 +26,17 @@ namespace KitchenChaos.Players
         public void Enable() => actions.Enable();
         public void Disable() => actions.Disable();
 
-        public string GetMoveButtonDisplayName() => GetButtonDisplayName(actions.Move);
+        public string GetMoveButtonSpriteName() =>
+            GetButtonDisplayName(actions.Move).
+            Replace("/", string.Empty);
 
-        public string GetSwitchButtonDisplayName() => GetButtonDisplayName(actions.Switch);
+        public string GetSwitchButtonSpriteName() =>
+            GetButtonDisplayName(actions.Switch).
+            Replace(" | ", string.Empty);
 
-        public string GetCollectItemButtonDisplayName() => GetButtonDisplayName(actions.CollectItem);
+        public string GetCollectItemButtonSpriteName() => GetButtonDisplayName(actions.CollectItem);
 
-        public string GetInteractWithEnvironmentButtonDisplayName() =>
+        public string GetInteractWithEnvironmentButtonSpriteName() =>
             GetButtonDisplayName(actions.InteractWithEnvironment);
 
         internal void ResetAxis()

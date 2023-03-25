@@ -10,7 +10,7 @@ namespace KitchenChaos.Tutorials
 
         internal override void Begin() => manager.PlayerInputSettings.OnSwitch += HandlePlayerSwitch;
 
-        private string GetButtonName() => SurrounButtonNameWithTag(PlayerInput.GetSwitchButtonDisplayName());
+        private string GetButtonName() => SurrounButtonNameWithSpriteTag(PlayerInput.GetSwitchButtonSpriteName());
 
         private void HandlePlayerSwitch()
         {

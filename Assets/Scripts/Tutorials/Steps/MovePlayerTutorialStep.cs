@@ -13,7 +13,7 @@ namespace KitchenChaos.Tutorials
 
         internal override void Begin() => StartCoroutine(CheckMovingTimeRoutine());
 
-        private string GetButtonName() => SurrounButtonNameWithTag(PlayerInput.GetMoveButtonDisplayName());
+        private string GetButtonName() => SurrounButtonNameWithSpriteTag(PlayerInput.GetMoveButtonSpriteName());
 
         private IEnumerator CheckMovingTimeRoutine()
         {
