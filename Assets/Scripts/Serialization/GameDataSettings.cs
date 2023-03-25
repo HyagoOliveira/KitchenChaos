@@ -18,13 +18,6 @@ namespace KitchenChaos.Serialization
 
         private const string saveFileName = nameof(GameData);
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
-        private static void Instantiate()
-        {
-            var settings = Resources.Load<GameDataSettings>(nameof(GameDataSettings));
-            settings.LoadOrCreate();
-        }
-
         public async void Save()
         {
             var audio = Data.Audio;
