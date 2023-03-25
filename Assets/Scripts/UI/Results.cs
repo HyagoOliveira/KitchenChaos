@@ -3,6 +3,7 @@ using UnityEngine;
 using ActionCode.UI;
 using KitchenChaos.Score;
 using KitchenChaos.Scenes;
+using KitchenChaos.Serialization;
 
 namespace KitchenChaos.UI
 {
@@ -11,6 +12,7 @@ namespace KitchenChaos.UI
     {
         [SerializeField] private ScoreSettings scoreSettings;
         [SerializeField] private SceneSettings sceneSettings;
+        [SerializeField] private GameDataSettings gameDataSettings;
 
         [SerializeField] private DelayedButton continueButton;
 
@@ -22,6 +24,8 @@ namespace KitchenChaos.UI
 
         [SerializeField] private TMP_Text tips;
         [SerializeField] private TMP_Text totalScore;
+
+        [SerializeField] private GameObject newHighScore;
 
         private void Start()
         {
@@ -36,10 +40,23 @@ namespace KitchenChaos.UI
 
             tips.text = scoreSettings.Tips.ToString();
             totalScore.text = scoreSettings.Score.ToString();
+
+            CheckHighScore();
         }
 
         private void OnEnable() => continueButton.onClick.AddListener(HandleContinueButtonClick);
         private void OnDisable() => continueButton.onClick.RemoveListener(HandleContinueButtonClick);
+
+        private void CheckHighScore()
+        {
+            var isNewHighScore = scoreSettings.Score > GameDataSettings.Data.HighScore;
+            newHighScore.SetActive(isNewHighScore);
+
+            if (!isNewHighScore) return;
+
+            GameDataSettings.Data.HighScore = (uint)scoreSettings.Score;
+            gameDataSettings.Save();
+        }
 
         private void HandleContinueButtonClick() => sceneSettings.GoToMainMenu();
     }
