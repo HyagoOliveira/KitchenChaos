@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: f86f45a7311ae1c4b86da1ed4d289e64,
+  m_LightingDataAsset: {fileID: 112000000, guid: 244420f150510d742a8f049f90d5716d,
     type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 1257872811515003886, guid: 1538126a72e3bc24eb221c4c7c408b7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1257872811515003886, guid: 1538126a72e3bc24eb221c4c7c408b7b,
         type: 3}
@@ -679,7 +679,7 @@ PrefabInstance:
     - target: {fileID: 1257872811515003886, guid: 1538126a72e3bc24eb221c4c7c408b7b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1257872811515003886, guid: 1538126a72e3bc24eb221c4c7c408b7b,
         type: 3}
@@ -2692,7 +2692,7 @@ PrefabInstance:
     - target: {fileID: 1257872811515003886, guid: 1dd71b84fe2976445bf9a7481a18b783,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 1257872811515003886, guid: 1dd71b84fe2976445bf9a7481a18b783,
         type: 3}
@@ -2702,7 +2702,7 @@ PrefabInstance:
     - target: {fileID: 1257872811515003886, guid: 1dd71b84fe2976445bf9a7481a18b783,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1257872811515003886, guid: 1dd71b84fe2976445bf9a7481a18b783,
         type: 3}
