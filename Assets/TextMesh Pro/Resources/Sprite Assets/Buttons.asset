@@ -80,8 +80,8 @@ MonoBehaviour:
     m_Unicode: 65534
     m_GlyphIndex: 6
     m_Scale: 1
-    m_Name: AWSD
-    m_HashCode: 2286337
+    m_Name: WASD
+    m_HashCode: 3196737
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 7

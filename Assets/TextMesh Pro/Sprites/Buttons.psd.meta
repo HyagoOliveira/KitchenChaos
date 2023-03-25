@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AWSD
+      name: WASD
       rect:
         serializedVersion: 2
         x: 100
@@ -296,7 +296,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       A: -2055311659
-      AWSD: 1562493262
       Buttons_0: 1399508195
       E: 1878966209
       LBRB: 5092092
@@ -304,6 +303,7 @@ TextureImporter:
       Q: 814111580
       RB: -1663273700
       Tab: -209224428
+      WASD: 1562493262
       X: -1868889409
   spritePackingTag: 
   pSDRemoveMatte: 0
