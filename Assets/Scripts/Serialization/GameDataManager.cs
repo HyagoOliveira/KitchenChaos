@@ -1,0 +1,27 @@
+using UnityEngine;
+
+namespace KitchenChaos.Serialization
+{
+    [DisallowMultipleComponent]
+    [DefaultExecutionOrder(Managers.EXECUTION_ORDER)]
+    public sealed class GameDataManager : MonoBehaviour
+    {
+        [SerializeField] private GameDataSettings settings;
+
+        private static bool wasInitialized;
+
+        private void Awake()
+        {
+            if (wasInitialized)
+            {
+                DestroyImmediate(gameObject);
+                return;
+            }
+
+            settings.Initialize(this);
+            wasInitialized = true;
+
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+}
