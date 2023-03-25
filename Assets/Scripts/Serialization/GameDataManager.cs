@@ -18,7 +18,7 @@ namespace KitchenChaos.Serialization
                 return;
             }
 
-            settings.Initialize(this);
+            settings.LoadOrCreate();
             wasInitialized = true;
 
             DontDestroyOnLoad(gameObject);

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using ActionCode.Persistence;
 using AudioSettings = ActionCode.Audio.AudioSettings;
@@ -17,20 +16,9 @@ namespace KitchenChaos.Serialization
 
         public GameData Data { get; private set; }
 
-        private GameDataManager manager;
         private const string saveFileName = nameof(GameData);
 
-        internal void Initialize(GameDataManager manager)
-        {
-            this.manager = manager;
-            LoadOrCreate();
-        }
-
-        public void Save() => manager.StartCoroutine(SaveRoutine());
-
-        private void LoadOrCreate() => manager.StartCoroutine(LoadRoutine());
-
-        private IEnumerator SaveRoutine()
+        public async void Save()
         {
             var audio = Data.Audio;
             audioSettings.Write(ref audio);
@@ -38,23 +26,14 @@ namespace KitchenChaos.Serialization
             Data.Audio = audio;
             Data.LastUpdateTime = DateTime.Now;
 
-            var savingTask = settings.Save(Data, saveFileName);
-
-            yield return new WaitUntil(() => savingTask.IsCompleted);
-
-            var wasSaved = savingTask.Result;
-            Debug.Log("wasSaved: " + wasSaved);
+            await settings.Save(Data, saveFileName);
 
             OnSaveFinished?.Invoke();
         }
 
-        private IEnumerator LoadRoutine()
+        public async void LoadOrCreate()
         {
-            var loadingTask = settings.Load<GameData>(saveFileName);
-
-            yield return new WaitUntil(() => loadingTask.IsCompleted);
-
-            Data = loadingTask.Result;
+            Data = await settings.Load<GameData>(saveFileName);
 
             var isEmpty = Data == null;
             if (isEmpty) Data = new GameData();
