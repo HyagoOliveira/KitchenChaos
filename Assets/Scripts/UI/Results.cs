@@ -49,7 +49,7 @@ namespace KitchenChaos.UI
 
         private void CheckHighScore()
         {
-            var isNewHighScore = scoreSettings.Score > gameDataSettings.Data.HighScore;
+            var isNewHighScore = (uint)scoreSettings.Score > gameDataSettings.Data.HighScore;
             newHighScore.SetActive(isNewHighScore);
 
             if (!isNewHighScore) return;
