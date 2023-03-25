@@ -29,7 +29,7 @@ namespace KitchenChaos.Tutorials
         {
             manager.BreadCounter.IsEnabled = true;
             manager.PlaceArrowOverCounter(manager.BreadCounter);
-            manager.SetDescription($"Collect a Bread using {GetCollectButtonSprite()}.");
+            manager.SetDescription($"Collect a Bread using {GetCollectButtonSprite()}");
 
             manager.BreadCounter.OnItemCollectedFromInside += HandleBreadCollected;
         }
@@ -52,7 +52,7 @@ namespace KitchenChaos.Tutorials
         private void GuideToPlaceBreadOverPlate()
         {
             manager.PlaceArrowOverPlate();
-            manager.SetDescription($"Place the Bread over the Plate using {GetCollectButtonSprite()}.");
+            manager.SetDescription($"Place the Bread over the Plate using {GetCollectButtonSprite()}");
 
             manager.Plate.OnIngredientPlated += HandleCheesePlacedOverPlate;
         }
@@ -78,7 +78,7 @@ namespace KitchenChaos.Tutorials
         private void GuideToGetPlate()
         {
             manager.PlaceArrowOverPlate();
-            manager.SetDescription($"Get the Plate using {GetCollectButtonSprite()}.");
+            manager.SetDescription($"Get the Plate using {GetCollectButtonSprite()}");
 
             plateCounter.OnItemCollectedFromTop += HandlePlateCollected;
         }

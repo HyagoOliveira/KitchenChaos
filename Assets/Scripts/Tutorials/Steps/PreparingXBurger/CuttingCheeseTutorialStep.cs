@@ -18,7 +18,7 @@ namespace KitchenChaos.Tutorials
         {
             manager.CheeseCounter.IsEnabled = true;
             manager.PlaceArrowOverCounter(manager.CheeseCounter);
-            manager.SetDescription($"Collect a Cheese using {GetCollectButtonSprite()}.");
+            manager.SetDescription($"Collect a Cheese using {GetCollectButtonSprite()}");
 
             manager.CheeseCounter.OnItemCollectedFromInside += HandleCheeseCollected;
         }
@@ -37,7 +37,7 @@ namespace KitchenChaos.Tutorials
         {
             manager.CuttingBoard.Counter.IsEnabled = true;
             manager.PlaceArrowOverPreparator(manager.CuttingBoard);
-            manager.SetDescription($"Place the Cheese over the Cutting Board using {GetCollectButtonSprite()}.");
+            manager.SetDescription($"Place the Cheese over the Cutting Board using {GetCollectButtonSprite()}");
 
             manager.CuttingBoard.OnItemPlaced += HandleCheesePlacedOverCuttingBoard;
         }
@@ -61,7 +61,7 @@ namespace KitchenChaos.Tutorials
             if (isSlicingCheese) return;
 
             manager.PlaceArrowOverPreparator(manager.CuttingBoard);
-            manager.SetDescription($"Start cutting using {GetInteractWithEnvironmentButtonSprite()}.");
+            manager.SetDescription($"Start cutting using {GetInteractWithEnvironmentButtonSprite()}");
         }
 
         private void HandleCuttingBoardPreparationStarted()
