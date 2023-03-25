@@ -8,14 +8,13 @@ namespace KitchenChaos.Serialization
     [CreateAssetMenu(fileName = "GameDataSettings", menuName = EditorPaths.SO + "Game Data Settings", order = 110)]
     public sealed class GameDataSettings : ScriptableObject
     {
-        [field: SerializeField] public PersistenceSettings Settings { get; private set; }
-
+        [SerializeField] private PersistenceSettings settings;
         [SerializeField] private AudioSettings audioSettings;
 
         public event Action OnSaveFinished;
         public event Action OnLoadFinished;
 
-        public static GameData Data { get; private set; }
+        public GameData Data { get; private set; }
 
         private const string saveFileName = nameof(GameData);
 
@@ -34,14 +33,14 @@ namespace KitchenChaos.Serialization
             Data.Audio = audio;
             Data.LastUpdateTime = DateTime.Now;
 
-            var wasSaved = await Settings.Save(Data, saveFileName);
+            var wasSaved = await settings.Save(Data, saveFileName);
 
             OnSaveFinished?.Invoke();
         }
 
         private async void LoadOrCreate()
         {
-            Data = await Settings.Load<GameData>(saveFileName);
+            Data = await settings.Load<GameData>(saveFileName);
 
             var isEmpty = Data == null;
             if (isEmpty) Data = new GameData();
