@@ -10,7 +10,7 @@ namespace KitchenChaos.Serialization
 
         private static bool wasInitialized;
 
-        private void Awake()
+        private void Start()
         {
             if (wasInitialized)
             {
