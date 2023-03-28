@@ -1,4 +1,5 @@
 # Kitchen Chaos
+[![GitHub license](https://img.shields.io/github/license/HyagoOliveira/KitchenChaos?style=flat-square)](https://github.com/HyagoOliveira/KitchenChaos/blob/main/LICENSE)
 
 ![Kitchen Chaos Thumbnail](/Wiki/Thumbnail.png "Kitchen Chaos")
 
@@ -38,9 +39,12 @@ Play the in-game Tutorial for further instructions.
 
 1. Inside the [Recipe folder](/Assets/Settings/Recipes), create a new Recipe Data asset by using the Create menu, Kitchen Chaos > Recipes > Recipe;
 2. Open the [IngredientsToRecipe prefab](/Assets/Prefabs/Recipes/IngredientsToRecipe.prefab) and link the new Recipe asset into the Recipe field;
+
     ![IngredientsToRecipe](/Wiki/IngredientsToRecipe.png "Ingredients To Recipe")
 3. Place each child ingredient in the right position;
 4. Right click on the `Prefab To Recipe` script and choose **Transfer Ingredients to Recipe**;
+
     ![TransferIngredientsToRecipe](/Wiki/TransferIngredientsToRecipe.png "Transfer Ingredients To Recipe")
 5. Finally add this new Recipe asset int to RecipeSettings Scriptable Object.
+
     ![RecipeSettings](/Wiki/RecipeSettings.png "Recipe Settings")
