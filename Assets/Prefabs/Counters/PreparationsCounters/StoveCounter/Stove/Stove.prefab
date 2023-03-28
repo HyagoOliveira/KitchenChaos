@@ -253,11 +253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c67952bf29551643bdb67afedf5a12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   holder: {fileID: 1773161922357456448}
   animation: {fileID: 2126842765079147867}
   allowedStatus: 1
   preparatedStatus: 2
   ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50, type: 2}
+  finalSecondsBooster: 1.25
   fryingPan: {fileID: 1043634114584890376}
   warning: {fileID: 1459660388531125638}
   timeBeforeBurn: 2

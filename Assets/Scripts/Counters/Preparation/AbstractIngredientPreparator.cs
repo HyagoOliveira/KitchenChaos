@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using KitchenChaos.Items;
+using KitchenChaos.Matches;
 using UnityEngine;
 
 namespace KitchenChaos.Counters
@@ -8,11 +9,13 @@ namespace KitchenChaos.Counters
     [RequireComponent(typeof(Animation))]
     public abstract class AbstractIngredientPreparator : MonoBehaviour, IInteractable
     {
+        [SerializeField] private MatchSettings matchSettings;
         [SerializeField] protected ItemHolder holder;
         [SerializeField] protected Animation animation;
         [SerializeField] protected IngredientStatus allowedStatus;
         [SerializeField] protected IngredientStatus preparatedStatus;
         [SerializeField] protected IngredientSettings ingredientSettings;
+        [SerializeField, Range(1f, 2f)] protected float finalSecondsBooster = 1.25f;
 
         public event Action OnInteracted;
         public event Action OnIngredientRejected;
@@ -47,6 +50,7 @@ namespace KitchenChaos.Counters
         public Counter Counter { get; private set; }
 
         private bool isPaused;
+        private float preparationBooster;
         private float preparationTimeScale;
 
         protected virtual void Reset()
@@ -60,6 +64,19 @@ namespace KitchenChaos.Counters
         {
             Counter = GetComponentInParent<Counter>();
             PlayIdleAnimation();
+            ResetPreparationBooster();
+        }
+
+        protected virtual void OnEnable()
+        {
+            matchSettings.TimeLimit.OnFinalSecondsStarted += HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinished += HandleTimeLimitFinished;
+        }
+
+        protected virtual void OnDisable()
+        {
+            matchSettings.TimeLimit.OnFinalSecondsStarted -= HandleFinalSecondsStarted;
+            matchSettings.TimeLimit.OnFinished -= HandleTimeLimitFinished;
         }
 
         public virtual void Interact()
@@ -130,7 +147,7 @@ namespace KitchenChaos.Counters
             {
                 yield return null;
 
-                currentTime += Time.deltaTime * preparationTimeScale;
+                currentTime += Time.deltaTime * preparationTimeScale * preparationBooster;
 
                 var normalizedTime = currentTime / preparingTime;
                 OnPreparationUpdated?.Invoke(normalizedTime);
@@ -148,6 +165,11 @@ namespace KitchenChaos.Counters
             var preparedIngredient = ingredientSettings.SpawnIngredient(name, preparatedStatus);
             holder.ReplaceItem(preparedIngredient);
         }
+
+        private void HandleFinalSecondsStarted() => preparationBooster = finalSecondsBooster;
+        private void HandleTimeLimitFinished() => ResetPreparationBooster();
+
+        private void ResetPreparationBooster() => preparationBooster = 1f;
 
         private bool CanPrepare(IngredientStatus status) => status == allowedStatus;
     }

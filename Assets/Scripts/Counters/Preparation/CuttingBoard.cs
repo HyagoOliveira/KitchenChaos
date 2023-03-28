@@ -14,14 +14,16 @@ namespace KitchenChaos.Counters
             knife = GetComponentInChildren<CounterKnife>();
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             holder.OnItemPlaced += HandleItemPlaced;
             holder.OnItemReleased += HandleItemReleased;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             holder.OnItemPlaced -= HandleItemPlaced;
             holder.OnItemReleased -= HandleItemReleased;
         }

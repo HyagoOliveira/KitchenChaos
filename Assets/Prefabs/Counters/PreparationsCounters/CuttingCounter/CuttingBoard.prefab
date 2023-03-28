@@ -30,14 +30,13 @@ Transform:
   m_Children:
   - {fileID: 3804523151140406098}
   m_Father: {fileID: 9082501333060482221}
-  m_RootOrder: -1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4898905402311368353
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 9082501333060482221}
     m_Modifications:
     - target: {fileID: 7062485541847398139, guid: c87af676071f1f846b8fc4aa3827c65d,
@@ -48,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 7586645084114070593, guid: c87af676071f1f846b8fc4aa3827c65d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7586645084114070593, guid: c87af676071f1f846b8fc4aa3827c65d,
         type: 3}
@@ -101,22 +100,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c87af676071f1f846b8fc4aa3827c65d, type: 3}
---- !u!4 &3077441787193193184 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7586645084114070593, guid: c87af676071f1f846b8fc4aa3827c65d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4898905402311368353}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5636291521191395150
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3050881107735103808, guid: 5dedb8fe08f626346bb276142af3e3a7,
@@ -220,21 +209,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7400000, guid: d7dc3ae032292ec4790e41ed41f65f1d, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3473303982841809891, guid: 5dedb8fe08f626346bb276142af3e3a7,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3077441787193193184}
-    - targetCorrespondingSourceObject: {fileID: 3473303982841809891, guid: 5dedb8fe08f626346bb276142af3e3a7,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 276356870282309830}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8492322970653769828, guid: 5dedb8fe08f626346bb276142af3e3a7,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8161648850399447128}
   m_SourcePrefab: {fileID: 100100000, guid: 5dedb8fe08f626346bb276142af3e3a7, type: 3}
 --- !u!111 &3518273419292072176 stripped
 Animation:
@@ -272,11 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a610eaea0119704cba741c6ea8d0db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchSettings: {fileID: 11400000, guid: 9246d2d46297dbc48bff855256ae4a29, type: 2}
   holder: {fileID: 3876739936159908843}
   animation: {fileID: 3518273419292072176}
   allowedStatus: 4
   preparatedStatus: 2
   ingredientSettings: {fileID: 11400000, guid: 25dc5b8a0875d3b49a38d4cbca894b50, type: 2}
+  finalSecondsBooster: 1.25
   knife: {fileID: 975917401710603873}
 --- !u!4 &9082501333060482221 stripped
 Transform:
@@ -289,13 +265,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 276356870282309830}
     m_Modifications:
     - target: {fileID: 5813620503265414023, guid: 4c911ca6597dd4641925c6771b49cfe9,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5813620503265414023, guid: 4c911ca6597dd4641925c6771b49cfe9,
         type: 3}
@@ -353,9 +328,6 @@ PrefabInstance:
       value: CounterKnife
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c911ca6597dd4641925c6771b49cfe9, type: 3}
 --- !u!114 &975917401710603873 stripped
 MonoBehaviour:

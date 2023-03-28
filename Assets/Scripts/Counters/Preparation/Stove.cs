@@ -33,8 +33,17 @@ namespace KitchenChaos.Counters
             warning.Hide();
         }
 
-        private void OnEnable() => holder.OnItemReleased += HandleOnItemReleased;
-        private void OnDisable() => holder.OnItemReleased -= HandleOnItemReleased;
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            holder.OnItemReleased += HandleOnItemReleased;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            holder.OnItemReleased -= HandleOnItemReleased;
+        }
 
         protected override void SetupIngredientStatus()
         {
