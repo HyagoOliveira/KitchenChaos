@@ -2,7 +2,7 @@
   "dependencies": {
     "com.actioncode.audio": "3.0.0",
     "com.actioncode.pause-system": "1.1.0",
-    "com.actioncode.persistence": "2.1.1",
+    "com.actioncode.persistence": "2.2.0",
     "com.actioncode.scene-management": "2.0.1",
     "com.actioncode.shapes": "1.2.0",
     "com.actioncode.ui": "4.1.1",

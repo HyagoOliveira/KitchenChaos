@@ -47,7 +47,7 @@
       "url": "http://165.232.132.59:4873"
     },
     "com.actioncode.persistence": {
-      "version": "2.1.1",
+      "version": "2.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
