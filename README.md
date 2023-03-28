@@ -22,6 +22,7 @@ You must prepare, cook and serve up some tasty orders before time ends!
 
 After the initial count down, Orders will be received on the screen's top left corner.
 You must collect the right ingredients, prepare and plate them before delivery.
+
 Your score will increase according in how quickly you deliver those orders.
 
 ![Kitchen Chaos Screenshot](/Wiki/Screenshot.png "Kitchen Chaos Screenshot")
@@ -30,7 +31,7 @@ Only single play is supported but you can switch between chefs to improve the ki
 
 **Play the in-game Tutorial for further instructions**.
 
-Click [here]](https://nostgames.itch.io/kitchen-chaos) to play the game on itch.io!
+Click [here](https://nostgames.itch.io/kitchen-chaos) to play the game on **itch.io**!
 
 ## Controls
 
@@ -39,7 +40,7 @@ Click [here]](https://nostgames.itch.io/kitchen-chaos) to play the game on itch.
 - **Q** - Interact with Items (Cutting Table, Stove Table) 
 - **E** - Interact with Plate and Ingredients (Tomato, Cheese, Bread etc)
 
-* Gamepad is also supported.
+> Gamepad is also supported.
 
 ## How To add new Recipes
 
@@ -57,6 +58,6 @@ Click [here]](https://nostgames.itch.io/kitchen-chaos) to play the game on itch.
 
 ## CI/CD
 
-Continuous Integration and Continuous Delivery are done using Github action and [GameCI](https://game.ci/).
+Continuous Integration and Continuous Delivery are done using [GitHub Actions for Unity](https://github.com/game-ci/unity-actions), provided by the [GameCI](https://game.ci/).
 
-You can play the last WebGL build on [github-pages](https://hyagooliveira.github.io/KitchenChaos/) or download the last 
+You can play the last WebGL build on [github-pages](https://hyagooliveira.github.io/KitchenChaos/).
