@@ -3,7 +3,7 @@
 
 ![Kitchen Chaos Thumbnail](/Wiki/Thumbnail.png "Kitchen Chaos")
 
-[Watch a quick gameplay video](https://youtu.be/qiwCZmpDRUY).
+Click [here](https://youtu.be/qiwCZmpDRUY) to watch a quick gameplay session.
 
 ---
 
@@ -18,13 +18,19 @@ However, the game structure and the source-code were created by me and they are 
 
 ## How To Play
 
-You must prepare, cook and serve up some tasty orders before time ends. Your score will increase according in how quickly you deliver orders.
+You must prepare, cook and serve up some tasty orders before time ends!
+
+After the initial count down, Orders will be received on the screen's top left corner.
+You must collect the right ingredients, prepare and plate them before delivery.
+Your score will increase according in how quickly you deliver those orders.
+
+![Kitchen Chaos Screenshot](/Wiki/Screenshot.png "Kitchen Chaos Screenshot")
 
 Only single play is supported but you can switch between chefs to improve the kitchen dynamics.
 
-Play the in-game Tutorial for further instructions.
+**Play the in-game Tutorial for further instructions**.
 
-[Play using your browser right now](https://nostgames.itch.io/kitchen-chaos)!
+Click [here]](https://nostgames.itch.io/kitchen-chaos) to play the game on itch.io!
 
 ## Controls
 
@@ -48,3 +54,9 @@ Play the in-game Tutorial for further instructions.
 5. Finally add this new Recipe asset int to RecipeSettings Scriptable Object.
 
     ![RecipeSettings](/Wiki/RecipeSettings.png "Recipe Settings")
+
+## CI/CD
+
+Continuous Integration and Continuous Delivery are done using Github action and [GameCI](https://game.ci/).
+
+You can play the last WebGL build on [github-pages](https://hyagooliveira.github.io/KitchenChaos/) or download the last 
