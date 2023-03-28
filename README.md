@@ -1,5 +1,11 @@
 # Kitchen Chaos
 
+![Kitchen Chaos Thumbnail](/Wiki/Thumbnail.png "Kitchen Chaos")
+
+[Watch a quick gameplay video](https://youtu.be/qiwCZmpDRUY).
+
+---
+
 ## Summary
 
 This game is a study case for the game Overcooked! 2.
