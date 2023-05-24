@@ -5,28 +5,28 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.attributes": {
       "version": "2.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.audio": {
       "version": "3.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.awaitable-coroutines": {
       "version": "1.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.cryptography": {
       "version": "1.0.0",
@@ -35,7 +35,7 @@
       "dependencies": {
         "com.actioncode.async-io": "1.0.0"
       },
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.pause-system": {
       "version": "1.1.0",
@@ -44,7 +44,7 @@
       "dependencies": {
         "com.actioncode.awaitable-coroutines": "1.0.0"
       },
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.persistence": {
       "version": "2.2.0",
@@ -55,7 +55,7 @@
         "com.actioncode.cryptography": "1.0.0",
         "com.actioncode.async-io": "1.0.0"
       },
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.scene-management": {
       "version": "2.0.1",
@@ -66,28 +66,28 @@
         "com.actioncode.awaitable-coroutines": "1.0.0",
         "com.actioncode.scriptable-settings-provider": "1.0.0"
       },
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.scriptable-settings-provider": {
       "version": "1.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.shapes": {
       "version": "1.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.actioncode.ui": {
       "version": "4.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "http://165.232.132.59:4873"
+      "url": "http://34.151.243.47:4873"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

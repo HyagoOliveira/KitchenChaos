@@ -27,7 +27,7 @@
   "scopedRegistries": [
     {
       "name": "Action Code",
-      "url": "http://165.232.132.59:4873/",
+      "url": "http://34.151.243.47:4873/",
       "scopes": [
         "com.actioncode"
       ]
