@@ -15,7 +15,7 @@ All art assets like Textures, models, audio clips etc where created by the indie
 
 However, the game structure and the source-code were created by me and they are very different from the course.
 
-This projects heavily uses custom [Unity Packages](http://34.151.243.47:4873/) created and published by me using the MIT license. You can freely use them into your project.
+This project uses many [Unity Packages](http://34.151.243.47:4873/) created and published by me. All of them are on the MIT license so you can freely use them into your project.
 
 ## How To Play
 
