@@ -17,6 +17,9 @@
         },
         {
             "m_Id": "c9a6cd95fe7d49e9b9dce181bb177db4"
+        },
+        {
+            "m_Id": "9ee41e35ec654b6f897f110a332ef9d8"
         }
     ],
     "m_Keywords": [],
@@ -98,6 +101,9 @@
         },
         {
             "m_Id": "350a8f027c774b4fbd712d3a8f86f14b"
+        },
+        {
+            "m_Id": "1fca16fcadef4577be54c338149ebed8"
         }
     ],
     "m_GroupDatas": [],
@@ -143,6 +149,20 @@
                     "m_Id": "e8306c3e15d44cd5b0cd51fcedc576c2"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "1fca16fcadef4577be54c338149ebed8"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "6810b42880934f3b8f4614276f134d5a"
+                },
+                "m_SlotId": 2
             }
         },
         {
@@ -646,6 +666,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "1d645dd5e21841549a6fc9cfb4167684",
+    "m_Id": 0,
+    "m_DisplayName": "HighlightPower",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
     "m_ObjectId": "1da8e884de1c4d36bb91439e0eeb3544",
     "m_Guid": {
@@ -705,6 +740,41 @@
     },
     "m_Property": {
         "m_Id": "1da8e884de1c4d36bb91439e0eeb3544"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "1fca16fcadef4577be54c338149ebed8",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1124.0,
+            "y": 729.0,
+            "width": 154.99993896484376,
+            "height": 33.99993896484375
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "1d645dd5e21841549a6fc9cfb4167684"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "9ee41e35ec654b6f897f110a332ef9d8"
     }
 }
 
@@ -1046,10 +1116,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -923.0,
-            "y": 422.0000305175781,
+            "x": -935.0000610351563,
+            "y": 508.0,
             "width": 152.0,
-            "height": 33.999969482421878
+            "height": 33.99993896484375
         }
     },
     "m_Slots": [
@@ -1487,6 +1557,33 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "9ee41e35ec654b6f897f110a332ef9d8",
+    "m_Guid": {
+        "m_GuidSerialized": "7358459a-532d-4c57-bf17-ec7cf90df1ec"
+    },
+    "m_Name": "HighlightPower",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "HighlightPower",
+    "m_DefaultReferenceName": "_HighlightPower",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 3.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "a1095e0dd9674e03b2e26e6d4004a3f2",
@@ -1917,6 +2014,9 @@
         },
         {
             "m_Id": "c9a6cd95fe7d49e9b9dce181bb177db4"
+        },
+        {
+            "m_Id": "9ee41e35ec654b6f897f110a332ef9d8"
         }
     ]
 }
