@@ -1,6 +1,6 @@
 using UnityEngine;
-using KitchenChaos.Physics;
 using ActionCode.Audio;
+using ActionCode.Physics;
 
 namespace KitchenChaos.Items
 {
@@ -8,7 +8,7 @@ namespace KitchenChaos.Items
     public sealed class ItemHandler : MonoBehaviour
     {
         [SerializeField] private ItemHolder holder;
-        [SerializeField] private BoxDetector detector;
+        [SerializeField] private BoxCaster detector;
 
         [Header("Audio")]
         [SerializeField] private AudioSourceDictionary dropSource;
@@ -17,7 +17,7 @@ namespace KitchenChaos.Items
         private void Reset()
         {
             holder = GetComponentInChildren<ItemHolder>();
-            detector = GetComponentInChildren<BoxDetector>();
+            detector = GetComponentInChildren<BoxCaster>();
         }
 
         public bool IsHoldingPlate() => holder.IsPlate(out Plate _);
@@ -29,7 +29,7 @@ namespace KitchenChaos.Items
                 if (TryInteractWithPlate()) return;
 
                 var wasItemTransfered = TryTransferItem();
-                var canReleaseItemOnTheFloor = !wasItemTransfered && !detector.HasHit();
+                var canReleaseItemOnTheFloor = !wasItemTransfered && !detector.HasHit;
 
                 if (canReleaseItemOnTheFloor)
                 {
@@ -46,7 +46,7 @@ namespace KitchenChaos.Items
 
         public void TryInteractWithEnvironment()
         {
-            var hasInteractable = detector.TryGetHittingComponent(out IInteractable interactable);
+            var hasInteractable = detector.TryGetEnabledComponent(out IInteractable interactable);
             if (hasInteractable) interactable.Interact();
         }
 
@@ -65,30 +65,30 @@ namespace KitchenChaos.Items
         {
             if (!plate.HasIngredients()) return false;
 
-            var hasDisposer = detector.TryGetHittingComponent(out IItemDisposer disposer);
-            if (hasDisposer) disposer.Dispose(plate.RemoveLast());
+            var hasDisposer = detector.TryGetEnabledComponent(out IItemDisposer disposer);
+            if (hasDisposer && disposer.IsEnabled) disposer.Dispose(plate.RemoveLast());
 
             return hasDisposer;
         }
 
         private bool TryPlateIngredient(Plate plate)
         {
-            var hasHolder = detector.TryGetHittingComponent(out IItemHolder holder);
+            var hasHolder = detector.TryGetEnabledComponent(out IItemHolder holder);
             return hasHolder && plate.TryTransferItem(holder);
         }
 
         private bool TryTransferItem()
         {
-            var hasTransfer = detector.TryGetHittingComponent(out IItemTransfer transfer);
+            var hasTransfer = detector.TryGetEnabledComponent(out IItemTransfer transfer);
             return hasTransfer && transfer.TryTransferItem(this.holder);
         }
 
         private bool TryGetCollectableItem(out IItemCollectable item)
         {
-            var hasCollector = detector.TryGetHittingComponent(out IItemCollector collector);
+            var hasCollector = detector.TryGetEnabledComponent(out IItemCollector collector);
             if (hasCollector) return collector.TryCollectItem(out item);
 
-            return detector.TryGetHittingComponent(out item);
+            return detector.TryGetEnabledComponent(out item);
         }
     }
 }

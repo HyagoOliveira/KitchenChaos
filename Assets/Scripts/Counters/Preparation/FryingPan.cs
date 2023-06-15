@@ -1,11 +1,11 @@
 using UnityEngine;
-using KitchenChaos.VisualEffects;
+using ActionCode.VisualEffects;
 
 namespace KitchenChaos.Counters
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
-    [RequireComponent(typeof(MaterialHighlighter))]
+    [RequireComponent(typeof(AbstractMaterialController))]
     public sealed class FryingPan : MonoBehaviour
     {
         [SerializeField] private AudioSource audioSource;

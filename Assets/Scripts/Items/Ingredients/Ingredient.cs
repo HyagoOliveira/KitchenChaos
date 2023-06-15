@@ -1,6 +1,6 @@
 using UnityEngine;
 using KitchenChaos.Physics;
-using KitchenChaos.VisualEffects;
+using ActionCode.VisualEffects;
 
 namespace KitchenChaos.Items
 {

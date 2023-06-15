@@ -2,8 +2,8 @@ using UnityEngine;
 using KitchenChaos.UI;
 using KitchenChaos.Items;
 using KitchenChaos.Score;
-using KitchenChaos.VisualEffects;
 using KitchenChaos.Orders;
+using ActionCode.VisualEffects;
 
 namespace KitchenChaos.Counters
 {

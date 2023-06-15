@@ -2,7 +2,7 @@ using UnityEngine;
 using ActionCode.Audio;
 using KitchenChaos.Items;
 using System.Collections;
-using KitchenChaos.VisualEffects;
+using ActionCode.VisualEffects;
 
 namespace KitchenChaos.Counters
 {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using KitchenChaos.Items;
-using KitchenChaos.VisualEffects;
+using ActionCode.VisualEffects;
 
 namespace KitchenChaos.Counters
 {

@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8761bdaf275ed41a517c7785096874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0.8
-  layers:
+  collisions:
     serializedVersion: 2
     m_Bits: 704
+  distance: 0.8
   size: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &6898473073528706925
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a99941e8777d854fbda2bf46cde3dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detector: {fileID: 1672062807128328701}
+  caster: {fileID: 1672062807128328701}
 --- !u!1 &3784493419560695269
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,8 +170,6 @@ MonoBehaviour:
   collider: {fileID: 7735328592386762565}
   animator: {fileID: 5163729145947187892}
   moveSpeed: 6
-  dashSpeed: 12
-  dashTime: 0.8
 --- !u!114 &3784493419560695288
 MonoBehaviour:
   m_ObjectHideFlags: 0
